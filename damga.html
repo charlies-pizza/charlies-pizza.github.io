@@ -299,6 +299,7 @@ window.guncelle = guncelle;
 
 <script>
 function updateInputBackground() {
+  
   var inp = document.getElementById("inp");
   if (inp.value.length === 8) {
     inp.style.backgroundColor = "#14cb1a76"; // 8 haneli numara için yeşil arka plan
@@ -315,7 +316,7 @@ inp.value = localStorage.getItem('mobilNumara');
     // Numara tam 8 girilince yesil, eksikse kirmizi
     updateInputBackground();
     
-    guncelle(); 
+
 
     var QRimage = document.getElementById("QRimage");
     var inp = document.getElementById("inp");
