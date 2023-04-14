@@ -1,10 +1,13 @@
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8" />
 </head>
 
+<table id="demo">   </table>
+
 <script type="module">
- let status = true;
+ let durum = true;
  
  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
  import { getDatabase, ref, onValue, set, remove, update } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
@@ -20,11 +23,11 @@
  const urlParams = new URLSearchParams(window.location.search);
  const nValue = urlParams.get("n"); 
  
- function checkStoredPassword() {
-  let storedPassword = localStorage.getItem("password");
-  let correctPassword = "1919";
+ function saklananSifreyiKontrolEt() {
+  let saklananSifre = localStorage.getItem("sifre");
+  let dogruSifre = "1919";
 
-  if (storedPassword === correctPassword) {
+  if (saklananSifre === dogruSifre) {
     calistir();
     return true;
   }
@@ -32,53 +35,43 @@
   return false;
 }
 
-function getPassword() {
-  if (checkStoredPassword()) {
+function sifreAl() {
+  if (saklananSifreyiKontrolEt()) {
     return;
   }
 
-  let password = prompt("Please enter your password", "");
-  let correctPassword = "1919";
+  let sifre = prompt("Lütfen şifrenizi girin", "");
+  let dogruSifre = "1919";
 
-  if (password === correctPassword) {
-    localStorage.setItem("password", password);
-    alert("Password is correct!sd");
-        calistir();
+  if (sifre === dogruSifre) {
+    localStorage.setItem("sifre", sifre);
+    alert("Şifre doğru!");
+    calistir();
   } else {
-    alert("Incorrect password. Please try again.");
+    alert("Yanlış şifre. Lütfen tekrar deneyin.");
   }
 }
 
-if (!checkStoredPassword()) {
-  getPassword();
+if (!saklananSifreyiKontrolEt()) {
+  sifreAl();
 }
 
 function calistir(){
- onValue(commentsReference, (snapshot) => {
+onValue(commentsReference, (snapshot) => {
+  const jsonString = JSON.stringify(snapshot);
+  const parsedObject = JSON.parse(jsonString);
 
- 
- const jsonString = JSON.stringify(snapshot);
- const parsedObject = JSON.parse(jsonString);
-
- 
- for (const key in parsedObject) {
-
-if (key === nValue && status == true) {
- 
- setTimeout(() => {
- set(ref(database, nValue), Number(parsedObject[key]) + 1);
- }, 50);
- status = false;
- }
-
- if (key === nValue && Number(parsedObject[key]) > 10) {
-  set(ref(database, nValue), 0);
- }
- 
-window.location.href = "https://www.example.com";
-
-}
+  if (parsedObject.hasOwnProperty(nValue)) {
+    setTimeout(() => {
+      set(ref(database, nValue), Number(parsedObject[nValue]) + 1);
+    }, 50);
+  } else {
+    setTimeout(() => {
+      set(ref(database, nValue), 1);
+    }, 50);
+  }
 });
+
 }
 </script>
 </body>
