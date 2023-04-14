@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8" />
-</head>
-
 <table id="demo">   </table>
 
 <script type="module">
- let durum = true;
+ let status = true;
  
  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
  import { getDatabase, ref, onValue, set, remove, update } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
@@ -19,10 +13,6 @@
  const database = getDatabase();
  const commentsReference = ref(database);
 
-
- const urlParams = new URLSearchParams(window.location.search);
- const nValue = urlParams.get("n"); 
- 
  function saklananSifreyiKontrolEt() {
   let saklananSifre = localStorage.getItem("sifre");
   let dogruSifre = "1919";
@@ -56,23 +46,40 @@ if (!saklananSifreyiKontrolEt()) {
   sifreAl();
 }
 
-function calistir(){
-onValue(commentsReference, (snapshot) => {
+function calistir() {
+    
+ const urlParams = new URLSearchParams(window.location.search);
+ const nValue = urlParams.get("n"); 
+ 
+ onValue(commentsReference, (snapshot) => {
+  demo.innerHTML = "";
+ 
   const jsonString = JSON.stringify(snapshot);
   const parsedObject = JSON.parse(jsonString);
+  
+  let found = false;
+  for (const key in parsedObject) {
+    if (key === nValue) {
+      found = true;
 
-  if (parsedObject.hasOwnProperty(nValue)) {
+if (Number(parsedObject[key]) > 10) {
+    set(ref(database, nValue), 0);
+ }
+
+    if (status == true) {
     setTimeout(() => {
-      set(ref(database, nValue), Number(parsedObject[nValue]) + 1);
-    }, 50);
-  } else {
-    setTimeout(() => {
-      set(ref(database, nValue), 1);
-    }, 50);
+    set(ref(database, nValue), Number(parsedObject[key]) + 1);
+    }, 100);
+    status = false;
+    }
+      demo.innerHTML = ``;
+      break;
+    }
   }
+  if (!found) {
+    set(ref(database, nValue), 0);
+  }
+  window.location.href = "https://www.bestill.online";
 });
-
 }
 </script>
-</body>
-</html>
