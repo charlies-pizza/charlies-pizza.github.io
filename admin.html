@@ -1,0 +1,87 @@
+<html>
+<head>
+<meta charset="utf-8" />
+</head>
+<style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      table {
+        width: 90%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        margin:auto;
+      }
+
+      th, td {
+        padding: 10px;
+        text-align: center;
+        border-bottom: 2px solid #ddd;
+        cursor:pointer;
+      }
+      th {
+        background-color: #4CAF50;
+        color: white;
+      }
+      .input{
+      width:40px;
+      }
+    </style>
+  <body>
+  
+<table>  <th>MOBIL NR</th> <th>KUPONG</th> <th>DELETE</th> <th>RESET</th> </table>
+<table id="demo">   </table>
+
+<script type="module">
+ let status = true;
+ 
+ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+ import { getDatabase, ref, onValue, set, remove, update } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
+ const firebaseConfig = { databaseURL: "https://charlies-pizza-default-rtdb.europe-west1.firebasedatabase.app",
+      };
+
+ // Firebase yapılandırmasını başlat
+ initializeApp(firebaseConfig);
+ const database = getDatabase();
+ const commentsReference = ref(database);
+
+
+ const urlParams = new URLSearchParams(window.location.search);
+ const nValue = urlParams.get("n"); 
+ 
+ onValue(commentsReference, (snapshot) => {
+ demo.innerHTML = "";
+ 
+ const jsonString = JSON.stringify(snapshot);
+ const parsedObject = JSON.parse(jsonString);
+
+ 
+ for (const key in parsedObject) {
+ 
+ demo.innerHTML += `<tr> <td> ${key} </td> 
+ <td>  <input id="${key}" class="input" type="number" value="${parsedObject[key]}"> </td>
+ <td id="${key}">🗑️</td> <td id="${key}">🔄</td> </tr>`;
+
+}
+});
+
+onclick = () => {
+
+if (event.target.innerText === "🗑️") {
+remove(ref(database, event.target.id));
+}
+
+if (event.target.innerText === "🔄") {
+  set(ref(database, event.target.id), 0);
+}
+
+if (event.target.tagName === "INPUT") {
+set(ref(database, event.target.id), event.target.value);
+}
+}
+</script>
+</body>
+</html>
