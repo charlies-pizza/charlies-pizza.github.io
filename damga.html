@@ -130,11 +130,34 @@ input::placeholder {
       height: 70px;
     }
   }
+  .profil {
+  position: fixed;
+  top: 0;
+  left: 40px;
+  transform: translateX(-50%);
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+}
+
+.profil img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
 </style>
 </head>
 <body>
 <div class="card">
-<span class="glf-button" style="background-color: #ff7300ed;" data-glf-cuid="33226b9d-c5c5-440e-9041-c766b47163f4" data-glf-ruid="b272e84c-1ea6-43e3-bd3c-b95cfb8967e4"> Sipariş Ver</span>
+<span class="glf-button" style="background-color: #ff7300ed;" data-glf-cuid="33226b9d-c5c5-440e-9041-c766b47163f4" data-glf-ruid="b272e84c-1ea6-43e3-bd3c-b95cfb8967e4">      Se MENY og Bestill 👆</span>
+
+<div class="profil">
+<img src="https://i.hizliresim.com/51zdn92.png" alt="">
+</div>
 <hr>
 <h1 class="title">Digitalt StempelKort</h1>
 <div class="stamps">
@@ -151,8 +174,10 @@ input::placeholder {
 <div class="stamp" style="background-color: #fdf92e;">Gratis</div>
 </div>
 <hr>
-<h1 class="title"><span class="completed-pizzas"><input id="inp" type="text" pattern="\d{8}" maxlength="8" inputmode="numeric" placeholder="Registrer ditt mobilnummer" onkeyup="method()" oninput="this.value = this.value.replace(/[^0-9]/g, ''); updateInputBackground();">
-</span></h1>
+<h1 class="title"><span class="completed-pizzas" id="completed"><input id="inp" type="text" pattern="\d{8}" maxlength="8" inputmode="numeric" placeholder="Registrer ditt mobilnummer 📝" onkeyup="method()" oninput="this.value = this.value.replace(/[^0-9]/g, ''); updateInputBackground();">
+</span>
+</h1>
+
 <div class="qr-code">
   <div id="QRimage"></div>
   </div>
@@ -166,13 +191,14 @@ input::placeholder {
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
-  function updateInputBackground() {
-    var inp = document.getElementById("inp");
-    if (inp.value.length === 8) {
-        inp.style.backgroundColor = "#14cb1a76"; // 8 haneli numara için yeşil arka plan
-    } else {
-        inp.style.backgroundColor = "#ee070792"; // 8'den az haneli numara için kırmızı arka plan
-    }
+
+function updateInputBackground() {
+  var inp = document.getElementById("inp");
+  if (inp.value.length === 8) {
+    inp.style.backgroundColor = "#14cb1a76"; // 8 haneli numara için yeşil arka plan
+  } else {
+    inp.style.backgroundColor = "#ee070792"; // 8'den az haneli numara için kırmızı arka plan
+  }
 }
 
 inp.value = localStorage.getItem('mobilNumara');
