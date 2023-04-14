@@ -151,7 +151,7 @@ input::placeholder {
 <div class="stamp" style="background-color: #fdf92e;">Gratis</div>
 </div>
 <hr>
-<h1 class="title"><span class="completed-pizzas"><input id="inp" type="number" pattern="[0-9]*" maxlength="8" placeholder="Registrer ditt mobilnummer" onkeyup="method()" oninput="this.value = this.value.replace(/[^0-9]/g, ''); updateInputBackground();"></span></h1>
+<h1 class="title"><span class="completed-pizzas"><input id="inp" type="number" min="1" max="5" pattern="[0-9]*" maxlength="8" placeholder="Registrer ditt mobilnummer" onkeyup="method()" oninput="this.value = this.value.replace(/[^0-9]/g, ''); updateInputBackground();"></span></h1>
 </span></h1>
 <div class="qr-code">
   <div id="QRimage"></div>
