@@ -1,0 +1,85 @@
+<html>
+<head>
+<meta charset="utf-8" />
+</head>
+
+<script type="module">
+ let status = true;
+ 
+ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+ import { getDatabase, ref, onValue, set, remove, update } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
+ const firebaseConfig = { databaseURL: "https://charlies-pizza-default-rtdb.europe-west1.firebasedatabase.app",
+      };
+
+ // Firebase yapılandırmasını başlat
+ initializeApp(firebaseConfig);
+ const database = getDatabase();
+ const commentsReference = ref(database);
+
+
+ const urlParams = new URLSearchParams(window.location.search);
+ const nValue = urlParams.get("n"); 
+ 
+ function checkStoredPassword() {
+  let storedPassword = localStorage.getItem("password");
+  let correctPassword = "1919";
+
+  if (storedPassword === correctPassword) {
+    calistir();
+    return true;
+  }
+
+  return false;
+}
+
+function getPassword() {
+  if (checkStoredPassword()) {
+    return;
+  }
+
+  let password = prompt("Please enter your password", "");
+  let correctPassword = "1919";
+
+  if (password === correctPassword) {
+    localStorage.setItem("password", password);
+    alert("Password is correct!sd");
+        calistir();
+  } else {
+    alert("Incorrect password. Please try again.");
+  }
+}
+
+if (!checkStoredPassword()) {
+  getPassword();
+}
+
+function calistir(){
+ onValue(commentsReference, (snapshot) => {
+
+ 
+ const jsonString = JSON.stringify(snapshot);
+ const parsedObject = JSON.parse(jsonString);
+
+ 
+ for (const key in parsedObject) {
+
+if (key === nValue && status == true) {
+ 
+ setTimeout(() => {
+ set(ref(database, nValue), Number(parsedObject[key]) + 1);
+ }, 50);
+ status = false;
+ }
+
+ if (key === nValue && Number(parsedObject[key]) > 10) {
+  set(ref(database, nValue), 0);
+ }
+ 
+window.location.href = "https://www.example.com";
+
+}
+});
+}
+</script>
+</body>
+</html>
