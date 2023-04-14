@@ -7,10 +7,24 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
 <style>
   /* Temel stil sıfırlama */
-* {
+  * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+/* Düzenle: */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f5f5f5;
+  padding-top: 0; /* Sabit başlık yüksekliğine göre ayarlayın */
+}
+.card {
+  width: 100vw; /* ekran genişliğine göre ayarlanır */
+  margin: 0;
+  margin-top: 0;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 @keyframes blink {
@@ -36,21 +50,6 @@
   justify-content: center;
   align-items: center;
 
-}
-
-/* Düzenle: */
-body {
-  font-family: 'Arial', sans-serif;
-  background-color: #f5f5f5;
-  padding-top: 60px; /* Sabit başlık yüksekliğine göre ayarlayın */
-}
-.card {
-  max-width: 100%;
-  margin: auto;
-  padding: 20px;
-  background-color: #ffffff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  border-radius: 10px;
 }
 
 hr {
@@ -90,6 +89,7 @@ hr {
   font-size: 20px;
   margin: 5px;
   border-radius: 50%;
+  border: 2px solid #33333358;
 }
 
 .stamp.complete {
@@ -98,7 +98,7 @@ hr {
 }
 
 .stamp i {
-  margin-left: 4px;
+  margin-left: 5px;
 }
 
 .qr-code {
@@ -132,8 +132,8 @@ input::placeholder {
   }
   .profil {
   position: fixed;
-  top: 0;
-  left: 40px;
+  top: 2px;
+  left: 45px;
   transform: translateX(-50%);
   z-index: 100;
   display: flex;
@@ -148,17 +148,22 @@ input::placeholder {
   height: 100%;
   border-radius: 50%;
 }
-
+.stamp.gratis {
+  background-color: #fdf92e;
+  border: 2px solid #333;
+  border-radius: 20%;
+  width: auto;
+}
 </style>
 </head>
 <body>
 <div class="card">
-<span class="glf-button" style="background-color: #ff7300ed;" data-glf-cuid="33226b9d-c5c5-440e-9041-c766b47163f4" data-glf-ruid="b272e84c-1ea6-43e3-bd3c-b95cfb8967e4">      Se MENY og Bestill 👆</span>
+<span class="glf-button" style="background-color: #ff7300ed;" data-glf-cuid="33226b9d-c5c5-440e-9041-c766b47163f4" data-glf-ruid="b272e84c-1ea6-43e3-bd3c-b95cfb8967e4">      Se MENY - Bestill 👆</span>
 
 <div class="profil">
 <img src="https://i.hizliresim.com/51zdn92.png" alt="">
 </div>
-<hr>
+<br><br><br>
 <h1 class="title">Digitalt StempelKort</h1>
 <div class="stamps">
 <div class="stamp complete"> 1 <i class="fas fa-check"></i> </div>
@@ -171,7 +176,8 @@ input::placeholder {
 <div class="stamp">8</div>
 <div class="stamp">9</div>
 <div class="stamp">10</div>
-<div class="stamp" style="background-color: #fdf92e;">Gratis</div>
+<div class="stamp gratis">  11. Gratis!  </div>
+
 </div>
 <hr>
 <h1 class="title"><span class="completed-pizzas" id="completed"><input id="inp" type="text" pattern="\d{8}" maxlength="8" inputmode="numeric" placeholder="Registrer ditt mobilnummer 📝" onkeyup="method()" oninput="this.value = this.value.replace(/[^0-9]/g, ''); updateInputBackground();">
