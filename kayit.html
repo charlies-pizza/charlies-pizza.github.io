@@ -72,16 +72,13 @@ if (Number(parsedObject[key]) > 10) {
     }, 100);
     status = false;
     }
-      demo.innerHTML = ``;
+      demo.innerHTML = `<h1>${nValue}<br><br>${parsedObject[key]}</h1>`;
       break;
     }
   }
   if (!found) {
     set(ref(database, nValue), 0);
   }
-  setInterval(() => {
-    window.location.href = "https://www.bestill.online";
-  }, 10);
 
 });
 }
