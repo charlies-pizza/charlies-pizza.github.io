@@ -197,15 +197,10 @@ td, th {
   font-size: 12px;
 }
 #kupon{
-  display: flex;
-    border: 4px dashed #4caf50;
-    padding: 10px;
-    background-color: #ffffff;
-    box-shadow: 0 12px 8px rgba(0, 0, 0, 0.614);
-    text-align: center;
-    flex-direction: column;
-    justify-content: space-around;
-    align-content: space-around;
+  border: 4px dashed rgba(6, 6, 6, 0.655);
+  padding: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 12px 8px rgba(0, 0, 0, 0.614);
 }
 .iconlar{
     display: flex;
@@ -308,7 +303,7 @@ function guncelle() {
     }
   }
   if (numActive == 10) {
-      kupon.innerHTML = `<h2 style="text-align:center; padding: 10px;">Gratulerer! 🎉 </h2><h4 style="text-align:center; padding: 20px;">11. pizza din er gratis 🍕!<br> God appetitt! 😊<br></h4> <h5 style="margin-bottom: 20px;text-align:center;color:red;">Vis QR-koden din til de ansatte for å få den gratis pizzaen.</h5>`;
+      kupon.innerHTML = `<span style="text-align:center; padding: 10px;"><h2 style="text-align:center; padding: 10px;">Gratulerer! 🎉 </h2><h4 style="text-align:center; padding: 20px;">11. pizza din er gratis 🍕!<br> God appetitt! 😊<br></h4> <h5 style="margin-bottom: 20px;text-align:center;color:red;">Vis QR-koden din til de ansatte for å få den gratis pizzaen.</h5></span>`;
     }
 }
 
