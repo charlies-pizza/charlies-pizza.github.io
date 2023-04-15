@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -187,6 +187,10 @@ td, th {
   padding: 2px;
   font-size: 12px;
 }
+#kupon{
+  border: 5px dashed rgba(6, 6, 6, 0.655);
+  padding: 10px;
+}
 </style>
 </head>
 <body>
@@ -203,7 +207,7 @@ td, th {
 <div id="kupon" class="stamps">   </div>
 
 <hr>
-
+<h4 style="text-align: center;">Vis QR-koden din til personalet hver gang du henter en stor pizza.</h4>
 <h1 class="title"><span class="completed-pizzas" id="completed"><input id="inp" type="text" pattern="\d{8}" maxlength="8" inputmode="numeric" placeholder="Registrer ditt mobilnummer 📱" onkeyup="method()" oninput="this.value = this.value.replace(/[^0-9]/g, ''); updateInputBackground();">
 </span>
 </h1>
@@ -212,7 +216,7 @@ td, th {
   <div id="QRimage"></div>
   </div>
 
-  <p style="text-align: center; font-size:11px;">
+  <p style="text-align: center; font-size:13px;">
     Registrer kun engang ditt mobilnummer og vis QR-koden din til personalet hver gang du henter en stor pizza. 
     <br>For hver pizza vil du motta en kupong. Når du har samlet 10 kuponger, få en gratis valgfri stor pizza på din 11. pizza. 
     <br>Tilbudet gjelder bare for store pizzaer.
@@ -247,7 +251,6 @@ td, th {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
 <script type="module">
-
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
    import { getDatabase, ref, onValue, set, remove, update } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
    const firebaseConfig = { databaseURL: "https://charlies-pizza-default-rtdb.europe-west1.firebasedatabase.app",
@@ -257,11 +260,11 @@ td, th {
    initializeApp(firebaseConfig);
    const database = getDatabase();
    const commentsReference = ref(database);
-   guncelle();
+
+         guncelle();
 function guncelle() {
-  
-  // Kuponları oluşturan fonksiyon
-function createStamps(numActive) {
+
+  function createStamps(numActive) {
   kupon.innerHTML = null;
   for (let index = 1; index <= 10; index++) {
     if (index <= numActive) {
@@ -282,6 +285,7 @@ onValue(commentsReference, (snapshot) => {
   let foundMatch = false;
 
   for (const key in parsedObject) {
+    
     if (key == localStorage.getItem('mobilNumara')) {
       createStamps(parsedObject[key]); // Eşleşme bulunduğunda aktif kuponları oluştur
       foundMatch = true;
@@ -294,13 +298,13 @@ onValue(commentsReference, (snapshot) => {
   }
 });
 }
+
 window.guncelle = guncelle;
 </script>
   
 
 <script>
 function updateInputBackground() {
-  
   var inp = document.getElementById("inp");
   if (inp.value.length === 8) {
     inp.style.backgroundColor = "#14cb1a76"; // 8 haneli numara için yeşil arka plan
@@ -313,12 +317,10 @@ inp.value = localStorage.getItem('mobilNumara');
 
   method();
   function method() {
- 
+
     // Numara tam 8 girilince yesil, eksikse kirmizi
     updateInputBackground();
     
-
-
     var QRimage = document.getElementById("QRimage");
     var inp = document.getElementById("inp");
 
