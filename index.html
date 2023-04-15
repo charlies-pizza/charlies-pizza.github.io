@@ -202,6 +202,16 @@ td, th {
   background-color: #ffffff;
   box-shadow: 0 12px 8px rgba(0, 0, 0, 0.614);
 }
+.iconlar{
+    display: flex;
+    font-size: 35px;
+    align-content: space-around;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+    font-size: 35px;
+    color: #6b95f1;
+}
 </style>
 </head>
 <body>
@@ -220,21 +230,18 @@ td, th {
 <h1 class="title">Digitalt StempelKort</h1>
 
 <div id="kupon" class="stamps">   </div>
-
-<hr>
-<h4 style="text-align: center;">Vis QR-koden din til personalet hver gang du henter en stor pizza.</h4>
+<h5 id="register" style="text-align: center;"></h5>
 <h1 class="title"><span id="completed"><input id="inp" type="text" pattern="\d{8}" maxlength="8" inputmode="numeric" placeholder="Registrer ditt mobilnummer 📱" onkeyup="method()" oninput="this.value = this.value.replace(/[^0-9]/g, ''); updateInputBackground();">
 </span>
 </h1>
-
+<h5 style="text-align: center;">For å samle kuponger, vis frem QR-koden din når du henter en stor pizza.</h5>
 <div class="qr-code">
   <div id="QRimage"></div>
   </div>
 
   <p style="text-align: center; font-size:13px;">
-    Registrer kun engang ditt mobilnummer og vis QR-koden din til personalet hver gang du henter en stor pizza. 
-    <br>For hver pizza vil du motta en kupong. Når du har samlet 10 kuponger, få en gratis valgfri stor pizza på din 11. pizza. 
-    <br>Tilbudet gjelder bare for store pizzaer.
+    Spar penger på stor pizza! Registrer nummeret ditt,<br> vis QR-koden for hver stor pizza du henter <br>og få en kupong per pizza. 
+    <br><br>Etter å ha samlet 10 kuponger på din 11. pizza, <br>får du en gratis stor pizza.  <br>Tilbudet gjelder bare for store pizzaer.
 
   </p>
   <hr>
@@ -242,20 +249,24 @@ td, th {
     <tr>
       <td>
         <h3>🕒 Åpningstider</h3>
-        <p style="font-size: 14px;">Mandag - Søndag	<br> 00:00 - 00:00</p>
+        <p style="font-size: 14px;">Mandag er stengt<br>Resten: 14:00 - 22:00</p>
         <hr>
-        <h3>🗺️ Adresse</h3>
-        <p style="font-size: 14px;">4629 Kristiansand S</p>
-      </td>
+       </td>
+
       <td>
         <h3>💰 Betalingsmetode</h3>
-        <p style="font-size: 14px;">Vipps / Kort <br> kontant</p>
+        <p style="font-size: 14px;">- Vipps / Kort / kontant <br>- Web Online Betaling</p>
         <hr>
-        <h3>☎️ Telefonnummer</h3>
-        <p style="font-size: 14px;">Ring oss på <a href="tel:95529999">9552 9999</a></p>
-      </td>
+         </td>
     </tr>
   </table>
+  <br>
+  <h2 class="iconlar">
+    <a href="https://m.me/charlies.pizza.krs" target="_blank"></a><i class="fab fa-facebook-messenger"></i></a>
+    <a href="https://www.facebook.com/charlies.pizza.krs" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a href="tel:95529999"><i class="fas fa-phone"></i></a>
+    <a href="https://www.google.com/maps/search/maps/@58.1590178,7.9413902,13z/data=!3m1!4b1" target="_blank"><i class="fas fa-map-marked-alt"></i></a>
+  </h2>
   <br>
 </div>
 
@@ -292,7 +303,7 @@ function guncelle() {
     }
   }
   if (numActive == 10) {
-      kupon.innerHTML = `<h2 style="text-align:center; padding: 10px;">Gratulerer! 🎉 </h2><h4 style="text-align:center; padding: 30px;">11. pizza din er gratis! 🍕<br> God appetitt! 😊<br></h4> <h5 style="margin-bottom: 20px;text-align:center;color:red;">Vis QR-koden din til de ansatte for å få den gratis pizzaen.</h5>`;
+      kupon.innerHTML = `<h2 style="text-align:center; padding: 10px;">Gratulerer! 🎉 </h2><h4 style="text-align:center; padding: 20px;">11. pizza din er gratis 🍕!<br> God appetitt! 😊<br></h4> <h5 style="margin-bottom: 20px;text-align:center;color:red;">Vis QR-koden din til de ansatte for å få den gratis pizzaen.</h5>`;
     }
 }
 
@@ -329,8 +340,10 @@ function updateInputBackground() {
   var inp = document.getElementById("inp");
   if (inp.value.length === 8) {
     inp.style.backgroundColor = "#14cb1a76"; // 8 haneli numara için yeşil arka plan
+    register.innerHTML = `Nummeret ditt er registrert! ✔️`;
   } else {
     inp.style.backgroundColor = "#ee070792"; // 8'den az haneli numara için kırmızı arka plan
+    register.innerHTML = `Registrer nummeret ditt for å samle kuponger.`;
   }
 }
 
