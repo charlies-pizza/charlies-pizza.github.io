@@ -104,7 +104,7 @@ hr {
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
-  border:2px solid #ffffff;
+  border:2px solid #767e76;
   padding: 10px;
  }
 
@@ -135,7 +135,7 @@ input::placeholder {
   margin: auto;
 }
 input {
-  width: 350px; /* ekran genişliğine göre ayarlanır */
+  width: 340px; /* ekran genişliğine göre ayarlanır */
   height: 50px;
 }
   }
@@ -170,11 +170,11 @@ input {
   border-radius: 50%;
 }
 .stamp.gratis {
-  background-color: #f5e102d7;
+  background-color: #baf2b5d7;
   border: 2px solid #213a17c5;
   border-radius: 20%;
-  width: auto;
-  font-size: 15px;
+  width: 135px;
+  font-size: 16px;
 }
 table {
   width: 100%;
@@ -270,10 +270,13 @@ td, th {
 function guncelle() {
 
   function createStamps(numActive) {
+
   kupon.innerHTML = null;
-  for (let index = 1; index <= 10; index++) {
+  for (let index = 1; index <= 11; index++) {
     if (index <= numActive) {
       kupon.innerHTML += `<div class="stamp complete"> ${index} <i class="fas fa-check"></i></div>`;
+    }else if (index == 11) {
+        kupon.innerHTML += `<div class="stamp gratis">11. Gratis Pizza </div>`;
     } else {
       kupon.innerHTML += `<div class="stamp"> ${index} </div>`;
     }
