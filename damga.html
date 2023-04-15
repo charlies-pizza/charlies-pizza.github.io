@@ -88,7 +88,7 @@ hr {
   margin: 5px;
   border-radius: 50%;
   border: 2px solid #33333358;
-  box-shadow: 0 10px 8px rgba(0, 0, 0, 0.614);
+  box-shadow: 0 8px 6px rgba(0, 0, 0, 0.614);
 }
 
 .stamp.complete {
@@ -171,10 +171,11 @@ input {
   border-radius: 50%;
 }
 .stamp.gratis {
-  background-color: #efefaad7;
-  border: 2px solid #213a17c5;
-  border-radius: 20%;
+  background-color: #b9f7c4d7;
+  border: 2px solid #1c173ac5;
+  border-radius: 15%;
   width: 135px;
+
   font-size: 16px;
 }
 table {
@@ -277,7 +278,7 @@ function guncelle() {
     if (index <= numActive) {
       kupon.innerHTML += `<div class="stamp complete"> ${index} <i class="fas fa-check"></i></div>`;
     } else if (index == 11) {
-      kupon.innerHTML += `<div class="stamp gratis">11. Pizza Grtais</div>`;
+      kupon.innerHTML += `<div class="stamp gratis">11. Pizza Gratis</div>`;
     } else {
       kupon.innerHTML += `<div class="stamp"> ${index} </div>`;
     }
