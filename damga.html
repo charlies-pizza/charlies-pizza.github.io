@@ -104,7 +104,10 @@ hr {
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
-}
+  border:2px solid #ffffff;
+  padding: 10px;
+ }
+
 
 input {
   outline: none;
@@ -132,7 +135,7 @@ input::placeholder {
   margin: auto;
 }
 input {
-  width: 310px; /* ekran genişliğine göre ayarlanır */
+  width: 350px; /* ekran genişliğine göre ayarlanır */
   height: 50px;
 }
   }
@@ -144,7 +147,7 @@ input {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.614);
 }
 input {
-  width: 650px; /* ekran genişliğine göre ayarlanır */
+  width: 50%; /* ekran genişliğine göre ayarlanır */
   height: 50px;
 }
   }
@@ -210,7 +213,7 @@ td, th {
 
 <hr>
 <h4 style="text-align: center;">Vis QR-koden din til personalet hver gang du henter en stor pizza.</h4>
-<h1 class="title"><span class="completed-pizzas" id="completed"><input id="inp" type="text" pattern="\d{8}" maxlength="8" inputmode="numeric" placeholder="Registrer ditt mobilnummer 📱" onkeyup="method()" oninput="this.value = this.value.replace(/[^0-9]/g, ''); updateInputBackground();">
+<h1 class="title"><span id="completed"><input id="inp" type="text" pattern="\d{8}" maxlength="8" inputmode="numeric" placeholder="Registrer ditt mobilnummer 📱" onkeyup="method()" oninput="this.value = this.value.replace(/[^0-9]/g, ''); updateInputBackground();">
 </span>
 </h1>
 
