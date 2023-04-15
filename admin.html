@@ -58,9 +58,8 @@
 
  
  for (const key in parsedObject) {
- 
  demo.innerHTML += `<tr> <td> ${key} </td> 
- <td>  <input id="${key}" class="input" type="number" value="${parsedObject[key]}"> </td>
+ <td> <span id="${key}" data-value="${parsedObject[key]}">⬅️</span> <input id="${key}" class="input" type="number" value="${parsedObject[key]}"> <span id="${key}" data-value="${parsedObject[key]}">➡️</span> </td>
  <td id="${key}">🗑️</td> <td id="${key}">🔄</td> </tr>`;
 
 }
@@ -78,6 +77,14 @@ if (event.target.innerText === "🔄") {
 
 if (event.target.tagName === "INPUT") {
 set(ref(database, event.target.id), event.target.value);
+}
+
+if (event.target.outerText == "➡️") {
+    const currentValue = parseInt(event.target.dataset.value);
+    set(ref(database, event.target.id), currentValue + 1 );
+}else if (event.target.outerText == "⬅️") {
+    const currentValue1 = parseInt(event.target.dataset.value);
+    set(ref(database, event.target.id), currentValue1 - 1 );
 }
 }
 </script>
