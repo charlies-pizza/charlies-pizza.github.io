@@ -1,6 +1,7 @@
 <html>
 <head>
 <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <style>
       body {
@@ -8,33 +9,30 @@
         margin: 0;
         padding: 0;
       }
+  table {
+    width: 90%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin:auto;
+  }
 
-      table {
-        width: 90%;
-        border-collapse: collapse;
-        margin-top: 20px;
-        margin:auto;
-      }
-
-      th, td {
-        padding: 10px;
-        text-align: center;
-        border-bottom: 2px solid #ddd;
-        cursor:pointer;
-      }
-      th {
-        background-color: #4CAF50;
-        color: white;
-      }
-      .input{
-      width:40px;
-      }
-    </style>
+  th, td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 2px solid #ddd;
+    cursor:pointer;
+  }
+  th {
+    background-color: #4CAF50;
+    color: white;
+  }
+  .input{
+  width:40px;
+  }
+</style>
   <body>
-  
 <table>  <th>MOBIL NR</th> <th>KUPONG</th> <th>DELETE</th> <th>RESET</th> </table>
 <table id="demo">   </table>
-
 <script type="module">
  let status = true;
  
