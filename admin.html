@@ -34,6 +34,7 @@
 <table>  <th>MOBIL NR</th> <th>KUPONG</th> <th>DELETE</th> <th>RESET</th> </table>
 <table id="demo">   </table>
 <script type="module">
+
  let status = true;
  
  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
@@ -47,8 +48,41 @@
  const commentsReference = ref(database);
 
 
- const urlParams = new URLSearchParams(window.location.search);
- const nValue = urlParams.get("n"); 
+
+ function saklananSifreyiKontrolEt() {
+  let saklananSifre = localStorage.getItem("sifre");
+  let dogruSifre = "1919";
+
+  if (saklananSifre === dogruSifre) {
+    calistir();
+    return true;
+  }
+
+  return false;
+}
+
+function sifreAl() {
+  if (saklananSifreyiKontrolEt()) {
+    return;
+  }
+
+  let sifre = prompt("Lütfen şifrenizi girin", "");
+  let dogruSifre = "1919";
+
+  if (sifre === dogruSifre) {
+    localStorage.setItem("sifre", sifre);
+    alert("Şifre doğru!");
+    calistir();
+  } else {
+    alert("Yanlış şifre. Lütfen tekrar deneyin.");
+  }
+}
+
+if (!saklananSifreyiKontrolEt()) {
+  sifreAl();
+}
+
+function calistir() {
  
  onValue(commentsReference, (snapshot) => {
  demo.innerHTML = "";
@@ -85,6 +119,7 @@ if (event.target.outerText == "➡️") {
 }else if (event.target.outerText == "⬅️") {
     const currentValue1 = parseInt(event.target.dataset.value);
     set(ref(database, event.target.id), currentValue1 - 1 );
+}
 }
 }
 </script>
