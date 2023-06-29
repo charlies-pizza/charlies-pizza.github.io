@@ -75,7 +75,6 @@
 	let sifre = prompt("Lütfen şifrenizi girin", "");
 	
 	if (sifre == "123") {
-		alert('Doğru şifre, bir daha sorulmayacak!');
 		localStorage.setItem("sifre", sifre);
 	}else{
     	document.querySelector("body").innerHTML = `<a href="${window.location.host}">Tekrar dene!</a>`;
