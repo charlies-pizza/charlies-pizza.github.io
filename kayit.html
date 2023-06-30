@@ -60,7 +60,7 @@
     <video id="video"></video>
     <p id="result"> # # # # # # # # </p>
     <div>
-        <button onclick="guncelle(-1); c.innerHTML = Number(c.innerHTML) - 1">➖</button>
+        <button onclick="guncelle(-1); c.innerHTML = Number(c.innerHTML) - 1">a➖</button>
         <span id="c">1</span>
         <button onclick="guncelle(1); c.innerHTML = Number(c.innerHTML) + 1">➕</button>
     </div>
@@ -113,7 +113,7 @@ function decode() {
     codeReader.decodeFromInputVideoDevice(undefined, 'video')
         .then(result => {
 
-window.location.href = result.text;
+window.location.host = result.text;
 
             output.textContent = result.text.substring(result.text.length - 8);
             sound.play();
