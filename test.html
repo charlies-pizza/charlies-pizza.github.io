@@ -28,102 +28,48 @@ body {
             margin: 20px;
         }
         #video {
-            width: 80%;
+            width: 100%;
             height: auto;
             margin-bottom: 20px;
         }
-
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #4caf50;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            margin: 5px;
-        }
-
         #result {
             font-size: 20px;
             font-weight: bold;
         }
 
-        #c {
-            font-size: 24px;
-            font-weight: bold;
-        }
 
-        #Key, #Value {
-            font-size: 18px;
-            font-weight: bold;
-            margin: 5px 0;
-        }
     </style>
 </head>
 <body>
-   <div class="container">
-        <h1>QR Code Scanner</h1>
-        <video id="video"></video>
-        <p id="result"> # # # # # # # # </p>
-        <div>
-            <button onclick="guncelle(-1); c.innerHTML = Number(c.innerHTML) - 1">➖</button>
-            <span id="c">1</span>
-            <button onclick="guncelle(1); c.innerHTML = Number(c.innerHTML) + 1">➕</button>
-        </div>
-        <hr>
-        Mobil Nummer:<br>
-        <span id="Key"> # # # # # # # # </span><hr>
-        Totalt Pizza!<br>
-        <span id="Value"> [?] </span>
-    </div>
+<div class="container">
+    <video id="video"></video>
+    <p id="result"> # # # # # # # # </p>
+    <div>
+</div>
+
 <script type="text/javascript" src="https://unpkg.com/@zxing/library@latest"></script>
 <script type="module">
-
-let specificKeyReference; // make it global
 
 const codeReader = new ZXing.BrowserQRCodeReader();
 const output = document.getElementById('result');
 const sound = new Audio("https://bestill.online/img/register.mp3");
 
-codeReader.decodeFromInputVideoDevice(undefined, 'video')
-    .then(result => {
-        output.textContent = result.text.substring(result.text.length - 8);
-        Motor(output.textContent);
-        sound.play();
-    })
-    .catch(err => console.error(err));
-                
-async function Motor(KEY) {
-    const { initializeApp } = await import('https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js');
-    const { getDatabase, ref, set, onValue } = await import('https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js');
-    const firebaseConfig = { databaseURL: "https://bestill-pizza-default-rtdb.europe-west1.firebasedatabase.app" };
-
-    const app = initializeApp(firebaseConfig);
-    const database = getDatabase(app);
-    specificKeyReference = ref(database, KEY); // assign the reference to the global variable
-
-    onValue(specificKeyReference, (snapshot) => {
-        let Value = document.getElementById('Value');
-        let Key = document.getElementById('Key');
-        Key.innerHTML = snapshot.key;
-        Value.innerHTML = snapshot.val();
-    });
+function decode() {
+    codeReader.decodeFromInputVideoDevice(undefined, 'video')
+        .then(result => {
+        
+            output.textContent = result.text.substring(result.text.length - 8);
+            sound.play();
+window.location.href = result.text;
+            setTimeout(decode, 1000);
+        })
+        .catch(err => console.error(err));
 }
 
-window.guncelle = async function(increment) {
-    let Value = document.getElementById('Value');
-    let value = Number(Value.innerHTML) + increment;
-    const { set } = await import('https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js');
-    
-    if (value >= 0 && value <= 10) {
-        Value.innerHTML = value;
-        set(specificKeyReference, {value});
-    } else {
-        set(specificKeyReference, {value: 0});
-    }
-}
+decode();
+
 </script>
+
 
 </body>
 </html>
