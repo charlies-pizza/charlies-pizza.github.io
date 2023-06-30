@@ -56,8 +56,20 @@
     </style>
 </head>
 <body> 
+    <div>
+        <button onclick="guncelle(-1); c.innerHTML = Number(c.innerHTML) - 1">➖</button>
+        <span id="c">1</span>
+        <button onclick="guncelle(1); c.innerHTML = Number(c.innerHTML) + 1">➕</button>
+    </div>
+    <hr>
+    Mobil Nummer:
+    <span id="Key">key</span><hr>
+    Totalt Pizza!
+    <span id="demo"></span>
 
-<script type="module">
+    <button id="kapatButonu" class="kapat">Sayfayı Kapat / Geri</button>
+
+    <script type="module">
 
 	let saklananSifre = localStorage.getItem("sifre");
 
@@ -69,23 +81,8 @@
 	}else{
     	document.querySelector("body").innerHTML = `<a href="${window.location.href}">Tekrar dene!</a>`;
     }
-	}    
-
-document.body.innerHTML = `
-    <div>
-        <button onclick="guncelle(-1); c.innerHTML = Number(c.innerHTML) - 1">➖</button>
-        <span id="c">1</span>
-        <button onclick="guncelle(1); c.innerHTML = Number(c.innerHTML) + 1">➕</button>
-    </div>
-    <hr>
-    Mobil Nummer:
-    <span id="Key">key</span>
-    <hr>
-    Totalt Pizza!
-    <span id="demo"></span>
-
-    <button id="kapatButonu" class="kapat">Sayfayı Kapat / Geri</button>
-`;
+    
+	}        
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
         import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
         const firebaseConfig = { databaseURL: `https://${x}-pizza-default-rtdb.europe-west1.firebasedatabase.app` };
