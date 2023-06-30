@@ -43,31 +43,23 @@ body {
 <body>
 <div class="container">
     <video id="video"></video>
-    <p id="result"> # # # # # # # # </p>
     <div>
 </div>
 
 <script type="text/javascript" src="https://unpkg.com/@zxing/library@latest"></script>
 <script type="module">
-
 const codeReader = new ZXing.BrowserQRCodeReader();
-const output = document.getElementById('result');
 const sound = new Audio("https://bestill.online/img/register.mp3");
 
 function decode() {
     codeReader.decodeFromInputVideoDevice(undefined, 'video')
         .then(result => {
-        
-            output.textContent = result.text.substring(result.text.length - 8);
-            sound.play();
-window.location.href = `https://${result.text}`;
-            setTimeout(decode, 1000);
+		sound.play();
+		window.location.href = `https://${result.text}`;
         })
         .catch(err => console.error(err));
 }
-
 decode();
-
 </script>
 
 
