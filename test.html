@@ -1,34 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Charlie's Pizza Add</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://bestill.online/con.js"></script>
-</head>
-<div id="test"> test </div>
+<html>
+<body>
+<script src="https://bestill.online/con.js"></script>
 
-<div id="demo"> </div>
+<p id="demo">aaa</p>
 
-<script type="module">
-  
- import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
- import { getDatabase, ref, onValue, set, remove, update } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
- const firebaseConfig = { databaseURL: `https://${x}-pizza-default-rtdb.europe-west1.firebasedatabase.app` };
-
-initializeApp(firebaseConfig);
- const database = getDatabase();
-
- const specificKey = "44444440";
-
- const specificKeyReference = ref(database, specificKey);
-
- onValue(specificKeyReference, (snapshot) => {
- const value = snapshot.val();
- demo.innerHTML = `${specificKey} <br> <br> <p id="Value">${value}</p>`;
-test.innerHTML = x;
- });
+<script>
+document.getElementById("demo").innerHTML = x;
 </script>
+
 </body>
 </html>
