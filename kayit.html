@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Add Pizza</title>
+	<script src="https://bestill.online/con.js"></script>
     <style>
         body {
 	        display: flex;
@@ -69,15 +70,16 @@
     <button id="kapatButonu" class="kapat">Sayfayı Kapat / Geri</button>
 
     <script type="module">
+
 	let saklananSifre = localStorage.getItem("sifre");
 
-	if (saklananSifre != "123") {
+	if (saklananSifre != x) {
 	let sifre = prompt("Lütfen şifrenizi girin", "");
 	
-	if (sifre == "123") {
+	if (sifre == x) {
 		localStorage.setItem("sifre", sifre);
 	}else{
-    	document.querySelector("body").innerHTML = `<a href="${window.location.host}">Tekrar dene!</a>`;
+    	document.querySelector("body").innerHTML = `<a href="${window.location.href}">Tekrar dene!</a>`;
     }
     
 	}        
