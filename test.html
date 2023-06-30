@@ -48,25 +48,9 @@ body {
 </div>
 
 <script type="text/javascript" src="https://unpkg.com/@zxing/library@latest"></script>
-<script type="module">
+<script">
 
-const codeReader = new ZXing.BrowserQRCodeReader();
-const output = document.getElementById('result');
-const sound = new Audio("https://bestill.online/img/register.mp3");
-
-function decode() {
-    codeReader.decodeFromInputVideoDevice(undefined, 'video')
-        .then(result => {
-        
-            output.textContent = result.text.substring(result.text.length - 8);
-            sound.play();
-window.location.href = result.text;
-            setTimeout(decode, 1000);
-        })
-        .catch(err => console.error(err));
-}
-
-decode();
+        window.location.href = "bestill.online/kayit.html?n=44444441";
 
 </script>
 
