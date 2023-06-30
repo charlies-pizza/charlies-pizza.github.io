@@ -30,7 +30,7 @@
             background-color: #0056b3;
         }
 
-        #demo, #Key, #c{
+        #Value, #Key, #c{
             font-weight: bold;
             margin: 10px;
 			font-size: 36px;
@@ -51,10 +51,14 @@
  		   border: 1px solid black;
  		   width:90%;
 			}
-
+#video{
+	        width: 60%;
+}
     </style>
 </head>
 <body> 
+    <video id="video"></video>
+    <p id="result"> # # # # # # # # </p>
     <div>
         <button onclick="guncelle(-1); c.innerHTML = Number(c.innerHTML) - 1">➖</button>
         <span id="c">1</span>
@@ -64,23 +68,13 @@
     Mobil Nummer:
     <span id="Key">key</span><hr>
     Totalt Pizza!
-    <span id="demo"></span>
+    <span id="Value"></span>
 
-    <button id="kapatButonu" class="kapat">Sayfayı Kapat</button>
+
+<script type="text/javascript" src="https://unpkg.com/@zxing/library@latest"></script>
 
     <script type="module">
-	let saklananSifre = localStorage.getItem("sifre");
-
-	if (saklananSifre != "123") {
-	let sifre = prompt("Lütfen şifrenizi girin", "");
-	
-	if (sifre == "123") {
-		localStorage.setItem("sifre", sifre);
-	}else{
-    	document.querySelector("body").innerHTML = `<a href="${window.location.host}">Tekrar dene!</a>`;
-    }
-    
-	}        
+       
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
         import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
         const firebaseConfig = { databaseURL: "https://bestill-pizza-default-rtdb.europe-west1.firebasedatabase.app" };
@@ -98,9 +92,9 @@
 	    });
 
         window.guncelle = function(increment) {
-            let value = Number(demo.innerHTML) + increment;
+            let value = Number(Value.innerHTML) + increment;
             if (value >= 0 && value <= 10) {
-                demo.innerHTML = value;
+                Value.innerHTML = value;
                 set(specificKeyReference, value);
             } else {
                 set(specificKeyReference, 0);
@@ -110,14 +104,26 @@
         window.onload = function() {
             setTimeout(() => { guncelle(Number(c.innerHTML)); }, 500);
         }
-        
-        function sayfaKapat() {
-            window.close();
-            window.history.back();
-        }
-        kapatButonu.addEventListener("click", sayfaKapat);
-        kapatButonu.addEventListener("touchstart", sayfaKapat);
-       
+
+const codeReader = new ZXing.BrowserQRCodeReader();
+const output = document.getElementById('result');
+const sound = new Audio("https://bestill.online/img/register.mp3");
+
+function decode() {
+    codeReader.decodeFromInputVideoDevice(undefined, 'video')
+        .then(result => {
+
+window.location.href = result.text;
+
+            output.textContent = result.text.substring(result.text.length - 8);
+            sound.play();
+
+            setTimeout(decode, 1000);
+        })
+        .catch(err => console.error(err));
+}
+
+decode();
     </script>
 </body>
 </html>
