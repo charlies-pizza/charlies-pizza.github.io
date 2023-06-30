@@ -1,126 +1,128 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin Panel</title>
+	<script src="https://bestill.online/con.js"></script>
 <style>
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-      }
-  table {
-    width: 90%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    margin:auto;
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
   }
 
-  th, td {
-    padding: 10px;
-    text-align: center;
-    border-bottom: 2px solid #ddd;
-    cursor:pointer;
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 16px;
+    border: 1px solid #ddd;
   }
+
   th {
     background-color: #4CAF50;
     color: white;
+    padding: 12px;
+    text-align: center;
   }
-  .input{
-  width:40px;
+
+  td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
   }
+
+  td span {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-color: #e0e0e0;
+    border-radius: 50%;
+    line-height: 30px;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  td input {
+    width: 20px;
+    height: 20px;
+    text-align: center;
+  }
+
 </style>
-  <body>
-<table>  <th>MOBIL NR</th> <th>KUPONG</th> <th>DELETE</th> <th>RESET</th> </table>
-<table id="demo">   </table>
+<body>
+
+<table id="demo"> </table>
+
 <script type="module">
 
- let status = true;
- 
- import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
- import { getDatabase, ref, onValue, set, remove, update } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
- const firebaseConfig = { databaseURL: "https://bestill-pizza-default-rtdb.europe-west1.firebasedatabase.app" };
+	let saklananSifre = localStorage.getItem("sifre");
 
- // Firebase yapılandırmasını başlat
- initializeApp(firebaseConfig);
- const database = getDatabase();
- const commentsReference = ref(database);
+	if (saklananSifre != x) {
+	let sifre = prompt("Lütfen şifrenizi girin", "");
+	
+	if (sifre == x) {
+		localStorage.setItem("sifre", sifre);
+	}else{
+    	document.querySelector("body").innerHTML = `<a href="${window.location.href}">Tekrar dene!</a>`;
+    }
+    
+	}  
+    
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+  import { getDatabase, ref, set, onValue, remove } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
+  const firebaseConfig = {
+    databaseURL: `https://${x}-pizza-default-rtdb.europe-west1.firebasedatabase.app`;
+  };
 
+  initializeApp(firebaseConfig);
+  const database = getDatabase();
+  const commentsReference = ref(database);
+  const demo = document.getElementById("demo");
 
+  onValue(commentsReference, (snapshot) => {
+    demo.innerHTML = "<tbody> <tr><th>TLFNR</th> <th>POENG</th> <th>DEL</th> <th>RES</th> </tr></tbody>";
+    const parsedObject = snapshot.val();
 
- function saklananSifreyiKontrolEt() {
-  let saklananSifre = localStorage.getItem("sifre");
-  let dogruSifre = "1919";
+    for (const key in parsedObject) {
+      demo.innerHTML += `<tr>
+        <td>${key}</td>
+        <td>
+          <span id="${key}" data-value="${parsedObject[key]}">➖</span>
+          <input id="${key}" class="input" value="${parsedObject[key]}">
+          <span id="${key}" data-value="${parsedObject[key]}">➕</span>
+        </td>
+        <td id="${key}">🗑️</td>
+        <td id="${key}" class="">🔄</td>
+      </tr>`;
+    }
+  });
+  
+demo.addEventListener("click", (event) => {
+const xx = event.target.innerHTML;
 
-  if (saklananSifre === dogruSifre) {
-    calistir();
-    return true;
-  }
-
-  return false;
-}
-
-function sifreAl() {
-  if (saklananSifreyiKontrolEt()) {
-    return;
-  }
-
-  let sifre = prompt("Lütfen şifrenizi girin", "");
-  let dogruSifre = "1919";
-
-  if (sifre === dogruSifre) {
-    localStorage.setItem("sifre", sifre);
-    alert("Şifre doğru!");
-    calistir();
-  } else {
-    alert("Yanlış şifre. Lütfen tekrar deneyin.");
-  }
-}
-
-if (!saklananSifreyiKontrolEt()) {
-  sifreAl();
-}
-
-function calistir() {
- 
- onValue(commentsReference, (snapshot) => {
- demo.innerHTML = "";
- 
- const jsonString = JSON.stringify(snapshot);
- const parsedObject = JSON.parse(jsonString);
-
- 
- for (const key in parsedObject) {
- demo.innerHTML += `<tr> <td> ${key} </td> 
- <td> <span id="${key}" data-value="${parsedObject[key]}">⬅️</span> <input id="${key}" class="input" type="number" value="${parsedObject[key]}"> <span id="${key}" data-value="${parsedObject[key]}">➡️</span> </td>
- <td id="${key}">🗑️</td> <td id="${key}">🔄</td> </tr>`;
-
-}
-});
-
-onclick = () => {
-
-if (event.target.innerText === "🗑️") {
-remove(ref(database, event.target.id));
-}
-
-if (event.target.innerText === "🔄") {
+if (xx === "🔄") {
   set(ref(database, event.target.id), 0);
 }
 
-if (event.target.tagName === "INPUT") {
-set(ref(database, event.target.id), event.target.value);
+if (xx === "🗑️") {
+remove(ref(database, event.target.id));
 }
 
-if (event.target.outerText == "➡️" && event.target.dataset.value < 10) {
+if (xx === "➕" && event.target.dataset.value < 10 ) {
     const currentValue = parseInt(event.target.dataset.value);
     set(ref(database, event.target.id), currentValue + 1 );
-}else if (event.target.outerText == "⬅️" && event.target.dataset.value > 0) {
-    const currentValue1 = parseInt(event.target.dataset.value);
-    set(ref(database, event.target.id), currentValue1 - 1 );
 }
+
+if (xx === "➖" && event.target.dataset.value > 0 ) {
+    const currentValue = parseInt(event.target.dataset.value);
+    set(ref(database, event.target.id), currentValue - 1 );
 }
-}
+
+});
 </script>
+
+
 </body>
 </html>
