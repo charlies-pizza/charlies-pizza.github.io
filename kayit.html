@@ -88,14 +88,15 @@ if (saklananSifre != x) {
     if (sifre == x) {
         localStorage.setItem("sifre", sifre);
         saklananSifre = sifre;
-        
+    
         window.onload = function() {
-            setTimeout(() => { guncelle(Number(c.innerHTML)); }, 500);
+            setTimeout(() => { guncelle(Number(c.innerHTML)); }, 1000);
         }
     } else {
         document.querySelector("body").innerHTML = `<a href="${window.location.href}">Tekrar dene!</a>`;
     }
 } else if (saklananSifre == x) {
+alert('sifre dogru');
     window.onload = function() {
         setTimeout(() => { guncelle(Number(c.innerHTML)); }, 500);
     }
