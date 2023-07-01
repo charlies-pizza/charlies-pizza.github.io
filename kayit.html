@@ -4,64 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Add Pizza</title>
-	<script src="https://bestill.online/con.js"></script>
-<style>
-    * {
-        box-sizing: border-box;
-    }
-    body {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        margin: 0;
-        background-color: #f6f6f6;
-        font-family: 'Roboto', sans-serif;
-    }
-    button, a {
-        appearance: none;
-        border: none;
-        background-color: #007BFF;
-        color: white;
-        padding: 20px 30px;
-        margin: 10px 20px;
-        border-radius: 5px;
-        text-align: center;
-        text-decoration: none;
-        font-size: 1rem;
-        transition: background-color 0.2s ease;
-    }
-    button:hover {
-        background-color: #0056b3;
-    }
-    #demo, #Key, #c {
-        font-weight: 600;
-        margin: 10px;
-        font-size: 2rem;
-        color: #333;
-    }
-    .kapat {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        padding: 20px;
-        margin:auto;
-        background-color: #e74c3c;
-        color: #fff;
-        text-align: center;
-        font-size: 1.2rem;
-        border-radius: 0;
-    }
-    hr {
-        border: none;
-        border-top: 1px solid #ddd;
-        width: 90%;
-        margin: 20px auto;
-    }
-</style>
+    <style>
+        body {
+	        display: flex;
+	        flex-direction: column;
+	        align-items: center;
+	        justify-content: center;
+	        height: 100vh;
+	        margin: 0;
+	        background-color: #f8f8f8;
+	        font-family: Arial, sans-serif;
+        }
+        button, a {
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            padding: 25px 25px;
+            margin: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
 
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #demo, #Key, #c{
+            font-weight: bold;
+            margin: 10px;
+			font-size: 36px;
+        }
+
+        .kapat {
+	        position: fixed;
+	        bottom: 0;
+ 			margin:auto;
+	        width: 100%;
+	        height: 60px;
+			border-radius: 0px;
+			font-size: 26px;
+            background-color:red;
+        }
+  hr {
+    border: 1px solid black;
+    width:90%;
+}
+
+    </style>
 </head>
 <body> 
     <div>
@@ -75,60 +65,60 @@
     Totalt Pizza!
     <span id="demo"></span>
 
-    <button id="kapatButonu" class="kapat">Sayfayı Kapat / Geri</button>
+    <button id="kapatButonu" class="kapat">Sayfayı Kapat</button>
 
-<script type="module">
+    <script type="module">
 	let saklananSifre = localStorage.getItem("sifre");
 
-	if (saklananSifre != x) {
+	if (saklananSifre != "123") {
 	let sifre = prompt("Lütfen şifrenizi girin", "");
 	
-	if (sifre == x) {
+	if (sifre == "123") {
 		localStorage.setItem("sifre", sifre);
 	}else{
     	document.querySelector("body").innerHTML = `<a href="${window.location.href}">Tekrar dene!</a>`;
     }
     
-	} 
-    
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
-    import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
-    const firebaseConfig = { databaseURL: `https://bestill-pizza-default-rtdb.europe-west1.firebasedatabase.app` };
-       
-    initializeApp(firebaseConfig);
-    const database = getDatabase();
-    
-    const urlParams = new URLSearchParams(window.location.search);
-    const specificKey = urlParams.get("n");
-    const specificKeyReference = ref(database, specificKey);
+	}
 
-    onValue(specificKeyReference, (snapshot) => {
-        demo.innerHTML = snapshot.val();
-        Key.innerHTML = snapshot.key;
-    });
+        
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+        import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
+        const firebaseConfig = { databaseURL: "https://bestill-pizza-default-rtdb.europe-west1.firebasedatabase.app" };
+           
+        initializeApp(firebaseConfig);
+        const database = getDatabase();
+        
+		const urlParams = new URLSearchParams(window.location.search);
+		const specificKey = urlParams.get("n");
+        const specificKeyReference = ref(database, specificKey);
 
-    window.guncelle = function(increment) {
-        let value = Number(demo.innerHTML) + increment;
-        if (value >= 0 && value <= 10) {
-            demo.innerHTML = value;
-            set(specificKeyReference, value);
-        } else {
-            set(specificKeyReference, 0);
+	    onValue(specificKeyReference, (snapshot) => {
+	        demo.innerHTML = snapshot.val();
+	        Key.innerHTML = snapshot.key;
+	    });
+
+        window.guncelle = function(increment) {
+            let value = Number(demo.innerHTML) + increment;
+            if (value >= 0 && value <= 10) {
+                demo.innerHTML = value;
+                set(specificKeyReference, value);
+            } else {
+                set(specificKeyReference, 0);
+            }
         }
-    }
-            window.onload = function() {
+        
+        window.onload = function() {
             setTimeout(() => { guncelle(Number(c.innerHTML)); }, 500);
         }
         
-
-    function sayfaKapat() {
-        window.close();
-        window.history.back();
-    }
-    kapatButonu.addEventListener("click", sayfaKapat);
-    kapatButonu.addEventListener("touchstart", sayfaKapat);
-
-</script>
-
+        function sayfaKapat() {
+            window.close();
+            window.history.back();
+        }
+        kapatButonu.addEventListener("click", sayfaKapat);
+        kapatButonu.addEventListener("touchstart", sayfaKapat);
+       
+    </script>
 </body>
 </html>
