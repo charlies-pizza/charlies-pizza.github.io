@@ -107,16 +107,6 @@
             setTimeout(() => { guncelle(Number(c.innerHTML)); }, 500);
         }
 
-	let saklananSifre = localStorage.getItem("sifre");
-
-	if (saklananSifre != x) {
-	let sifre = prompt("Lütfen şifrenizi girin", "");
-	
-	if (sifre == x) {
-		localStorage.setItem("sifre", sifre);
-	}else{
-    	document.querySelector("body").innerHTML = `<a href="${window.location.href}">Tekrar dene!</a>`;
-    }
         function sayfaKapat() {
             window.close();
             window.history.back();
