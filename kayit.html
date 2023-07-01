@@ -69,13 +69,13 @@
     <button id="kapatButonu" class="kapat">Sayfayı Kapat</button>
 
     <script type="module">
-            setTimeout(() => { 
+
 	let saklananSifre = localStorage.getItem("sifre");
 
-	if (saklananSifre != x) {
+	if (saklananSifre != "123" ) {
 	let sifre = prompt("Lütfen şifrenizi girin", "");
 	
-	if (sifre == x) {
+	if (sifre == "123" ) {
 		alert('Doğru şifre, bir daha sorulmayacak!');
 		localStorage.setItem("sifre", sifre);
 	}else{
@@ -83,7 +83,6 @@
     }
     
 	}
-}, 500);
         
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
         import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
