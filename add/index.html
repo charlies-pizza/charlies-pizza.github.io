@@ -69,12 +69,43 @@ body, html {
   justify-content: center;
   z-index: 999;
 }
+.header {
+    display: flex;
+	align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 50px;
+    margin: 0;
+}
+#register, #mobilnr {
+    display: flex;
+	align-items: center;
+    justify-content: center;
+    height: 30px;
+}
+#mobilnr {
+  height: 45px;
+  font-size: 20px;
+  text-align: center;
+  letter-spacing: 7px;
+  border:none;
+}
+#kupon{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+	min-width: 330px;
+    height: 100px;
+	font-size: 25px;
+  }
 </style>
 </head>
 
 <body>
 <div class="merkez">
-<div class="kemer" id="saat"> <span id="hours"> *** </span> </div>
+<div class="header" id="saat"> <span id="hours"> *** </span> </div>
 
 <img class="standart" src="https://bestill.online/img/mavili.gif?raw=true">
 
