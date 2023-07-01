@@ -8,7 +8,6 @@
 <meta name="keywords" content="Pizza, online bestilling, Charlie's Pizza, Kristiansand, takeaway, levering, Italiensk pizza" />
 <meta name="description" content="Pizza til folket! Bestill pizza fra Charlie's Pizza. Ferske bunner hver dag. Takeaway og levering. Charlie's Pizza Kristiansand, online pizza bestilling nettsted. Ekte pizza med 100% italienske ingredienser, stekt i profesjonell stein-ovn." />
 <link rel="icon" type="image/png" href="https://bestill.online/img/icon-s.png">
-<script src="https://bestill.online/con.js"></script>
 
 <style>
 body, html {
@@ -100,6 +99,23 @@ body, html {
     height: 100px;
 	font-size: 25px;
   }
+span.aktiv, span.pasif {
+    width: 2em;
+    height: 2em;
+    margin: 5px;
+    border-radius: 50%;
+    color: #ffffff;
+    background-color: green;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.3px dashed #555;
+}
+
+span.pasif { 
+    background-color: #dfe3ee;
+    color: #3b5998;
+}
 </style>
 </head>
 
@@ -117,7 +133,7 @@ body, html {
   <!-- Content here -->
 </div>
 
-<img class="standart" id="QRCODE" src="https://t3.ftcdn.net/jpg/04/31/66/16/360_F_431661651_haC0ldiYzQ5OiZnT3TmgBrUtqAXVpa4M.jpg">
+<img class="standart" id="QRCODE">
 
 <img onclick="MenuStart();" id="MenuBtn" src="https://bestill.online/img/btn.png">
 
@@ -125,41 +141,44 @@ body, html {
 
   
   </div>
-<script type="module">
 
+<script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
     import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
+    
     const firebaseConfig = { databaseURL: "https://bestill-pizza-default-rtdb.europe-west1.firebasedatabase.app" };
-
     initializeApp(firebaseConfig);
     const database = getDatabase();
 
-	mobilnr.value = localStorage.getItem('MOBIL');
-	INPUT(mobilnr.value);
+    mobilnr.value = localStorage.getItem('MOBIL');
+    INPUT(mobilnr.value);
     
     function guncelle() {
-    
-	localStorage.setItem('MOBIL', mobilnr.value);
-    let specificKey = localStorage.getItem('MOBIL') || '0';
-    
-    QRCODE.src = `https://chart.googleapis.com/chart?cht=qr&chl=bestill.online/kayit.html?n=${encodeURIComponent(specificKey)}&chs=400x400&chld=L|0`;
 
-	const specificKeyReference = ref(database, specificKey);
+        localStorage.setItem('MOBIL', mobilnr.value);
+        
+        let specificKey = localStorage.getItem('MOBIL');
+        if (!specificKey) { specificKey = '0'; }
+        
+        QRCODE.src = `https://chart.googleapis.com/chart?cht=qr&chl=bestill.online/kayit.html?n=${encodeURIComponent(specificKey)}&chs=400x400&chld=L|0`;
 
-	onValue(specificKeyReference, (snapshot) => {
-    kupon.innerHTML = null;
-    const value = snapshot.val();
+        const specificKeyReference = ref(database, specificKey);
 
-    for (let index = 1; index <= 5; index++) {
-	kupon.innerHTML += `${index <= value ? '<span class="aktiv">'+ index +'</span>' : '<span class="pasif">'+ index +'</span>'}`;
-	}
-
-	});
+        onValue(specificKeyReference, (snapshot) => {
+            const value = snapshot.val();
+            kupon.innerHTML = '';
+            for (let index = 1; index <= 5; index++) {
+                kupon.innerHTML += `${index <= value ? '<span class="aktiv">'+ index +'</span>' : '<span class="pasif">'+ index +'</span>'}`;
+            }
+        });
     }
-    
 	mobilnr.addEventListener("input", guncelle);
-	window.addEventListener("load", guncelle);
+    guncelle();
 </script>
+
+
+
+
 
 <script>
 
@@ -175,7 +194,7 @@ function MenuStart() {
 }
 
 
-function INPUT(inp) {
+function INPUT(inp) {   
     const firstDigit = parseInt(inp[0]);
     const invalidStartDigits = [0, 1, 2, 3, 5, 6, 7, 8];
 
