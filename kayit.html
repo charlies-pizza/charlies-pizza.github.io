@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Add Pizza</title>
-	<script src="https://bestill.online/con.js"></script>
     <style>
         body {
 	        display: flex;
@@ -69,6 +68,14 @@
     <button id="kapatButonu" class="kapat">Sayfayı Kapat</button>
 
     <script type="module">
+    
+    (async function() {
+    const data = await import('https://bestill.online/con.js');
+
+    // Burada `data` içinde ne olduğunu bilmiyorum, bu yüzden onu nasıl kullanacağınızı size bırakıyorum.
+
+    // Firebase işlemlerini burada başlatabilirsiniz.
+
 	let saklananSifre = localStorage.getItem("sifre");
 
 	if (saklananSifre != "123") {
@@ -113,7 +120,9 @@
         window.onload = function() {
             setTimeout(() => { guncelle(Number(c.innerHTML)); }, 500);
         }
-        
+
+})();
+
         function sayfaKapat() {
             window.close();
             window.history.back();
