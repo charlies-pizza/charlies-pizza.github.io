@@ -91,7 +91,7 @@
     	document.querySelector("body").innerHTML = `<a href="${window.location.href}">Tekrar dene!</a>`;
     }
     
-	}        
+	}else{       
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
         import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
         const firebaseConfig = { databaseURL: `https://${x}-pizza-default-rtdb.europe-west1.firebasedatabase.app` };
@@ -107,7 +107,7 @@
 	        demo.innerHTML = snapshot.val();
 	        Key.innerHTML = snapshot.key;
 	    });
-
+}
         window.guncelle = function(increment) {
             let value = Number(demo.innerHTML) + increment;
             if (value >= 0 && value <= 10) {
