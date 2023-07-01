@@ -43,15 +43,26 @@ body, html {
     background-color: #ffffff;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
-#IFRAME {
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    top: 0;
+#slideout {
+	position: fixed;
+	top: 0%;
+	left: -200vw; 
+	transition: 1s;
+    z-index: 110;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+}
+	#slideout.active {
     left: 0;
-    z-index: 99;
-    border: none;
-	display: none;
+    opacity: 1;
+}
+  #IFRAME {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  border:none;
+  background-color:#3b3a3a;
 }
 #MenuBtn {
   cursor: pointer;
@@ -86,8 +97,11 @@ body, html {
 
 <img onclick="MenuStart();" id="MenuBtn" src="https://bestill.online/img/btn.png">
 
-<iframe id="IFRAME" src="https://www.foodbooking.com/api/fb/_y55_q_j"></iframe>
-</div>
+ <div id="slideout"> 
+    <iframe id="IFRAME" title="Charlie's Pizza Online Bestilling" src="https://www.foodbooking.com/api/fb/_y55_q_j"></iframe>
+  </div>
+  
+  </div>
 <script type="module">
 
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
@@ -127,6 +141,7 @@ body, html {
 <script>
 
 function MenuStart() {
+ slideout.classList.toggle('active');
     if (MenuBtn.src === "https://bestill.online/img/btn.png") {
         MenuBtn.src = "https://bestill.online/img/btn1.png";
         IFRAME.style = "display:block;";
