@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,7 +46,7 @@
 			border-radius: 0px;
 			font-size: 26px;
             background-color:red;
-		padding:10px;
+            padding:10px;
         }
   hr {
     border: 1px solid black;
@@ -66,60 +67,42 @@
     Totalt Pizza!
     <span id="demo"></span>
 
-    <button id="kapatButonu" class="kapat">Sayfayı Kapat</button>
+    <button onclick="sayfaKapat()" class="kapat">Sayfayı Kapat</button>
 
-<script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
-    import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
-
-    const initializeFirebase = async () => {
-        const firebaseConfig = { databaseURL: "https://bestill-pizza-default-rtdb.europe-west1.firebasedatabase.app" };
+    <script type="module">
         
-        await initializeApp(firebaseConfig);
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+        import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
+        const firebaseConfig = { databaseURL: "https://bestill-pizza-default-rtdb.europe-west1.firebasedatabase.app" };
+           
+        initializeApp(firebaseConfig);
         const database = getDatabase();
-        const urlParams = new URLSearchParams(window.location.search);
-        const specificKey = urlParams.get("n");
+        
+		const urlParams = new URLSearchParams(window.location.search);
+		const specificKey = urlParams.get("n");
         const specificKeyReference = ref(database, specificKey);
 
-        onValue(specificKeyReference, (snapshot) => {
-            demo.innerHTML = snapshot.val();
-            Key.innerHTML = snapshot.key;
-        });
+	    onValue(specificKeyReference, (snapshot) => {
+	        demo.innerHTML = snapshot.val();
+	        Key.innerHTML = snapshot.key;
+	    });
 
-        window.guncelle = function(increment) {
-            let value = Number(demo.innerHTML) + increment;
-            if (value >= 0 && value <= 10) {
-                demo.innerHTML = value;
-                set(specificKeyReference, value);
-            } else {
-                set(specificKeyReference, 0);
-            }
-        }
-
-        setTimeout(() => { guncelle(Number(c.innerHTML)); }, 500);
-    }
-
-    window.onload = async function() {
-        if (!localStorage.getItem('password')) {
-            let password = prompt("Please enter your password");
-            if (password == '1919') {
-                localStorage.setItem('password', password);
-            } else {
-                alert("Invalid password");
-                return;
-            }
-        }
-        await initializeFirebase();
-    }
-    
-    function sayfaKapat() {
-        window.close();
-        window.history.back();
-    }
-    kapatButonu.addEventListener("click", sayfaKapat);
-    kapatButonu.addEventListener("touchstart", sayfaKapat);
-   
+window.guncelle = function(increment) {
+	let value = Number(demo.innerHTML) + increment;
+	if (value >= 0 && value <= 10) {
+		demo.innerHTML = value;
+		set(specificKeyReference, value);
+		} else {
+		set(specificKeyReference, 0);
+		}
+}
 </script>
 
+<script>
+function sayfaKapat() {
+	window.close();
+	window.history.back();
+}
+</script>
 </body>
 </html>
