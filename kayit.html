@@ -82,6 +82,17 @@
 
     let saklananSifre = localStorage.getItem("sifre");
 
+    if (saklananSifre != x) {
+        let sifre = prompt("Lütfen şifrenizi girin", "");
+        
+        if (sifre == x) {
+            localStorage.setItem("sifre", sifre);
+            saklananSifre = sifre;  // saklananSifre değişkenini güncelliyoruz.
+        } else {
+            document.querySelector("body").innerHTML = `<a href="${window.location.href}">Tekrar dene!</a>`;
+        }
+    }
+    
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
     import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
     const firebaseConfig = { databaseURL: `https://${x}-pizza-default-rtdb.europe-west1.firebasedatabase.app` };
@@ -107,22 +118,7 @@
             set(specificKeyReference, 0);
         }
     }
-        
-    if (saklananSifre != x) {
-        let sifre = prompt("Lütfen şifrenizi girin", "");
-        
-        if (sifre == x) {
-            localStorage.setItem("sifre", sifre);
-            saklananSifre = sifre;  // saklananSifre değişkenini güncelliyoruz.
-        } else {
-            document.querySelector("body").innerHTML = `<a href="${window.location.href}">Tekrar dene!</a>`;
-        }
-    }
-    
-    if (saklananSifre){
-        setTimeout(() => { guncelle(Number(c.innerHTML)); }, 500);
-    }
-    
+
     function sayfaKapat() {
         window.close();
         window.history.back();
