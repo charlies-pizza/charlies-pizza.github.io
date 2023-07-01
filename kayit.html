@@ -90,9 +90,7 @@
 	}else{
     	document.querySelector("body").innerHTML = `<a href="${window.location.href}">Tekrar dene!</a>`;
     }
-    
 	}       
-    	if (saklananSifre) {
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
         import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
         const firebaseConfig = { databaseURL: `https://${x}-pizza-default-rtdb.europe-west1.firebasedatabase.app` };
@@ -129,7 +127,7 @@
         }
         kapatButonu.addEventListener("click", sayfaKapat);
         kapatButonu.addEventListener("touchstart", sayfaKapat);
-       }
+
     </script>
 </body>
 </html>
