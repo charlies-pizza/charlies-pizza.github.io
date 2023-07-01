@@ -68,22 +68,23 @@
 
     <button id="kapatButonu" class="kapat">Sayfayı Kapat</button>
 
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
-        import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+    import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
+
+    const initializeFirebase = async () => {
         const firebaseConfig = { databaseURL: "https://bestill-pizza-default-rtdb.europe-west1.firebasedatabase.app" };
-           
-        initializeApp(firebaseConfig);
-        const database = getDatabase();
         
-		const urlParams = new URLSearchParams(window.location.search);
+        await initializeApp(firebaseConfig);
+        const database = getDatabase();
+        const urlParams = new URLSearchParams(window.location.search);
 		const specificKey = urlParams.get("n");
         const specificKeyReference = ref(database, specificKey);
 
-	    onValue(specificKeyReference, (snapshot) => {
-	        demo.innerHTML = snapshot.val();
-	        Key.innerHTML = snapshot.key;
-	    });
+        onValue(specificKeyReference, (snapshot) => {
+            demo.innerHTML = snapshot.val();
+            Key.innerHTML = snapshot.key;
+        });
 
         window.guncelle = function(increment) {
             let value = Number(demo.innerHTML) + increment;
@@ -94,18 +95,30 @@
                 set(specificKeyReference, 0);
             }
         }
-        
-        window.onload = function() {
-            setTimeout(() => { guncelle(Number(c.innerHTML)); }, 500);
+    }
+
+    window.onload = async function() {
+        if (!localStorage.getItem('password')) {
+            let password = prompt("Please enter your password");
+            if (password == '1919') {
+                localStorage.setItem('password', password);
+            } else {
+                alert("Invalid password");
+                return;
+            }
         }
-        
-  function sayfaKapat() {
-            window.close();
-            window.history.back();
-        }
-        kapatButonu.addEventListener("click", sayfaKapat);
-        kapatButonu.addEventListener("touchstart", sayfaKapat);
-       
-    </script>
+        await initializeFirebase();
+        setTimeout(() => { guncelle(Number(c.innerHTML)); }, 500);
+    }
+    
+    function sayfaKapat() {
+        window.close();
+        window.history.back();
+    }
+    kapatButonu.addEventListener("click", sayfaKapat);
+    kapatButonu.addEventListener("touchstart", sayfaKapat);
+   
+</script>
+
 </body>
 </html>
