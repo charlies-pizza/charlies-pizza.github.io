@@ -99,8 +99,7 @@
     const database = getDatabase();
     
     const urlParams = new URLSearchParams(window.location.search);
-    //const specificKey = urlParams.get("n");
-    const specificKey = "44444441";
+    const specificKey = urlParams.get("n");
     const specificKeyReference = ref(database, specificKey);
 
     onValue(specificKeyReference, (snapshot) => {
