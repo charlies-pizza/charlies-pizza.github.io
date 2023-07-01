@@ -6,7 +6,7 @@
     <title>Add Pizza</title>
 	<script src="https://bestill.online/con.js"></script>
 <style>
-    body {
+    body, #gizle {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -81,7 +81,7 @@
     }
 </style>
 </head>
-<body> 
+<body> <div id="gizle" hidden>
     <div>
         <button onclick="guncelle(-1); c.innerHTML = Number(c.innerHTML) - 1">➖</button>
         <span id="c">1</span>
@@ -94,7 +94,7 @@
     <span id="demo"></span>
 
     <button id="kapatButonu" class="kapat">Sayfayı Kapat / Geri</button>
-
+ </div>
     <script type="module">
 
 	let saklananSifre = localStorage.getItem("sifre");
@@ -108,7 +108,10 @@
     	document.querySelector("body").innerHTML = `<a href="${window.location.href}">Tekrar dene!</a>`;
     }
     
-	}        
+	}else{
+   gizle.hidden = false;
+    }
+    
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
         import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
         const firebaseConfig = { databaseURL: `https://${x}-pizza-default-rtdb.europe-west1.firebasedatabase.app` };
