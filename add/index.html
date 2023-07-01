@@ -11,99 +11,68 @@
 <script src="https://bestill.online/con.js"></script>
 
 <style>
-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(-60deg, #3b5998, #8b9dc3);
-    font-family: Arial, sans-serif;
+body, html {
+  margin: 0;
+  padding: 0;
+  background-color: #11366e;
+  font-family: Arial, sans-serif;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  position: fixed;
+  top:0;
+  left:0;
 }
-
+.merkez {
+  background-color: #0d6efd24;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    align-items: stretch;
+    gap: 30px;
+    justify-content: center;
+}
 .standart{
     max-width:90%;
-    width:370px;
+    width:400px;
     border-radius:10px;
     margin:10px;
     background-color: #ffffff;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
-
-#mobilnr {
-    box-sizing: border-box;
-    border: 2px solid #555;
-    border-radius: 4px;
-    background-color: #f8f8f8;
-    font-size: 18px;
-    transition: 0.3s;
-    text-align:center;
-    letter-spacing: 7px;
-    padding:10px;
+#IFRAME {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    border: none;
+	display: none;
 }
-
-#mobilnr:focus {
-    border-color: #3b5998;
-    outline: none;
-    box-shadow: 0 0 5px #3b5998;
+#MenuBtn {
+  cursor: pointer;
+  position: fixed;
+  right: 10px;
+  bottom: 40px;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
 }
-
-#kupon{
-    display: flex;
-    background-color: #f7f7f7;
-    justify-content: center;
-    align-items: center;
-    height:auto;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-}
-
-span.aktiv, span.pasif {
-    width: 3em;
-    height: 3em;
-    margin: 5px;
-    border-radius: 50%;
-    color: #ffffff;
-    background-color: #3b5998;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1.3px dashed #555;
-    font-size: 1.2em;
-}
-
-span.pasif { 
-    background-color: #dfe3ee;
-    color: #3b5998;
-}
-
-.kemer {
-    width: 100%;
-    height: 50px;
-    color: white;
-    background-color: #3b5998;
-    display:flex;
-    align-items: center;
-    justify-content: space-evenly;
-    font-size: 22px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-}
-
-#register{
-    text-align:center;
-    background-color:#f7f7f7;
-    padding:5px 0px 5px 0px;
-    border-radius:0;
-}
-
 </style>
 </head>
 
 <body>
-
+<div class="merkez">
 <div class="kemer" id="saat"> <span id="hours"> *** </span> </div>
 
-<img class="standart" onclick="toggleCentered('F')" src="https://bestill.online/img/mavili.gif?raw=true">
+<img class="standart" src="https://bestill.online/img/mavili.gif?raw=true">
 
 <div class="standart" id="register"> Vennligst registrer nummeret ditt her! </div>
 
@@ -112,8 +81,13 @@ span.pasif {
 <div class="standart" id="kupon">
   <!-- Content here -->
 </div>
-<img class="standart" id="QRCODE">
 
+<img class="standart" id="QRCODE" src="https://t3.ftcdn.net/jpg/04/31/66/16/360_F_431661651_haC0ldiYzQ5OiZnT3TmgBrUtqAXVpa4M.jpg">
+
+<img onclick="MenuStart();" id="MenuBtn" src="https://bestill.online/img/btn.png">
+
+<iframe id="IFRAME" src="https://www.foodbooking.com/api/fb/_y55_q_j"></iframe>
+</div>
 <script type="module">
 
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
@@ -151,6 +125,18 @@ span.pasif {
 </script>
 
 <script>
+
+function MenuStart() {
+    if (MenuBtn.src === "https://bestill.online/img/btn.png") {
+        MenuBtn.src = "https://bestill.online/img/btn1.png";
+        IFRAME.style = "display:block;";
+    } else {
+		IFRAME.style = "display:none;";
+        MenuBtn.src = "https://bestill.online/img/btn.png";
+    }
+}
+
+
 function INPUT(inp) {
     const firstDigit = parseInt(inp[0]);
     const invalidStartDigits = [0, 1, 2, 3, 5, 6, 7, 8];
