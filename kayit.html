@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -71,6 +70,19 @@
     <button onclick="sayfaKapat()" class="kapat">Sayfayı Kapat</button>
 
 <script type="module">
+	let saklananSifre = localStorage.getItem("sifre");
+
+	if (saklananSifre != x) {
+	let sifre = prompt("Lütfen şifrenizi girin", "");
+	
+	if (sifre == x) {
+		localStorage.setItem("sifre", sifre);
+	}else{
+    	document.querySelector("body").innerHTML = `<a href="${window.location.href}">Tekrar dene!</a>`;
+    }
+    
+	}
+    
     let status = true;
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
     import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
