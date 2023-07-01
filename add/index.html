@@ -118,7 +118,7 @@ input:focus {
 span.aktiv, span.pasif {
     width: 2em;
     height: 2em;
-    margin: 5px;
+    margin: 7px;
     border-radius: 50%;
     color: #ffffff;
     background-color: green;
@@ -143,8 +143,7 @@ span.pasif {
 <body>
 <div class="merkez">
 <div class="header" id="saat"> <span id="hours"> *** </span> </div>
-
-<img class="standart" src="https://bestill.online/img/mavili.gif?raw=true">
+<img onclick="MenuStart();" class="standart" src="https://bestill.online/img/mavili.gif?raw=true">
 
 <div class="container">
     <div class="standart" id="register"> Vennligst registrer nummeret ditt her! </div>
@@ -202,17 +201,23 @@ span.pasif {
 
 <script>
 
+	let canClick = false;
+	setTimeout(() => { canClick = true; }, 5 * 60 * 1000); // 6 min delay
+
 function MenuStart() {
+document.querySelector('div').scrollTop = 0;
 
     if (MenuBtn.src === "https://bestill.online/img/btn.png") {
         MenuBtn.src = "https://bestill.online/img/btn1.png";
         IFRAME.style = "display:block;";
+		if (canClick) {
+		location.reload();
+		}
     } else {
 		IFRAME.style = "display:none;";
         MenuBtn.src = "https://bestill.online/img/btn.png";
     }
 }
-
 
 function INPUT(inp) {   
     const firstDigit = parseInt(inp[0]);
@@ -221,7 +226,7 @@ function INPUT(inp) {
     if (invalidStartDigits.includes(firstDigit)) {
         register.innerHTML = `❌ Nr må begynne med 4 og 9.`;
     } else if (inp.length === 8 && !invalidStartDigits.includes(firstDigit)) {
-        register.innerHTML = `✅ Nummeret ditt er registrert.`;
+        register.innerHTML = `✅ Nummeret ditt er registrert!`;
     } else {
         register.innerHTML = `Vennligst registrer nummeret ditt her!`;
     }
@@ -242,17 +247,17 @@ function updateStatus() {
 
   if (dayOfWeek === 1) { // Mandag
     hours.textContent = `🚫 Charlie's Pizza er stengt på mandager.`;
-    saat.style ="background-color: #ef4e4b;font-size: 17px;"
+    saat.style ="background-color: #ef4e4b;font-size: 17px;color:white;"
     themeColor.content = "#ef4e4b";
     
   } else if (currentHour >= 14 && currentHour < 22) {
     hours.innerText  = `🟢 Åpent i dag fra kl. 14:00 til 22:00`;
-    saat.style ="background-color: #5ac15e;font-size: 17px;"
+    saat.style ="background-color: #5ac15e;font-size: 17px;color:white;"
     themeColor.content = "#5ac15e";
 
   } else {
     hours.innerText  = `🔴 Charlie's Pizza er stengt nå.`;
-    saat.style ="background-color: #ef4e4b;font-size: 17px;"
+    saat.style ="background-color: #ef4e4b;font-size: 17px;color:white;"
     themeColor.content = "#ef4e4b";
   }
 }
