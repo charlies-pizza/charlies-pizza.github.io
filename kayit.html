@@ -78,58 +78,59 @@
 
     <button id="kapatButonu" class="kapat">Sayfayı Kapat / Geri</button>
 
-    <script type="module">
+<script type="module">
 
-	let saklananSifre = localStorage.getItem("sifre");
+    let saklananSifre = localStorage.getItem("sifre");
 
-	if (saklananSifre != x) {
-	let sifre = prompt("Lütfen şifrenizi girin", "");
-	
-	if (sifre == x) {
-		localStorage.setItem("sifre", sifre);
-	}else{
-    	document.querySelector("body").innerHTML = `<a href="${window.location.href}">Tekrar dene!</a>`;
-    }
-	}
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+    import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
+    const firebaseConfig = { databaseURL: `https://${x}-pizza-default-rtdb.europe-west1.firebasedatabase.app` };
+       
+    initializeApp(firebaseConfig);
+    const database = getDatabase();
     
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
-        import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
-        const firebaseConfig = { databaseURL: `https://${x}-pizza-default-rtdb.europe-west1.firebasedatabase.app` };
-           
-        initializeApp(firebaseConfig);
-        const database = getDatabase();
-        
-		const urlParams = new URLSearchParams(window.location.search);
-		const specificKey = urlParams.get("n");
-        const specificKeyReference = ref(database, specificKey);
+    const urlParams = new URLSearchParams(window.location.search);
+    const specificKey = urlParams.get("n");
+    const specificKeyReference = ref(database, specificKey);
 
-	    onValue(specificKeyReference, (snapshot) => {
-	        demo.innerHTML = snapshot.val();
-	        Key.innerHTML = snapshot.key;
-	    });
+    onValue(specificKeyReference, (snapshot) => {
+        demo.innerHTML = snapshot.val();
+        Key.innerHTML = snapshot.key;
+    });
 
-        window.guncelle = function(increment) {
-            let value = Number(demo.innerHTML) + increment;
-            if (value >= 0 && value <= 10) {
-                demo.innerHTML = value;
-                set(specificKeyReference, value);
-            } else {
-                set(specificKeyReference, 0);
-            }
+    window.guncelle = function(increment) {
+        let value = Number(demo.innerHTML) + increment;
+        if (value >= 0 && value <= 10) {
+            demo.innerHTML = value;
+            set(specificKeyReference, value);
+        } else {
+            set(specificKeyReference, 0);
         }
+    }
         
+    if (saklananSifre != x) {
+        let sifre = prompt("Lütfen şifrenizi girin", "");
+        
+        if (sifre == x) {
+            localStorage.setItem("sifre", sifre);
+            saklananSifre = sifre;  // saklananSifre değişkenini güncelliyoruz.
+        } else {
+            document.querySelector("body").innerHTML = `<a href="${window.location.href}">Tekrar dene!</a>`;
+        }
+    }
+    
     if (saklananSifre){
-    alert('yenileyecek sifreden sonra');
-	setTimeout(() => { guncelle(Number(c.innerHTML)); }, 500);
+        setTimeout(() => { guncelle(Number(c.innerHTML)); }, 500);
     }
     
-        function sayfaKapat() {
-            window.close();
-            window.history.back();
-        }
-        kapatButonu.addEventListener("click", sayfaKapat);
-        kapatButonu.addEventListener("touchstart", sayfaKapat);
+    function sayfaKapat() {
+        window.close();
+        window.history.back();
+    }
+    kapatButonu.addEventListener("click", sayfaKapat);
+    kapatButonu.addEventListener("touchstart", sayfaKapat);
 
-    </script>
+</script>
+
 </body>
 </html>
