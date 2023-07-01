@@ -6,7 +6,7 @@
     <title>Add Pizza</title>
 	<script src="https://bestill.online/con.js"></script>
 <style>
-    body, #gizle{
+    body {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -28,18 +28,6 @@
         transition: all 0.3s ease-in-out;
         box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
     }
-
-    button:hover, a:hover {
-        background-color: #0056b3;
-        transform: translateY(-3px);
-        box-shadow: 0 12px 19px rgba(0, 0, 0, 0.2);
-    }
-
-    button:active, a:active {
-        transform: translateY(2px);
-        box-shadow: 0 5px 11px rgba(0, 0, 0, 0.2);
-    }
-
     #demo, #Key, #c {
         font-weight: bold;
         margin: 10px;
@@ -83,7 +71,17 @@
 
 </head>
 <body> 
-<div id="gizle"></div>
+<div>
+    <button onclick="guncelle(-1); c.innerHTML = Number(c.innerHTML) - 1">➖</button>
+    <span id="c">1</span>
+    <button onclick="guncelle(1); c.innerHTML = Number(c.innerHTML) + 1">➕</button>
+</div>
+<hr>
+<p>Mobil Nummer: <br><span id="Key">key</span></p>
+<hr>
+<p>Totalt Pizza! <span id="demo"></span></p>
+<button id="kapatButonu" class="kapat">Sayfayı Kapat / Geri</button>
+
     <script type="module">
 
 	let saklananSifre = localStorage.getItem("sifre");
@@ -97,20 +95,8 @@
     	document.querySelector("body").innerHTML = `<a href="${window.location.href}">Tekrar dene!</a>`;
     }
     
-	}else{ var GIZLE = true;   }
+	}
     
-    if (GIZLE){
-     gizle.innerHTML = `<div>
-    <button onclick="guncelle(-1); c.innerHTML = Number(c.innerHTML) - 1">➖</button>
-    <span id="c">1</span>
-    <button onclick="guncelle(1); c.innerHTML = Number(c.innerHTML) + 1">➕</button>
-</div>
-<hr>
-<p>Mobil Nummer: <br><span id="Key">key</span></p>
-<hr>
-<p>Totalt Pizza! <span id="demo"></span></p>
-<button id="kapatButonu" class="kapat">Sayfayı Kapat / Geri</button> `;
-    }
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
         import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
         const firebaseConfig = { databaseURL: `https://${x}-pizza-default-rtdb.europe-west1.firebasedatabase.app` };
