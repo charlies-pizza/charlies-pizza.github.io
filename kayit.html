@@ -70,20 +70,7 @@
     <button id="kapatButonu" class="kapat">Sayfayı Kapat</button>
 
     <script type="module">
-	let saklananSifre = localStorage.getItem("sifre");
 
-	if (saklananSifre != "123") {
-	let sifre = prompt("Lütfen şifrenizi girin", "");
-	
-	if (sifre == "123") {
-		localStorage.setItem("sifre", sifre);
-	}else{
-    	document.querySelector("body").innerHTML = `<a href="${window.location.href}">Tekrar dene!</a>`;
-    }
-    
-	}
-
-        
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
         import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
         const firebaseConfig = { databaseURL: "https://bestill-pizza-default-rtdb.europe-west1.firebasedatabase.app" };
@@ -113,14 +100,7 @@
         window.onload = function() {
             setTimeout(() => { guncelle(Number(c.innerHTML)); }, 500);
         }
-        
-        function sayfaKapat() {
-            window.close();
-            window.history.back();
-        }
-        kapatButonu.addEventListener("click", sayfaKapat);
-        kapatButonu.addEventListener("touchstart", sayfaKapat);
-       
+ 
     </script>
 </body>
 </html>
