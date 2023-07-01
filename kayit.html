@@ -1,10 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Add Pizza</title>
-	<script src="https://bestill.online/con.js"></script>
     <style>
         body {
 	        display: flex;
@@ -69,13 +69,12 @@
     <button id="kapatButonu" class="kapat">Sayfayı Kapat</button>
 
     <script type="module">
-
 	let saklananSifre = localStorage.getItem("sifre");
 
-	if (saklananSifre != "123" ) {
+	if (saklananSifre != "123") {
 	let sifre = prompt("Lütfen şifrenizi girin", "");
 	
-	if (sifre == "123" ) {
+	if (sifre == "123") {
 		alert('Doğru şifre, bir daha sorulmayacak!');
 		localStorage.setItem("sifre", sifre);
 	}else{
@@ -83,6 +82,7 @@
     }
     
 	}
+
         
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
         import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
