@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+<meta charset="UTF-8">
+<title>Charlie's Pizza Kristiansand - Online Pizza Bestilling</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="keywords" content="Pizza, pizzabakeren, pizzabakeri, pizza bestilling, pizza takeaway, pizza levering, pizza tilbud, pb-tilbud, pb-venn, pb-bedrift, pizzabakeren meny, pizzabakern, pizza utsalg, Charlie's Pizza, pizza Kristiansand, online pizza, pizza henting, Domino's Pizza, Pizza Vågsbygd, Italiensk pizza Kristiansand, Pizza Dvergsnes, Pizza Søm, Peppes Pizza" />
+<meta name="description" content="Pizza til folket! Bestill pizza fra Pizzamakeren. Smaker mer enn den koster. Ferske bunner hver dag. Takeaway og levering. Bli Charlies-venn eller Charlies-bedrift i dag! Charlie's Pizza Kristiansand, online pizza bestilling nettsted. Rask og enkel online pizza bestilling med hjemlevering eller henting. Ekte pizza med 100% italienske ingredienser, som blir stekt i profesjonell stein-ovn." />
+<link rel="icon" type="image/png" href="https://bestill.online/img/icon-s.png">
+<script src="https://bestill.online/con.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <style>
+body, html {
+  margin: 0;
+  padding: 0;
+  background-color: #11366e;
+  font-family: Arial, sans-serif;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  position: fixed;
+  top:0;
+  left:0;
+}
+@media (min-width: 800px) {
+  .merkez {
+    height: 100%;
+    align-items: center;
+    flex-direction: row;
+  }
+}
+.merkez {
+  background-color: #0d6efd24;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    align-items: stretch;
+    gap: 30px;
+    justify-content: center;
+}
+.icerik {
+  background-color: #274471;
+    box-shadow: 0px 0px 15px 1px rgba(128, 128, 128, 0.664);
+    max-width: 95vw;
+    width: 400px;
+    box-shadow: 0px 0px 10px 5px #0066ffa1;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+    align-content: stretch;
+    gap: 22px;
+    padding: 15px 0px 20px 0px;
+    align-items: center;
+}
+.kemer {
+  width: 100%;
+    height: 50px;
+    display: flex;
+    color: white;
+    background-color: black;
+    align-items: center;
+    justify-content: space-evenly;
+    font-size: 22px;
+}
+.btn{
+  border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    height: 35px;
+    width: 95vw;
+    max-width: 95%;
+    min-width: 95%;
+    background-image: linear-gradient(to right, #0000ff7a, #48f4f4);
+    color: #000000;
+    box-shadow: 0px 4px 3px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+  }
+  #kupon{
+    font-size: 25px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    min-width: 330px;
+    height: auto;
+    background-image: linear-gradient(to right, #dee2e6, #e6e9eb);
+    align-items: center;
+  }
+  #kupon img{
+    width: 95vw;
+    min-width: 330px;
+    height: 150px;
+    border-radius: 7px;
+    margin: 5px;
+  }
+  .ball{
+    width: 55px;
+    height: 55px;
+  }
+.ball{
+
+    margin: 7px;
+    border-radius: 50%;
+    color: #ffffff;
+    background-color: #22b138;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.3px dashed rgb(0, 0, 0);
+}
+#register{
+	margin:0 -15px -15px 0 ;
+	padding:3px;
+ 	text-align: center;
+    background-color: #ffffff;
+    width: 285px;
+    border-radius: 5px;
+    box-shadow: 0px -2px 1px rgba(0, 0, 0, 0.3);
+}
+  a {
+    text-decoration: none;
+}
+.Input {
+  background-image: linear-gradient(to right, #ffffff7a, #ffffff);
+  box-shadow: 0px 0px 6px 0px #000000b8;
+  height: 45px;
+  font-size: 20px;
+  text-align: center;
+  letter-spacing: 7px;
+  border:none;
+}
+.pulse, #BUTTON {
+  cursor: pointer;
+  position: fixed;
+  right: 10px;
+  bottom: 40px;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.pulse::before, .pulse::after {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  box-shadow: 0 0 5px 2px #f00;
+  animation: pulse 2s infinite;
+}
+
+.pulse::after {
+  animation-delay: 1s;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+#slideout {
+	position: fixed;
+	top: 0%;
+	left: -200vw; 
+	transition: 1s;
+  z-index: 110;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+	}
+	#slideout.active {
+	left: 0;
+  opacity: 1;
+	}
+  #IFRAME {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  border:none;
+  background-color:#3b3a3a;
+}
+.goster { display: block;}
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding:100%;
+  font-size: 16px;
+  color: #27820e;
+  background-color: #11366e;
+}
+.popup{
+  padding: 10px;
+  background-color: #ffffff;
+  color: #27820e;
+  width: 90vw;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+  li{
+  border: 1px solid rgb(160, 159, 159);
+  padding: 8px;
+  }
+
+  </style>
+</head>
+<body>
+
+<div class="merkez">
+
+<div class="kemer" id="saat"> <span id="hours"> *** </span> </div>
+
+<div class="icerik">
+  <img class="btn" style="height: 100px;" onclick="toggleCentered('F')" src="https://bestill.online/img/mavili.gif?raw=true" alt="button">
+  <div style="text-align: center; color:#ffffff; font-size: 18px;">
+    Lønner seg å bruke digitalt stempelkort 🎁 <br> Vi spanderer hver 6. stor pizza </div>
+
+  <div id="kupon" class="btn"> </div>
+<span id="register">Vennligst registrer nummeret ditt her!</span>
+<input type="text" class="btn Input" id="inp" onkeyup="INPUT()" inputmode="numeric" placeholder="00000000" maxlength="8" pattern="\d*" oninput="this.value = this.value.replace(/[^\d]/g, '');">
+  <button class="btn" onclick="toggleCentered('S')"> Hvordan fungerer StempelKort? </button>
+</div>
+
+    <div class="icerik">
+      <div style="text-align:center; color: #ffffff; font-size: 17px;">QR-koden fremvises og skannes av betjening. </div>
+      <div id="QRimage" onclick="toggleCentered('Q');" style="cursor: pointer; top: 40%;"> </div>
+      <button class="btn" onclick="toggleCentered('G')"> Lojalitetsprogram Generelle vilkår </button>
+    </div>
+
+    <div class="kemer">
+<a href="tel:95529999">📞</a>
+<a href="https://bestill.online/Charlies_Pizza_Contact_Info.vcf" download>📂</a>
+<a href="https://m.me/charlies.pizza.krs">💬</a>
+<a href="https://www.facebook.com/charlies.pizza.krs" target="_blank">🌐</a>
+
+    </div>
+  </div>
+  <div id="slideout"> 
+    <iframe id="IFRAME" title="Charlie's Pizza Online Bestilling" src="https://www.foodbooking.com/api/fb/_y55_q_j"></iframe>
+  </div>
+
+  <div class="pulse">
+    <img id="BUTTON" onclick="toggleCentered('F');" src="https://bestill.online/img/btn.png" alt="button">
+</div>
+
+  <div id="StempelKort" onclick="toggleCentered('S')" hidden>
+    <div class="popup" style="font-size: 15px;">
+  <span style="float:right;cursor: pointer;font-size: 18px;">❌</span><br><br>Hvordan fungerer StempelKort:<br><br>
+  <li>Når du er registrert, Husk å få QR-koden skannet hos en av våre ansatte hver gang du kjøper en pizza.</li>
+  <li>Etter at QR-koden er skannet, vil en av de 10 kupongene i profilen din endre farge til grønn.</li>
+  <li>Kjøper du 10 pizzaer og får alle kupongene grønne, vil du få en gratis stor pizza som din 11. pizza! Du vil også få et varsel om dette.</li>
+  <br> <br> Fordeler: <br> <br>
+  <li>Spar penger: Som i ditt tilfelle, kan du få hver 11. pizza gratis. Dette er en betydelig besparelse over tid, spesielt hvis du ofte bestiller pizza.</li>
+  <li>Lett å holde styr på: Et digitalt stempelkort er alltid med deg på telefonen din, så det er ingen risiko for å miste det eller glemme det hjemme.</li>
+    </div>
+  </div>
+  
+  <div id="Generelle" onclick="toggleCentered('G')" hidden>
+     <div class="popup" style="font-size: 15px;">
+      <span style="float:right;cursor: pointer;font-size: 18px;">❌</span><br>Følgende vilkår gjelder: <br><br>
+      <li>Brukerne må registrere mobilnummeret sitt før de legger inn en bestilling for at det digitale stempelet skal bli registrert på profilen deres.</li>
+      <li>Etter at du har registrert deg, vil du på profilen din ha informasjon om hvor mange kjøp som gjenstår før du får én gratis pizza.</li>
+      <li>Digital stempel opptjening skjer ved hvert gjennomførte kjøp som gjøres via nettsted, uavhengig av betalingsmåte.</li>
+      <li>Når det er gjennomført 10 kjøp av stor pizza, vil du ved neste bestilling få spørsmål om du ønsker å bruke lojalitetskupongen.</li>
+      <li>Den 11. pizzaen gjelder for 1 stor pizza, og ved henting. Lojalitetskupongen kan ikke brukes på 'lag din egen'.</li>
+      <li>Charlie's Pizza forbeholder seg retten til å kunne oppdatere betingelser og vilkår med umiddelbar effekt.</li>  
+     </div>
+  </div>
+
+<script type="module">
+	  
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+    import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
+    const firebaseConfig = { databaseURL: `https://${x}-pizza-default-rtdb.europe-west1.firebasedatabase.app` };
+       
+    initializeApp(firebaseConfig);
+    const database = getDatabase();
+       
+    function guncelle() {
+       
+    let specificKey = localStorage.getItem('mobilNumara');
+  
+    if (!specificKey) { specificKey = '0'; }
+  
+    const specificKeyReference = ref(database, specificKey);
+       
+  onValue(specificKeyReference, (snapshot) => {
+    kupon.innerHTML = null;
+    const value = snapshot.val();
+
+    for (let index = 1; index <= 5; index++) {
+      kupon.innerHTML += `${index <= value ? '<span class="ball">' + index + '</span>' : '<span class="ball" style="background-color: #999;">' + index + '</span>'}`;
+    }
+  
+    if (value > 4) { kupon.innerHTML = `<img src="https://bestill.online/img/gratis.gif?raw=true" alt="gratis">`; }
+  
+  });
+  }
+  
+    window.guncelle = guncelle;
+    guncelle();
+  </script>
+
+<script>
+	let canClick = false;
+
+function allowClickAfterDelay() {
+	canClick = false;
+	setTimeout(() => {
+	canClick = true;
+	}, 6 * 60 * 1000); // 6 min delay
+}
+	allowClickAfterDelay();
+    
+function toggleCentered(x) {
+
+  if (x == "S") {
+    ["centered", "goster"].forEach(x => StempelKort.classList.toggle(x));
+  }
+  if (x == "G") {
+    ["centered", "goster"].forEach(x => Generelle.classList.toggle(x));
+  }
+  if (x == "Q") {
+    ["centered", "goster"].forEach(x => QRimage.classList.toggle(x));
+    document.querySelector('div').scrollTop = document.querySelector('div').scrollHeight;
+  }
+  
+  if (x == "F") {
+    
+  setTimeout(() => { document.querySelector('div').scrollTop = 0; }, 800);
+
+  [StempelKort, Generelle, QRimage].forEach(element => {
+  element.classList.remove("goster", "centered");   });
+
+  slideout.classList.toggle('active');
+
+  if (slideout.classList.contains("active")) {
+	  
+  BUTTON.src = "https://bestill.online/img/btn1.png";
+  } else {
+  BUTTON.src = "https://bestill.online/img/btn.png";
+  
+	if (canClick) {
+    location.reload();
+	}
+} 
+
+  }
+}
+
+function updateStatus() {
+  const currentDate = new Date();
+  const dayOfWeek = currentDate.getDay();
+  const currentHour = currentDate.getHours();
+
+  let themeColor = document.querySelector('meta[name="theme-color"]');
+
+  if (!themeColor) {
+    themeColor = document.createElement("meta");
+    themeColor.name = "theme-color";
+    document.head.appendChild(themeColor);
+  }
+
+  if (dayOfWeek === 1) { // Mandag
+    hours.textContent = `🚫 Charlie's Pizza er stengt på mandager.`;
+    saat.style ="background-color: #ef4e4b;font-size: 17px;"
+    themeColor.content = "#ef4e4b";
+    
+  } else if (currentHour >= 14 && currentHour < 22) {
+    hours.innerText  = `🟢 Åpent i dag fra kl. 14:00 til 22:00`;
+    saat.style ="background-color: #5ac15e;font-size: 17px;"
+    themeColor.content = "#5ac15e";
+
+  } else {
+    hours.innerText  = `🔴 Charlie's Pizza er stengt nå.`;
+    saat.style ="background-color: #ef4e4b;font-size: 17px;"
+    themeColor.content = "#ef4e4b";
+  }
+}
+updateStatus();
+
+inp.value = localStorage.getItem('mobilNumara');
+
+INPUT();
+function INPUT() {
+
+  const firstDigit = parseInt(inp.value[0]);
+  const invalidStartDigits = [0, 1, 2, 3, 5, 6, 7, 8];
+
+  if (invalidStartDigits.includes(firstDigit)) {
+  register.innerHTML = `<span style="color:#ac3030;">⛔ NR må begynne med '4' eller '9'<span>`;
+  }else if (inp.value.length === 8 && !invalidStartDigits.includes(firstDigit)) {
+  register.innerHTML = `<span style="color: #2a9414;">Nummeret ditt er registrert!</span> <i class="fa-regular fa-thumbs-up" style="color: #2a9414;"></i>`;
+  } else {
+  register.innerHTML = `Vennligst registrer nummeret ditt her!`;
+  }
+
+QRimage.innerHTML = null;
+
+localStorage.setItem('mobilNumara', inp.value);
+
+  const QRSize = Math.min(Math.min(window.innerWidth, window.innerHeight) * 0.90, 375);
+  var qrcode = new QRCode(QRimage, {
+    text: `bestill.online/kayit.html?n=${localStorage.getItem('mobilNumara')}`,  width: QRSize, height: QRSize,  colorDark : '#ffffff',  colorLight : '#09234d',  correctLevel : QRCode.CorrectLevel.H
+     });
+
+  guncelle();
+} 
+</script>
+</body>
+</html>
