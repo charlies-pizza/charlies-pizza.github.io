@@ -33,9 +33,6 @@
         font-size: 1rem;
         transition: background-color 0.2s ease;
     }
-    button:hover {
-        background-color: #0056b3;
-    }
     #demo, #Key, #c {
         font-weight: 600;
         margin: 10px;
@@ -109,7 +106,17 @@
         window.onload = function() {
             setTimeout(() => { guncelle(Number(c.innerHTML)); }, 500);
         }
-        
+
+	let saklananSifre = localStorage.getItem("sifre");
+
+	if (saklananSifre != x) {
+	let sifre = prompt("Lütfen şifrenizi girin", "");
+	
+	if (sifre == x) {
+		localStorage.setItem("sifre", sifre);
+	}else{
+    	document.querySelector("body").innerHTML = `<a href="${window.location.href}">Tekrar dene!</a>`;
+    }
         function sayfaKapat() {
             window.close();
             window.history.back();
