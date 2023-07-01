@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -68,14 +69,6 @@
     <button id="kapatButonu" class="kapat">Sayfayı Kapat</button>
 
     <script type="module">
-    
-    (async function() {
-    const data = await import('https://bestill.online/con.js');
-
-    // Burada `data` içinde ne olduğunu bilmiyorum, bu yüzden onu nasıl kullanacağınızı size bırakıyorum.
-
-    // Firebase işlemlerini burada başlatabilirsiniz.
-
 	let saklananSifre = localStorage.getItem("sifre");
 
 	if (saklananSifre != "123") {
@@ -93,7 +86,7 @@
         
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
         import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
-        const firebaseConfig = { databaseURL: `https://${x}-pizza-default-rtdb.europe-west1.firebasedatabase.app` };
+        const firebaseConfig = { databaseURL: "https://bestill-pizza-default-rtdb.europe-west1.firebasedatabase.app" };
            
         initializeApp(firebaseConfig);
         const database = getDatabase();
@@ -120,9 +113,7 @@
         window.onload = function() {
             setTimeout(() => { guncelle(Number(c.innerHTML)); }, 500);
         }
-
-})();
-
+        
         function sayfaKapat() {
             window.close();
             window.history.back();
