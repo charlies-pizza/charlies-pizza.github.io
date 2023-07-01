@@ -35,12 +35,22 @@ body, html {
     justify-content: center;
 }
 .standart{
-    max-width:90%;
+    min-width:300px;
+	max-width:90%;
     width:400px;
     border-radius:10px;
-    margin:10px;
     background-color: #ffffff;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+}
+.container {
+	display: flex;
+    border-radius: 10px;
+    background-color: #ffffff;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-width:300px;
+	max-width:90%;
 }
 #IFRAME {
     position: fixed;
@@ -82,12 +92,15 @@ body, html {
     justify-content: center;
     height: 30px;
 }
-#mobilnr {
+#mobilnr{
   height: 45px;
   font-size: 20px;
   text-align: center;
   letter-spacing: 7px;
   border:none;
+  background-color: #2196f34d;
+  max-width:100%;
+  border-radius: 0px 0px 10px 10px;
 }
 #kupon{
     display: flex;
@@ -116,6 +129,11 @@ span.pasif {
     background-color: #dfe3ee;
     color: #3b5998;
 }
+.linkBtn {
+    height: 40px;
+    font-size:20px;
+	background-color: #dfe3ee;
+}
 </style>
 </head>
 
@@ -125,15 +143,18 @@ span.pasif {
 
 <img class="standart" src="https://bestill.online/img/mavili.gif?raw=true">
 
-<div class="standart" id="register"> Vennligst registrer nummeret ditt her! </div>
-
-<input class="standart" type="text" oninput="INPUT(this.value);" id="mobilnr" placeholder="00000000" maxlength="8">
+<div class="container">
+    <div class="standart" id="register"> Vennligst registrer nummeret ditt her! </div>
+    <input class="standart" id="mobilnr" type="text" oninput="INPUT(this.value);" placeholder="00000000" maxlength="8">
+</div>
 
 <div class="standart" id="kupon">
   <!-- Content here -->
 </div>
 
 <img class="standart" id="QRCODE">
+
+<button class="standart linkBtn" onclick="toggleCentered('G')"> Lojalitetsprogram Generelle vilkår </button>
 
 <img onclick="MenuStart();" id="MenuBtn" src="https://bestill.online/img/btn.png">
 
@@ -175,10 +196,6 @@ span.pasif {
 	mobilnr.addEventListener("input", guncelle);
     guncelle();
 </script>
-
-
-
-
 
 <script>
 
