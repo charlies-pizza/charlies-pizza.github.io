@@ -1,62 +1,59 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Add Pizza</title>
-<style>
-    body {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        margin: 0;
-        background: radial-gradient(circle, #a1c4fd 0%, #c2e9fb 100%);
-        font-family: 'Poppins', sans-serif;
-    }
-    button, a {
-        border: none;
-        background-color: #007BFF;
-        color: white;
-        padding: 20px 30px;
-        margin: 10px 20px;
-        border-radius: 50px;
-        cursor: pointer;
-        font-size: 18px;
-        transition: all 0.3s ease-in-out;
-        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-    }
-    #demo, #Key, #c {
-        font-weight: bold;
-        margin: 10px;
-        font-size: 36px;
-        color: #333;
-    }
+    <style>
+        body {
+	        display: flex;
+	        flex-direction: column;
+	        align-items: center;
+	        justify-content: center;
+	        height: 100vh;
+	        margin: 0;
+	        background-color: #f8f8f8;
+	        font-family: Arial, sans-serif;
+        }
+        button, a {
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            padding: 25px 25px;
+            margin: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
 
-    .kapat {
-        position: fixed;
-        bottom: 0;
-        margin:auto;
-        width: 100%;
-        height: 60px;
-        font-size: 26px;
-        background-color: #f94d56;
-        padding: 10px;
-        color: white;
-        text-align: center;
-        border-radius: 0;
-        cursor: pointer;
-        transition: all 0.3s ease-in-out;
-    }
+        button:hover {
+            background-color: #0056b3;
+        }
 
-    hr {
-        border: 1px solid #e3e3e3;
-        width: 80%;
-        margin: 30px 0;
-    }
-</style>
+        #demo, #Key, #c{
+            font-weight: bold;
+            margin: 10px;
+			font-size: 36px;
+        }
 
+        .kapat {
+	        position: fixed;
+	        bottom: 0;
+ 			margin:auto;
+	        width: 100%;
+	        height: 60px;
+			border-radius: 0px;
+			font-size: 26px;
+            background-color:red;
+		padding:10px;
+        }
+  hr {
+    border: 1px solid black;
+    width:90%;
+}
+
+    </style>
 </head>
 <body> 
     <div>
@@ -73,19 +70,22 @@
     <button id="kapatButonu" class="kapat">Sayfayı Kapat</button>
 
     <script type="module">
-let a1b2c3 = localStorage.getItem("d4e5f6");
+	let saklananSifre = localStorage.getItem("sifre");
 
-if (a1b2c3 != "1919") {
-  let g7h8i9 = prompt("j1k2l3m4n5o6p7", "");
-  
-  if (g7h8i9 == "1919") {
-    localStorage.setItem("d4e5f6", g7h8i9);
-  } else {
-    document.querySelector("body").innerHTML = `<a href="${window.location.href}">q8r9s0t1u2v3</a>`;
-  }
-}
+	if (saklananSifre != "123") {
+	let sifre = prompt("Lütfen şifrenizi girin", "");
+	
+	if (sifre == "123") {
+		alert('Doğru şifre, bir daha sorulmayacak!');
+		localStorage.setItem("sifre", sifre);
+	}else{
+    	document.querySelector("body").innerHTML = `<a href="${window.location.href}">Tekrar dene!</a>`;
+    }
+    
+	}
 
-	import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+        
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
         import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
         const firebaseConfig = { databaseURL: "https://bestill-pizza-default-rtdb.europe-west1.firebasedatabase.app" };
            
@@ -111,6 +111,9 @@ if (a1b2c3 != "1919") {
             }
         }
         
+        window.onload = function() {
+            setTimeout(() => { guncelle(Number(c.innerHTML)); }, 500);
+        }
         
         function sayfaKapat() {
             window.close();
