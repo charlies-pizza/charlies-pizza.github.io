@@ -33,6 +33,9 @@
         font-size: 1rem;
         transition: background-color 0.2s ease;
     }
+    button:hover {
+        background-color: #0056b3;
+    }
     #demo, #Key, #c {
         font-weight: 600;
         margin: 10px;
@@ -76,8 +79,20 @@
     <button id="kapatButonu" class="kapat">Sayfayı Kapat / Geri</button>
 
     <script type="module">
-   
-	import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+
+	let saklananSifre = localStorage.getItem("sifre");
+
+	if (saklananSifre != x) {
+	let sifre = prompt("Lütfen şifrenizi girin", "");
+	
+	if (sifre == x) {
+		localStorage.setItem("sifre", sifre);
+	}else{
+    	document.querySelector("body").innerHTML = `<a href="${window.location.href}">Tekrar dene!</a>`;
+    }
+    
+	}else{       
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
         import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
         const firebaseConfig = { databaseURL: `https://${x}-pizza-default-rtdb.europe-west1.firebasedatabase.app` };
            
@@ -113,7 +128,8 @@
         }
         kapatButonu.addEventListener("click", sayfaKapat);
         kapatButonu.addEventListener("touchstart", sayfaKapat);
-       
+    }
+    
     </script>
 </body>
 </html>
