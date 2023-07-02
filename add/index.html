@@ -161,6 +161,8 @@ span.pasif {
     z-index: 999;
     overflow-y: auto; /* Vertical scroll */
     overflow-x: hidden; /* Disable horizontal scroll */
+    padding:100%;
+	background-color: #000000ad;
 }
 li {
     list-style-type: nummer;
@@ -184,7 +186,7 @@ li {
   <!-- Content here -->
 </div>
 
-<img class="standart" id="QRCODE">
+<img class="standart" id="QRCODE" onclick="this.classList.toggle('popup')">
 
 <button class="standart linkBtn" onclick="StempelKort.hidden = !StempelKort.hidden">Vilkår for lojalitetsprogram</button>
 
@@ -195,7 +197,7 @@ li {
 		<li> Lorem Ipsum, kısaca Lipsum, masaüstü yayıncılık ve basın yayın sektöründe kullanılan taklit yazı bloğu olarak tanımlanır.</li>
         <li> Lorem Ipsum, kısaca Lipsum, masaüstü yayıncılık ve basın yayın sektöründe kullanılan taklit yazı bloğu olarak tanımlanır.</li>
 	</div>
-<img onclick="MenuStart();" id="MenuBtn" src="https://bestill.online/img/btn.png">
+<img onclick="MenuStart();" id="MenuBtn" class="pulse" src="https://bestill.online/img/btn.png">
 
 <iframe id="IFRAME" title="Charlie's Pizza Online Bestilling" src="https://www.foodbooking.com/api/fb/_y55_q_j"></iframe>
 
