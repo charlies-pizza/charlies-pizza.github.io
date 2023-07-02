@@ -164,6 +164,25 @@ span.pasif {
     padding:100%;
 	background-color: #000000ad;
 }
+.popup1 {
+    background-color: #000000ad;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    position: fixed;
+    top:0;
+    left:0;
+}
+.popup2 {
+    min-width:300px;
+	max-width:90%;
+    width:600px;
+	height: 90%;
+	overflow-y: auto; /* Vertical scroll */
+}
 li {
     list-style-type: nummer;
     background-color: #f6f6f6;
@@ -188,15 +207,31 @@ li {
 
 <img class="standart" id="QRCODE" onclick="this.classList.toggle('popup')">
 
-<button class="standart linkBtn" onclick="StempelKort.hidden = !StempelKort.hidden">Vilkår for lojalitetsprogram</button>
+<button class="standart linkBtn" onclick="popup1.style='visibility: visible;'"> Vilkår for lojalitetsprogram </button>
 
-    <div id="StempelKort" class="popup" onclick="StempelKort.hidden = !StempelKort.hidden" hidden>
-		<li style="list-style-type: none;display: flex;justify-content: space-between;"> <h3>Vilkår for lojalitetsprogram</h3> <h3>❌</h3></li>
-		<li> Lorem Ipsum, kısaca Lipsum, masaüstü yayıncılık ve basın yayın sektöründe kullanılan taklit yazı bloğu olarak tanımlanır.</li>
-        <li> Lorem Ipsum, kısaca Lipsum, masaüstü yayıncılık ve basın yayın sektöründe kullanılan taklit yazı bloğu olarak tanımlanır.</li>
-		<li> Lorem Ipsum, kısaca Lipsum, masaüstü yayıncılık ve basın yayın sektöründe kullanılan taklit yazı bloğu olarak tanımlanır.</li>
-        <li> Lorem Ipsum, kısaca Lipsum, masaüstü yayıncılık ve basın yayın sektöründe kullanılan taklit yazı bloğu olarak tanımlanır.</li>
-	</div>
+<div id="popup1" class="popup1" onclick="this.style='visibility: hidden;'" style='visibility: hidden;'>
+<div class="popup2" >
+<li style="list-style-type: none;display: flex;justify-content: space-between;"> <h3>Vilkår for lojalitetsprogram</h3> <h3>❌</h3></li>
+<li> 1Lorem Ipsum, kısaca Lipsum, masaüstü yayıncılık </li>
+<li> Lorem Ipsum, kısaca Lipsum, masaüstü yayıncılık </li>
+<li> Lorem Ipsum, kısaca Lipsum, masaüstü yayıncılık </li>
+<li> Lorem Ipsum, kısaca Lipsum, masaüstü yayıncılık </li>
+<li> Lorem Ipsum, kısaca Lipsum, masaüstü yayıncılık </li>
+<li> Lorem Ipsum, kısaca Lipsum, masaüstü yayıncılık </li>
+<li> Lorem Ipsum, kısaca Lipsum, masaüstü yayıncılık </li>
+<li> Lorem Ipsum, kısaca Lipsum, masaüstü yayıncılık </li>
+<li> Lorem Ipsum, kısaca Lipsum, masaüstü yayıncılık </li>
+<li> Lorem Ipsum, kısaca Lipsum, masaüstü yayıncılık </li>
+<li> Lorem Ipsum, kısaca Lipsum, masaüstü yayıncılık </li>
+<li> Lorem Ipsum, kısaca Lipsum, masaüstü yayıncılık </li>
+<li> Lorem Ipsum, kısaca Lipsum, masaüstü yayıncılık </li>
+<li> Lorem Ipsum, kısaca Lipsum, masaüstü yayıncılık </li>
+<li> Lorem Ipsum, kısaca Lipsum, masaüstü yayıncılık </li>
+<li> Lorem Ipsum, kısaca Lipsum, masaüstü yayıncılık </li>
+<li> Lorem Ipsum, kısaca Lipsum, masaüstü yayıncılık </li>
+<li> Lorem Ipsum, kısaca Lipsum, masaüstü yayıncılık </li>
+    </div>
+</div>
 <img onclick="MenuStart();" id="MenuBtn" class="pulse" src="https://bestill.online/img/btn.png">
 
 <iframe id="IFRAME" title="Charlie's Pizza Online Bestilling" src="https://www.foodbooking.com/api/fb/_y55_q_j"></iframe>
