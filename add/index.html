@@ -154,15 +154,33 @@ span.pasif {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-    min-width:300px;
-	max-width:80%;
-    width:600px;
-    height: auto;
-    z-index: 9;
-    background-color:black;
-    padding:100%;
+    width: 100%;
+    z-index: 99;
+    min-width: 300px;
+    max-width: 90%;
+    width: 600px;
+    height: 90%;
+    overflow-y: auto;
+    border-radius:10px;
 }
-
+.back{
+	position: fixed;
+	top: 0;
+	left: 0;
+  	background-color: black;
+	padding:100%;
+}
+li {
+    list-style-type: nummer;
+    background-color: #f6f6f6;
+    border: 1px solid grey;
+    padding: 10px;
+}
+.qrback{
+  	background-color: black;
+	padding:100%;
+	height: auto;
+}
 </style>
 </head>
 
@@ -179,11 +197,35 @@ span.pasif {
   <!-- Content here -->
 </div>
 
-<img class="standart" id="QRCODE" onclick="this.classList.toggle('full')">
 
-<button class="standart linkBtn" onclick="IMG.hidden = !IMG.hidden"> Vilkår for lojalitetsprogram </button>
+<img class="standart" id="QRCODE" onclick="this.classList.toggle('full'); this.classList.toggle('qrback');">
 
-<img id="IMG" class="full" src="https://i.hizliresim.com/i1uqeur.png" onclick="IMG.hidden = !IMG.hidden" hidden>
+<button class="standart linkBtn" onclick="popup.hidden = !popup.hidden;"> Vilkår for lojalitetsprogram </button>
+
+<div id="popup" class="back" onclick="popup.hidden = !popup.hidden" hidden>
+
+<div class="full">
+<li> <span>Følgende vilkår gjelder:</span> <span style="float:right;">❌</span></li>
+<li> 1Lorem Ipsum, kısaca Lipsum, masaüstü yayıncılık </li>
+<li> Lorem Ipsum, kısaca Lipsum, masaüstü yayıncılık </li>
+<li> Lorem Ipsum, kısaca Lipsum, masaüstü yayıncılık </li>
+<li> Lorem Ipsum, kısaca Lipsum, masaüstü yayıncılık </li>
+<li> Lorem Ipsum, kısaca Lipsum, masaüstü yayıncılık </li>
+<li> Lorem Ipsum, kısaca Lipsum, masaüstü yayıncılık </li>
+<li> Lorem Ipsum, kısaca Lipsum, masaüstü yayıncılık </li>
+<li> Lorem Ipsum, kısaca Lipsum, masaüstü yayıncılık </li>
+<li> Lorem Ipsum, kısaca Lipsum, masaüstü yayıncılık </li>
+<li> Lorem Ipsum, kısaca Lipsum, masaüstü yayıncılık </li>
+<li> Lorem Ipsum, kısaca Lipsum, masaüstü yayıncılık </li>
+<li> Lorem Ipsum, kısaca Lipsum, masaüstü yayıncılık </li>
+<li> Lorem Ipsum, kısaca Lipsum, masaüstü yayıncılık </li>
+<li> Lorem Ipsum, kısaca Lipsum, masaüstü yayıncılık </li>
+<li> Lorem Ipsum, kısaca Lipsum, masaüstü yayıncılık </li>
+<li> Lorem Ipsum, kısaca Lipsum, masaüstü yayıncılık </li>
+<li> Lorem Ipsum, kısaca Lipsum, masaüstü yayıncılık </li>
+<li> Lorem Ipsum, kısaca Lipsum, masaüstü yayıncılık </li> 
+	</div>
+</div>
 
 <img onclick="MenuStart();" id="MenuBtn" class="pulse" src="https://bestill.online/img/btn.png">
 
@@ -238,6 +280,9 @@ document.querySelector('div').scrollTop = 0;
     if (MenuBtn.src === "https://bestill.online/img/btn.png") {
         MenuBtn.src = "https://bestill.online/img/btn1.png";
         IFRAME.style = "display:block;";
+        QRCODE.classList.remove('full'); 
+        QRCODE.classList.remove('qrback'); 
+        popup.hidden = true;
 		if (canClick) {
 		location.reload();
 		}
