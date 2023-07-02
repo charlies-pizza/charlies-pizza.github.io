@@ -11,23 +11,23 @@
 
 <style>
 body, html {
-  margin: 0;
-  padding: 0;
-  background-color: #11366e;
-  font-family: Arial, sans-serif;
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-  position: fixed;
-  top:0;
-  left:0;
+	margin: 0;
+    padding: 0;
+    background-color: #11366e;
+    font-family: Arial, sans-serif;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    position: fixed;
+    top:0;
+    left:0;
 }
 .merkez {
-  background-color: #0d6efd24;
+	background-color: #0d6efd99;
     display: flex;
     flex-wrap: wrap;
     align-content: space-between;
-    height: 100%;
+	height: 100%;
     width: 100%;
     overflow: auto;
     align-items: stretch;
@@ -38,6 +38,8 @@ body, html {
   .merkez {
 	width:600px;
 	margin:auto;
+    box-shadow: 0px 0px 10px 1px #2196F3;
+	background-color: #0d6efd66;
   }
 }
 .standart{
@@ -73,16 +75,16 @@ body, html {
     display:none;
 }
 #MenuBtn {
-  cursor: pointer;
-  position: fixed;
-  right: 10px;
-  bottom: 40px;
-  height: 50px;
-  width: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 999;
+    cursor: pointer;
+    position: fixed;
+    right: 10px;
+    bottom: 40px;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
 }
 .header {
     display: flex;
@@ -99,14 +101,14 @@ body, html {
     height: 30px;
 }
 #mobilnr{
-  height: 45px;
-  font-size: 20px;
-  text-align: center;
-  letter-spacing: 7px;
-  border:none;
-  background-color: #2196f34d;
-  max-width:100%;
-  border-radius: 0px 0px 10px 10px;
+	height: 45px;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 7px;
+    border:none;
+    background-color: #2196f34d;
+    max-width:100%;
+ 	border-radius: 0px 0px 10px 10px;
 }
 input:focus {
     outline: 1px solid #000;
@@ -117,17 +119,18 @@ input:focus {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-	min-width: 330px;
     max-height:auto;
+	min-height: 90px;
 	font-size: 25px;
-  }
+    gap: 1.5%; 
+}
 #kupon img {
 	max-width:100%;
 }
 span.aktiv, span.pasif {
-    width: 2em;
-    height: 2em;
-    margin: 7px;
+    width: 1.7em;
+    height: 1.7em;
+	padding: 2%;
     border-radius: 50%;
     color: #ffffff;
     background-color: green;
@@ -136,7 +139,6 @@ span.aktiv, span.pasif {
     justify-content: center;
     border: 1.3px dashed #555;
 }
-
 span.pasif { 
     background-color: #dfe3ee;
     color: #3b5998;
@@ -145,6 +147,26 @@ span.pasif {
     height: 40px;
     font-size:20px;
 	background-color: #dfe3ee;
+    margin-bottom:40px;
+}
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+    min-width:300px;
+	max-width:90%;
+    width:600px;
+    height: auto;
+    z-index: 999;
+    overflow-y: auto; /* Vertical scroll */
+    overflow-x: hidden; /* Disable horizontal scroll */
+}
+li {
+    list-style-type: nummer;
+    background-color: #f6f6f6;
+    border: 1px solid grey;
+    padding: 10px;
 }
 </style>
 </head>
@@ -152,7 +174,6 @@ span.pasif {
 <body>
 <div class="merkez">
 <div class="header" id="saat"> <span id="hours"> *** </span> </div>
-<img onclick="MenuStart();" class="standart" src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExb3lubGxrZ2JsM3A1enMyd2owdmR5NnFpZW81MHI2YWRidmlubGhpbyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/5Y9uQtlpIgtARXHVgk/giphy.gif">
 
 <div class="container">
     <div class="standart" id="register"> Vennligst registrer nummeret ditt her! </div>
@@ -165,8 +186,15 @@ span.pasif {
 
 <img class="standart" id="QRCODE">
 
-<button class="standart linkBtn" onclick="toggleCentered('G')"> Lojalitetsprogram Generelle vilkår </button>
+<button class="standart linkBtn" onclick="StempelKort.hidden = !StempelKort.hidden">Vilkår for lojalitetsprogram</button>
 
+    <div id="StempelKort" class="popup" onclick="StempelKort.hidden = !StempelKort.hidden" hidden>
+		<li style="list-style-type: none;display: flex;justify-content: space-between;"> <h3>Vilkår for lojalitetsprogram</h3> <h3>❌</h3></li>
+		<li> Lorem Ipsum, kısaca Lipsum, masaüstü yayıncılık ve basın yayın sektöründe kullanılan taklit yazı bloğu olarak tanımlanır.</li>
+        <li> Lorem Ipsum, kısaca Lipsum, masaüstü yayıncılık ve basın yayın sektöründe kullanılan taklit yazı bloğu olarak tanımlanır.</li>
+		<li> Lorem Ipsum, kısaca Lipsum, masaüstü yayıncılık ve basın yayın sektöründe kullanılan taklit yazı bloğu olarak tanımlanır.</li>
+        <li> Lorem Ipsum, kısaca Lipsum, masaüstü yayıncılık ve basın yayın sektöründe kullanılan taklit yazı bloğu olarak tanımlanır.</li>
+	</div>
 <img onclick="MenuStart();" id="MenuBtn" src="https://bestill.online/img/btn.png">
 
 <iframe id="IFRAME" title="Charlie's Pizza Online Bestilling" src="https://www.foodbooking.com/api/fb/_y55_q_j"></iframe>
