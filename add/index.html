@@ -112,9 +112,12 @@ input:focus {
     justify-content: center;
     align-items: center;
 	min-width: 330px;
-    height: 100px;
+    max-height:auto;
 	font-size: 25px;
   }
+#kupon img {
+	max-width:100%;
+}
 span.aktiv, span.pasif {
     width: 2em;
     height: 2em;
@@ -143,7 +146,7 @@ span.pasif {
 <body>
 <div class="merkez">
 <div class="header" id="saat"> <span id="hours"> *** </span> </div>
-<img onclick="MenuStart();" class="standart" src="https://bestill.online/img/mavili.gif?raw=true">
+<img onclick="MenuStart();" class="standart" src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExb3lubGxrZ2JsM3A1enMyd2owdmR5NnFpZW81MHI2YWRidmlubGhpbyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/5Y9uQtlpIgtARXHVgk/giphy.gif">
 
 <div class="container">
     <div class="standart" id="register"> Vennligst registrer nummeret ditt her! </div>
@@ -193,6 +196,8 @@ span.pasif {
             for (let index = 1; index <= 5; index++) {
                 kupon.innerHTML += `${index <= value ? '<span class="aktiv">'+ index +'</span>' : '<span class="pasif">'+ index +'</span>'}`;
             }
+   if (value == 5) { kupon.innerHTML = `<img class="standart" src="https://bestill.online/img/gratis.gif?raw=true">`; }
+
         });
     }
 	mobilnr.addEventListener("input", guncelle);
@@ -226,7 +231,7 @@ function INPUT(inp) {
     if (invalidStartDigits.includes(firstDigit)) {
         register.innerHTML = `❌ Nr må begynne med 4 og 9.`;
     } else if (inp.length === 8 && !invalidStartDigits.includes(firstDigit)) {
-        register.innerHTML = `✅ Nummeret ditt er registrert!`;
+        register.innerHTML = `✔️ Nummeret ditt er registrert!`;
     } else {
         register.innerHTML = `Vennligst registrer nummeret ditt her!`;
     }
