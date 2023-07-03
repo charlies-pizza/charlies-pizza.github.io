@@ -276,11 +276,12 @@ input::-webkit-inner-spin-button {
 
     mobilnr.value = localStorage.getItem('MOBIL');
     INPUT(mobilnr.value);
-    
+        
 	for (let index = 1; index <= 5; index++) {
-        kupon.innerHTML += `<span class="aktiv">${index}</span>`;
-	}
-    
+    let green = index * 20; 
+    kupon.innerHTML += `<span class="aktiv" style="background-color: rgb(${green}, 120, ${green});">${index}</span>`;
+}
+
     function guncelle() {
 
         localStorage.setItem('MOBIL', mobilnr.value);
@@ -310,7 +311,7 @@ document.querySelector("#QRCODE").src = "https://bestill.online/img/stemp.jpg";
 </script>
 
 <script>
-            
+           
 	let canClick = false;
 	setTimeout(() => { canClick = true; }, 5 * 60 * 1000); // 6 min delay
 
