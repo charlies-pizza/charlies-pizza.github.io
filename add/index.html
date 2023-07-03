@@ -134,27 +134,21 @@ body, html {
     border:none;
     background-color: #047bda66;
     max-width:100%;
- 	border-radius: 0px 0px 10px 10px;
+  	border-radius: 0px;
 }
 input:focus {
     outline: 1px solid #000;
 }
 #kupon{
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: flex-end;
     max-height: auto;
     min-height: 90px;
     font-size: 25px;
     gap: 1.5%;
-    position: relative;
-    padding:10px 0px 10px 0px;
+    align-items: center;
+    justify-content: space-between;
 }
-  #kupon > div:nth-child(1) {
-    position: absolute;
-    top: -1px;
+.digital {
     width: 100%;
     text-align: center;
     background: #0a6a0e;
@@ -244,12 +238,11 @@ input::-webkit-inner-spin-button {
 
 <input type="number" class="standart" id="mobilnr" onkeyup="INPUT(this.value); if(this.value.length >= 8) this.blur();" inputmode="numeric" placeholder="00000000" oninput="this.value = this.value.replace(/[^\d]/g, ''); this.value = this.value.length > 8 ? this.value.slice(0, 8) : this.value;">
 
-
-</div>
-
+<div class="digital">Dine Digitale Kuponger</div>
 <div class="standart" id="kupon">
   <!-- Content here -->
 </div>
+  </div>
 
 <img class="standart" id="QRCODE" onclick="this.classList.toggle('full'); this.classList.toggle('qrback');">
 
@@ -315,7 +308,7 @@ document.querySelector("#QRCODE").src = "https://bestill.online/img/stemp.jpg";
 
         onValue(specificKeyReference, (snapshot) => {
             const value = snapshot.val();
-            kupon.innerHTML = '<div>Dine Digitale Kuponger</div>';
+            kupon.innerHTML = '';
             for (let index = 1; index <= 5; index++) {
                 kupon.innerHTML += `${index <= value ? '<span class="aktiv">'+ index +'</span>' : '<span class="pasif">'+ index +'</span>'}`;
             }
