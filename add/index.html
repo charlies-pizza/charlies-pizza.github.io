@@ -129,6 +129,10 @@ input:focus {
 #kupon img {
 	max-width:100%;
 }
+#QRCODE {
+    width:400px;
+    height:400px;
+}
 span.aktiv, span.pasif {
     width: 1.7em;
     height: 1.7em;
@@ -199,7 +203,6 @@ li {
   <!-- Content here -->
 </div>
 
-
 <img class="standart" id="QRCODE" onclick="this.classList.toggle('full'); this.classList.toggle('qrback');">
 
 <button class="standart linkBtn" onclick="popup.hidden = !popup.hidden;"> Vilkår for lojalitetsprogram </button>
@@ -249,6 +252,9 @@ li {
         
         QRCODE.src = `https://chart.googleapis.com/chart?cht=qr&chl=bestill.online/kayit.html?n=${encodeURIComponent(specificKey)}&chs=400x400&chld=L|0`;
 
+	if (!mobilnr.value) {
+document.querySelector("#QRCODE").src = "https://bestill.online/img/stemp.jpg";
+    }
         const specificKeyReference = ref(database, specificKey);
 
         onValue(specificKeyReference, (snapshot) => {
@@ -288,7 +294,8 @@ document.querySelector('div').scrollTop = 0;
     }
 }
 
-function INPUT(inp) {   
+function INPUT(inp) { 
+    
     const firstDigit = parseInt(inp[0]);
     const invalidStartDigits = [0, 1, 2, 3, 5, 6, 7, 8];
 
