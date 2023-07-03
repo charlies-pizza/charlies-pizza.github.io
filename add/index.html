@@ -277,6 +277,10 @@ input::-webkit-inner-spin-button {
     mobilnr.value = localStorage.getItem('MOBIL');
     INPUT(mobilnr.value);
     
+	for (let index = 1; index <= 5; index++) {
+        kupon.innerHTML += `<span class="aktiv">${index}</span>`;
+	}
+    
     function guncelle() {
 
         localStorage.setItem('MOBIL', mobilnr.value);
@@ -306,10 +310,6 @@ document.querySelector("#QRCODE").src = "https://bestill.online/img/stemp.jpg";
 </script>
 
 <script>
-
-	for (let index = 1; index <= 5; index++) {
-                kupon.innerHTML += `${index <= 5 ? '<span class="aktiv">'+ index +'</span>' : '<span class="pasif">'+ index +'</span>'}`;
-            }
             
 	let canClick = false;
 	setTimeout(() => { canClick = true; }, 5 * 60 * 1000); // 6 min delay
