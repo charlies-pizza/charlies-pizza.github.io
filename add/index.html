@@ -76,7 +76,7 @@ body, html {
     background-color: #3b3a3a;
     display:none;
 }
-#MenuBtn {
+#MenuBtn, .pulse {
     cursor: pointer;
     position: fixed;
     right: 10px;
@@ -87,6 +87,30 @@ body, html {
     align-items: center;
     justify-content: center;
     z-index: 999;
+}
+.pulse::before, .pulse::after {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  box-shadow: 0 0 5px 2px #f00;
+  animation: pulse 2s infinite;
+}
+
+.pulse::after {
+  animation-delay: 1s;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
 }
 .header {
     display: flex;
@@ -192,6 +216,7 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+
 </style>
 </head>
 
@@ -233,7 +258,9 @@ input::-webkit-inner-spin-button {
 	</div>
 </div>
 
-<img onclick="MenuStart();" id="MenuBtn" class="pulse" src="https://bestill.online/img/btn.png">
+<div onclick="MenuStart();" id="MenuBtn" class="pulse">
+    <img id="MenuBtn1" src="https://bestill.online/img/btn.png" style="width: 100%; height: auto;">
+</div>
 
 <iframe id="IFRAME" title="Charlie's Pizza Online Bestilling" src="https://www.foodbooking.com/api/fb/_y55_q_j"></iframe>
 
@@ -286,8 +313,8 @@ document.querySelector("#QRCODE").src = "https://bestill.online/img/stemp.jpg";
 function MenuStart() {
 document.querySelector('div').scrollTop = 0;
 
-    if (MenuBtn.src === "https://bestill.online/img/btn.png") {
-        MenuBtn.src = "https://bestill.online/img/btn1.png";
+    if (MenuBtn1.src === "https://bestill.online/img/btn.png") {
+        MenuBtn1.src = "https://bestill.online/img/btn1.png";
         IFRAME.style = "display:block;";
         QRCODE.classList.remove('full'); 
         QRCODE.classList.remove('qrback'); 
@@ -297,7 +324,7 @@ document.querySelector('div').scrollTop = 0;
 		}
     } else {
 		IFRAME.style = "display:none;";
-        MenuBtn.src = "https://bestill.online/img/btn.png";
+        MenuBtn1.src = "https://bestill.online/img/btn.png";
     }
 }
 
