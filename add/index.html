@@ -124,15 +124,15 @@ body, html {
     display: flex;
 	align-items: center;
     justify-content: center;
-    height: 35px;
+    height: 30px;
 }
 #mobilnr{
-	height: 50px;
+	height: 45px;
     font-size: 20px;
     text-align: center;
     letter-spacing: 7px;
     border:none;
-    background-color: #2196f34d;
+    background-color: #047bda66;
     max-width:100%;
  	border-radius: 0px 0px 10px 10px;
 }
@@ -176,11 +176,11 @@ span.pasif {
 .linkBtn {
     height: 50px;
     font-size: 20px;
-    background-color: #0d1a80;
+    background-color: #132799;
     margin-bottom: 40px;
     cursor: pointer;
-    color: white;
     border: none;
+    color: white;
 }
 .full{
 	position: fixed;
@@ -229,9 +229,11 @@ input::-webkit-inner-spin-button {
 <div class="header" id="saat"> <span id="hours"> *** </span> </div>
 
 <div class="container">
-<div class="standart" id="register"> Vennligst registrer nummeret ditt her! </div>
+    <div class="standart" id="register"> Vennligst registrer nummeret ditt her! </div>
 
 <input type="number" class="standart" id="mobilnr" onkeyup="INPUT(this.value); if(this.value.length >= 8) this.blur();" inputmode="numeric" placeholder="00000000" oninput="this.value = this.value.replace(/[^\d]/g, ''); this.value = this.value.length > 8 ? this.value.slice(0, 8) : this.value;">
+
+
 </div>
 
 <div class="standart" id="kupon">
@@ -240,7 +242,7 @@ input::-webkit-inner-spin-button {
 
 <img class="standart" id="QRCODE" onclick="this.classList.toggle('full'); this.classList.toggle('qrback');">
 
-<button class="standart linkBtn" onclick="popup.hidden = !popup.hidden;"> Vilkår for lojalitetsprogram </button>
+<button class="standart linkBtn" onclick="popup.hidden = !popup.hidden;">» Vilkår for lojalitetsprogram «</button>
 
 <div id="popup" class="back" onclick="popup.hidden = !popup.hidden" hidden>
 
