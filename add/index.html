@@ -227,7 +227,8 @@ input::-webkit-inner-spin-button {
 <div class="container">
     <div class="standart" id="register"> Vennligst registrer nummeret ditt her! </div>
 
-<input type="number" class="standart" id="mobilnr" onkeyup="INPUT(this.value);" inputmode="numeric" placeholder="00000000" oninput="this.value = this.value.replace(/[^\d]/g, ''); this.value = this.value.length > 8 ? this.value.slice(0, 8) : this.value;">
+<input type="number" class="standart" id="mobilnr" onkeyup="INPUT(this.value); if(this.value.length >= 8) this.blur();" inputmode="numeric" placeholder="00000000" oninput="this.value = this.value.replace(/[^\d]/g, ''); this.value = this.value.length > 8 ? this.value.slice(0, 8) : this.value;">
+
 
 </div>
 
