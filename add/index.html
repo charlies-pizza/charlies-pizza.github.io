@@ -144,11 +144,23 @@ input:focus {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
-    max-height:auto;
-	min-height: 90px;
-	font-size: 25px;
-    gap: 1.5%; 
+    align-items: flex-end;
+    max-height: auto;
+    min-height: 90px;
+    font-size: 25px;
+    gap: 1.5%;
+    position: relative;
+    padding:10px 0px 10px 0px;
+}
+  #kupon > div:nth-child(1) {
+    position: absolute;
+    top: -1px;
+    width: 100%;
+    text-align: center;
+    background: #0a6a0e;
+    color:white;
+    font-size: 20px;
+    padding:5px 0px 5px 0px;
 }
 #kupon img {
 	max-width:100%;
@@ -163,7 +175,7 @@ span.aktiv, span.pasif {
 	padding: 2%;
     border-radius: 50%;
     color: #ffffff;
-    background-color: green;
+    background-color: #1c9f21;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -220,7 +232,6 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
-
 </style>
 </head>
 
@@ -304,7 +315,7 @@ document.querySelector("#QRCODE").src = "https://bestill.online/img/stemp.jpg";
 
         onValue(specificKeyReference, (snapshot) => {
             const value = snapshot.val();
-            kupon.innerHTML = '';
+            kupon.innerHTML = '<div>Dine Digitale Kuponger</div>';
             for (let index = 1; index <= 5; index++) {
                 kupon.innerHTML += `${index <= value ? '<span class="aktiv">'+ index +'</span>' : '<span class="pasif">'+ index +'</span>'}`;
             }
