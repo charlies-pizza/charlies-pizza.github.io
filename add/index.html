@@ -218,9 +218,15 @@ li {
     border: none;
     color: white;
 }
+.linkBtn1 {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   #QRCODE{
     border-radius:10px;
-  }
+}
 </style>
 </head>
 
@@ -229,7 +235,7 @@ li {
 <div class="header" id="saat"> <span id="hours"> *** </span> </div>
 
 <div class="container">
-
+<div class="standart linkBtn linkBtn1">» Bestill Pizza her «</div>
 <div id="register" class="standart baslik" style="border-radius:10px 10px 0px 0px;"> Vennligst registrer nummeret ditt her!1 </div>
 
 <input type="number" class="standart baslik inp" id="mobilnr" onkeyup="INPUT(this.value); if(this.value.length >= 8) this.blur();" inputmode="numeric" placeholder="00000000" oninput="this.value = this.value.replace(/[^\d]/g, ''); this.value = this.value.length > 8 ? this.value.slice(0, 8) : this.value;">
