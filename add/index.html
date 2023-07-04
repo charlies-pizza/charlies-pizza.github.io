@@ -308,7 +308,7 @@ document.querySelector("#QRCODE").src = "https://bestill.online/img/stemp.jpg";
             for (let index = 1; index <= 5; index++) {
                 kupon.innerHTML += `${index <= value ? '<span class="aktiv">'+ index +'</span>' : '<span class="pasif">'+ index +'</span>'}`;
             }
-   if (value == 5) { kupon.innerHTML = `<img class="kupon-img" src="https://bestill.online/img/gratis.gif?raw=true">`; }
+   if (value == 5) { kupon.style ="height: auto;"; kupon.innerHTML = `<img class="kupon-img" src="https://bestill.online/img/gratis.gif?raw=true">`; }
 
         });
     }
