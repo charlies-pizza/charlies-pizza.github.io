@@ -11,7 +11,7 @@
 
 <style>
 body, html {
-	margin: 0;
+    margin: 0;
     padding: 0;
     background-color: #11366e;
     font-family: Arial, sans-serif;
@@ -23,11 +23,11 @@ body, html {
     left:0;
 }
 .merkez {
-	background-color: #0d6efd99;
+    background-color: #0d6efd99;
     display: flex;
     flex-wrap: wrap;
     align-content: space-between;
-	height: 100%;
+    height: 100%;
     width: 100%;
     overflow: auto;
     align-items: stretch;
@@ -36,30 +36,32 @@ body, html {
 }
 @media (min-width: 500px) {
   .merkez {
-  display:flex;
-  align-content: stretch;
-	width:500px;
-	margin:auto;
+    display:flex;
+    align-content: stretch;
+    width:500px;
+    margin:auto;
     box-shadow: 0px 0px 10px 1px #2196F3;
-	background-color: #0d6efd66;
+    background-color: #0d6efd66;
   }
+}
+.container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
 }
 .standart{
     min-width:300px;
-	max-width:90%;
+	  max-width:90%;
     width:400px;
-    border-radius:10px;
-    background-color: #ffffff;
 }
-.container {
-	display: flex;
-    border-radius: 10px;
-    background-color: #ffffff;
-    align-items: center;
+.header {
+    display: flex;
+	  align-items: center;
     justify-content: center;
-    flex-direction: column;
-    min-width:300px;
-	max-width:90%;
+    width: 100%;
+    height: 50px;
+    margin: 0;
 }
 #IFRAME {
     position: fixed;
@@ -88,19 +90,17 @@ body, html {
     z-index: 999;
 }
 .pulse::before, .pulse::after {
-  content: '';
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  border-radius: 50%;
-  box-shadow: 0 0 5px 2px #f00;
-  animation: pulse 2s infinite;
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    box-shadow: 0 0 5px 2px #f00;
+    animation: pulse 2s infinite;
 }
-
 .pulse::after {
-  animation-delay: 1s;
+    animation-delay: 1s;
 }
-
 @keyframes pulse {
   0% {
     transform: scale(1);
@@ -111,56 +111,15 @@ body, html {
     opacity: 0;
   }
 }
-.header {
-    display: flex;
-	align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 50px;
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
     margin: 0;
-}
-#register, .digital {
-    display: flex;
-	  align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 40px;
-    text-align: center;
-    background: #9C27B0;
-    color:white;
-    font-size: 18px;
-}
-#mobilnr{
-  	height: 50px;
-    font-size: 20px;
-    text-align: center;
-    letter-spacing: 7px;
-    border:none;
-    background-color: #c4e0f6;
-    max-width:100%;
-  	border-radius: 0px;
-}
-#mobilnr:focus {
-    outline: 1px solid #000;
-    background-color: #a1d2f8;
-}
-#kupon{
-display: flex;
-    max-height: auto;
-    min-height: 90px;
-    font-size: 25px;
-    gap: 1.5%;
-    align-items: center;
-    justify-content: space-around;
-}
-#QRCODE {
-    width:400px;
-    height:auto;
 }
 span.aktiv, span.pasif {
     width: 1.7em;
     height: 1.7em;
-	padding: 2%;
+    padding: 2%;
     border-radius: 50%;
     color: #ffffff;
     background-color: #1c9f21;
@@ -170,23 +129,14 @@ span.aktiv, span.pasif {
     border: 1.3px dashed #555;
 }
 span.pasif { 
-    background-color: #dfe3ee;
+    background-color: #fffbd4;
     color: #3b5998;
 }
-.linkBtn {
-    height: 50px;
-    font-size: 20px;
-    background-color: #132799;
-    margin-bottom: 40px;
-    cursor: pointer;
-    border: none;
-    color: white;
-}
 .full{
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 100%;
     z-index: 99;
     min-width: 300px;
@@ -197,28 +147,77 @@ span.pasif {
     border-radius:10px;
 }
 .back{
-	position: fixed;
-	top: 0;
-	left: 0;
-  background-color: black;
-	padding:100vh;
-  
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: black;
+    padding:100vh;
 }
 li {
     background-color: #f6f6f6;
     border: 1px solid grey;
     padding: 15px;
 }
-.qrback{
-  background-color: black;
-	padding:100%;
-	height: auto;
-  top: 40%;
+.qrback {
+    width:400px;
+    height:auto;
+    background-color: black;
+	  padding:100%;
+    height: auto;
+    top: 40%;
 }
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
+  .baslik {
+    background-color: black;
+    color: white;
+    height: 50px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  input:focus {
+    outline: 1px solid #fff;
+}
+  input {
+    display: block;
     margin: 0;
+    padding: 0;
+}
+  #mobilnr {
+    height: 50px;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 7px;
+    border: none;
+    background-color: #ccdee0;
+    width: 400px;
+    border-radius: 0px;
+    color:black;
+}
+  #kupon{
+    max-height: auto;
+    min-height: 90px;
+    font-size: 25px;
+    background-color: #ccdee0;
+    display: flex;
+    gap: 1.5%;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius:0px 0px 10px 10px;
+}
+  #kupon img{
+    width: 100%;
+    border-radius:0px 0px 10px 10px;
+  }
+  .linkBtn {
+    height: 50px;
+    font-size: 20px;
+    background-color: #132799;
+    margin-bottom: 40px;
+    border-radius:10px;
+    cursor: pointer;
+    border: none;
+    color: white;
 }
 </style>
 </head>
@@ -228,12 +227,14 @@ input::-webkit-inner-spin-button {
 <div class="header" id="saat"> <span id="hours"> *** </span> </div>
 
 <div class="container">
-    <div id="register"> Vennligst registrer nummeret ditt her!1 </div>
 
-<input type="number" class="standart" id="mobilnr" onkeyup="INPUT(this.value); if(this.value.length >= 8) this.blur();" inputmode="numeric" placeholder="00000000" oninput="this.value = this.value.replace(/[^\d]/g, ''); this.value = this.value.length > 8 ? this.value.slice(0, 8) : this.value;">
+<div id="register" class="standart baslik" style="border-radius:10px 10px 0px 0px;"> Vennligst registrer nummeret ditt her!1 </div>
 
-<div class="digital">Dine Digitale Kuponger</div>
-<div class="standart kupon-img" id="kupon">
+<input type="number" class="standart baslik inp" id="mobilnr" onkeyup="INPUT(this.value); if(this.value.length >= 8) this.blur();" inputmode="numeric" placeholder="00000000" oninput="this.value = this.value.replace(/[^\d]/g, ''); this.value = this.value.length > 8 ? this.value.slice(0, 8) : this.value;">
+
+<div class="standart baslik">Dine Digitale Kuponger</div>
+  
+<div class="standart" id="kupon">
   <!-- Content here -->
 </div>
   </div>
@@ -267,7 +268,7 @@ input::-webkit-inner-spin-button {
 
 <iframe id="IFRAME" title="Charlie's Pizza Online Bestilling" src="https://www.foodbooking.com/api/fb/_y55_q_j"></iframe>
 
-  </div>
+</div>
 
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
@@ -306,7 +307,7 @@ document.querySelector("#QRCODE").src = "https://bestill.online/img/stemp.jpg";
             for (let index = 1; index <= 5; index++) {
                 kupon.innerHTML += `${index <= value ? '<span class="aktiv">'+ index +'</span>' : '<span class="pasif">'+ index +'</span>'}`;
             }
-   if (value == 5) { kupon.innerHTML = `<div>Gratulerer! Du har opptjent din sjette store pizza. Vennligst vis frem QR-koden din til vårt personale for å hente den gratis pizzaen. Nyt måltidet ditt!</div>`; }
+   if (value == 5) { kupon.innerHTML = `<img class="kupon-img" src="https://bestill.online/img/gratis.gif?raw=true">`; }
 
         });
     }
@@ -382,7 +383,6 @@ function updateStatus() {
 }
 updateStatus();
 </script>
-
 
 </body>
 </html>
