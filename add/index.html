@@ -209,9 +209,12 @@ li {
     color:black;
 }
   .linkBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 50px;
     font-size: 20px;
-    background-image: radial-gradient(circle, #2196F3, #2196F3, #0f2084);
+    background-image: radial-gradient(circle, #219dff, #219dff, #0f208412);
     box-shadow: 1px 11px 20px 3px rgb(0 0 0 / 66%);
     margin-bottom: 40px;
     border-radius:10px;
@@ -221,11 +224,22 @@ li {
 }
 .linkBtn1 {
     font-size: 25px;
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+    height: 60px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
   #QRCODE{
     border-radius:10px;
 }
@@ -250,8 +264,8 @@ li {
   </div>
 
 <img class="standart" id="QRCODE" onclick="this.classList.toggle('full'); this.classList.toggle('qrback'); document.querySelector('div').scrollTop = document.querySelector('div').scrollHeight;">
-
-<button class="standart linkBtn" onclick="popup.hidden = !popup.hidden;">» Vilkår for lojalitetsprogram «</button>
+  
+<div class="standart linkBtn"  onclick="popup.hidden = !popup.hidden;">» Vilkår for lojalitetsprogram «</div>
 
 <div id="popup" class="back" onclick="popup.hidden = !popup.hidden" hidden>
 
