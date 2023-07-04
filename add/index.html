@@ -186,7 +186,7 @@ li {
     top: 40%;
 }
   .baslik {
-    background-color: #13279996;
+background: radial-gradient(circle, #13279996, #13279996);
     color: white;
     height: 50px;
     font-size: 18px;
@@ -239,7 +239,7 @@ li {
 <div class="standart linkBtn linkBtn1"  onclick="MenuStart();">» Bestill Pizza her «</div>
 <div id="register" class="standart baslik" style="border-radius:10px 10px 0px 0px;"> Vennligst registrer nummeret ditt her!1 </div>
 
-<input type="number" class="standart baslik inp" id="mobilnr" onkeyup="INPUT(this.value); if(this.value.length >= 8) this.blur();" inputmode="numeric" placeholder="00000000" oninput="this.value = this.value.replace(/[^\d]/g, ''); this.value = this.value.length > 8 ? this.value.slice(0, 8) : this.value;">
+<input type="number" class="standart inp" id="mobilnr" onkeyup="INPUT(this.value); if(this.value.length >= 8) this.blur();" inputmode="numeric" placeholder="00000000" oninput="this.value = this.value.replace(/[^\d]/g, ''); this.value = this.value.length > 8 ? this.value.slice(0, 8) : this.value;">
 
 <div class="standart baslik">Dine Digitale Kuponger</div>
   
