@@ -10,6 +10,10 @@
 <link rel="icon" type="image/png" href="https://bestill.online/img/icon-s.png">
 
 <style>
+* {
+    margin: 0;
+    padding: 0;
+}
 body, html {
     margin: 0;
     padding: 0;
@@ -116,10 +120,24 @@ body, html {
     -webkit-appearance: none;
     margin: 0;
 }
+#kupon{
+    height: 80px;
+    font-size: 25px;
+    background-color: #ccdee0;
+    display: flex;
+    gap: 1%;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius:0px 0px 10px 10px;
+}
+  #kupon img{
+    width: 100%;
+    border-radius:0px 0px 10px 10px;
+  }
 span.aktiv, span.pasif {
-    width: 1.7em;
-    height: 1.7em;
-    padding: 2%;
+    width: 1em;
+    height: 1em;
+    padding: 4%;
     border-radius: 50%;
     color: #ffffff;
     background-color: #1c9f21;
@@ -176,12 +194,7 @@ li {
     justify-content: center;
 }
   input:focus {
-    outline: 1px solid #fff;
-}
-  input {
-    display: block;
-    margin: 0;
-    padding: 0;
+    outline: 1px solid red;
 }
   #mobilnr {
     height: 50px;
@@ -194,21 +207,6 @@ li {
     border-radius: 0px;
     color:black;
 }
-  #kupon{
-    max-height: auto;
-    min-height: 90px;
-    font-size: 25px;
-    background-color: #ccdee0;
-    display: flex;
-    gap: 1.5%;
-    align-items: center;
-    justify-content: space-evenly;
-    border-radius:0px 0px 10px 10px;
-}
-  #kupon img{
-    width: 100%;
-    border-radius:0px 0px 10px 10px;
-  }
   .linkBtn {
     height: 50px;
     font-size: 20px;
@@ -219,6 +217,9 @@ li {
     border: none;
     color: white;
 }
+  #QRCODE{
+    border-radius:10px;
+  }
 </style>
 </head>
 
