@@ -179,8 +179,8 @@ li {
     top: 40%;
 }
   .baslik {
-background-image: radial-gradient(circle, #1b4f7987, #1261a082, #2196f382);
-    border:1px solid blue;
+background-image: radial-gradient(circle, #0f1c68, #293264ed, #192980b8);
+    border: 1px solid black;
     color: white;
     height: 50px;
     font-size: 18px;
@@ -228,6 +228,8 @@ background-image: radial-gradient(circle, #1b4f7987, #1261a082, #2196f382);
     100% { transform: scale(1); }
 }
   #QRCODE{
+    border: 1px solid black;
+    border-top: none;
     border-radius:0px 0px 10px 10px;
 }
   .qr-baslik {
@@ -245,11 +247,11 @@ background-image: radial-gradient(circle, #1b4f7987, #1261a082, #2196f382);
 
 <div class="container">
 <div class="standart linkBtn linkBtn1"  onclick="MenuStart();">» Bestill Pizza Her «</div>
-<div id="register" class="standart baslik" style="border-radius:10px 10px 0px 0px;"> Vennligst registrer nummeret ditt her!1 </div>
+<div id="register" class="standart baslik" style="border-radius:10px 10px 0px 0px;"> Vennligst registrer nummeret ditt her! ⬇️ </div>
 
 <input type="number" class="standart inp" id="mobilnr" onkeyup="INPUT(this.value); if(this.value.length >= 8) this.blur();" inputmode="numeric" placeholder="00000000" oninput="this.value = this.value.replace(/[^\d]/g, ''); this.value = this.value.length > 8 ? this.value.slice(0, 8) : this.value;">
 
-<div class="standart baslik">Dine Digitale Kuponger</div>
+<div class="standart baslik">Dine Digitale Kuponger ⬇️</div>
   
 <div class="standart" id="kupon">
   <!-- Content here -->
