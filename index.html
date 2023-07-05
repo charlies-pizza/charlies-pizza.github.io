@@ -350,8 +350,8 @@ document.querySelector('div').scrollTop = 0;
         QRCODE.classList.remove('full'); 
         QRCODE.classList.remove('qrback'); 
         popup.hidden = true;
+        if (canClick) { location.reload(); }
     } else {
-    if (canClick) { location.reload(); }
 		IFRAME.style = "display:none;";
     MenuBtn1.src = "https://bestill.online/img/btn.png";
     }
