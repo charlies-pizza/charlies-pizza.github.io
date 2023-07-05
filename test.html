@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html>
 <body>
-
+<p id="demo"></p>
 <button onclick="triggerVibration()">Titret</button>
 
 <script>
-function triggerVibration() {
-    if ('vibrate' in navigator) {
-        // Tek bir titreşim
-        navigator.vibrate(1000); // Cihazı 1000 milisaniye (1 saniye) boyunca titretir
-    } else {
-        console.log("Bu tarayıcı titreşim API'sını desteklemiyor");
+document.getElementById('vibrateButton').addEventListener('click', function() {
+    if (!('vibrate' in navigator)) {
+        alert('Maalesef, tarayıcınız titreşim özelliğini desteklemiyor.');
+        return;
     }
-}
+
+    var pattern = [1000, 500, 1500];  // Titreşim desenini belirle (1s titreşim, 0.5s dur, 1.5s titreşim)
+    navigator.vibrate(pattern);
+});
+
 </script>
 
 </body>
