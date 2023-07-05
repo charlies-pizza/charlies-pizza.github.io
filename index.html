@@ -186,7 +186,8 @@ li {
     top: 40%;
 }
   .baslik {
-    background-image: radial-gradient(circle, #3F51B5, #3F51B5, #042c4c);
+background-image: radial-gradient(circle, #1b4f7987, #1261a082, #2196f382);
+    border:1px solid blue;
     color: white;
     height: 50px;
     font-size: 18px;
@@ -215,7 +216,7 @@ li {
     height: 50px;
     font-size: 20px;
     background-image: radial-gradient(circle, #219dff, #219dff, #0f208412);
-    box-shadow: 1px 11px 20px 3px rgb(0 0 0 / 66%);
+    box-shadow: 0px 7px 20px 3px rgb(0 0 0 / 66%);
     margin-bottom: 40px;
     border-radius:10px;
     cursor: pointer;
@@ -223,6 +224,7 @@ li {
     color: white;
 }
 .linkBtn1 {
+    font-weight: bold;
     font-size: 25px;
     height: 60px;
     animation: pulse1 1s infinite;
@@ -251,7 +253,7 @@ li {
 <div class="header" id="saat"> <span id="hours"> *** </span> </div>
 
 <div class="container">
-<div class="standart linkBtn linkBtn1"  onclick="MenuStart();">» Bestill Pizza her «</div>
+<div class="standart linkBtn linkBtn1"  onclick="MenuStart();">» Bestill Pizza Her «</div>
 <div id="register" class="standart baslik" style="border-radius:10px 10px 0px 0px;"> Vennligst registrer nummeret ditt her!1 </div>
 
 <input type="number" class="standart inp" id="mobilnr" onkeyup="INPUT(this.value); if(this.value.length >= 8) this.blur();" inputmode="numeric" placeholder="00000000" oninput="this.value = this.value.replace(/[^\d]/g, ''); this.value = this.value.length > 8 ? this.value.slice(0, 8) : this.value;">
