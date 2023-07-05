@@ -238,6 +238,25 @@ background-color: #0f4079;
     min-width: 300px;
     max-width: 400px;
   }
+  /* Scrollbar'ın genişliği ve yüksekliği */
+::-webkit-scrollbar {
+    width: 15px;
+    height: 15px;
+}
+/* Scrollbar'ın arka planı */
+::-webkit-scrollbar-track {
+    background-color: #000;
+}
+/* Scrollbar'ın hareketli kısmı */
+::-webkit-scrollbar-thumb {
+    background-color: #c6c6c6;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: #a0a0a5;
+}
 </style>
 </head>
 
@@ -260,9 +279,9 @@ background-color: #0f4079;
 </div>
 <div class="container">
 <div class="baslik qr-baslik">Skann QR-koden i kassen for kupong!</div>
-<img class="standart" id="QRCODE" onclick="this.classList.toggle('full'); this.classList.toggle('qrback'); document.querySelector('div').scrollTop = document.querySelector('div').scrollHeight;">
+<img class="standart" id="QRCODE" onclick="this.classList.toggle('full'); this.classList.toggle('qrback'); document.querySelector('div').scrollTop = document.querySelector('div').scrollHeight;>
 </div>
-<div class="standart linkBtn"  onclick="popup.hidden = !popup.hidden;">» Vilkår for lojalitetsprogram «</div>
+<div class="standart linkBtn"  onclick="popup.hidden = !popup.hidden = true;">» Vilkår for lojalitetsprogram «</div>
 
 <div id="popup" class="back" onclick="popup.hidden = !popup.hidden" hidden>
 
