@@ -2,18 +2,29 @@
 <html>
 <body>
 
-<p id="demo"></p>
+
+<p id="demo">test</p>
 
 <script>
-fetch('https://charlies-pizza.github.io/CNAME')
-    .then(response => response.text())
-    .then(data => {
-        // data içinde CNAME dosyasının içeriği var
-document.getElementById("demo").innerHTML = data;
-    })
-    .catch((error) => {
-        console.error('Hata:', error);
-    });
+const MAX_RELOAD = 5;  // İzin verilen maksimum yenileme sayısı
+const TIME_FRAME = 10000;  // İzlenen zaman aralığı (milisaniye cinsinden)
+
+window.addEventListener('beforeunload', function (e) {
+    let history = JSON.parse(localStorage.getItem('reload_history')) || [];
+    const currentTime = Date.now();
+
+    // Zaman aralığının dışındaki eski yenilemeleri kaldır
+    history = history.filter(time => currentTime - time <= TIME_FRAME);
+
+    history.push(currentTime);
+    localStorage.setItem('reload_history', JSON.stringify(history));
+
+    if (history.length > MAX_RELOAD) {
+        alert("Çok hızlı bir şekilde sayfayı yeniliyorsunuz! Lütfen bir süre bekleyin.");
+    }
+});
+
+
 </script>
 
 </body>
