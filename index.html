@@ -230,13 +230,12 @@ background-color: #0f4079;
   #QRCODE{
     border: 1px solid black;
     border-top: none;
-    border-radius:0px 0px 10px 10px;
 }
   .qr-baslik {
-    border-radius: 10px 10px 0px 0px;
     width: 90%;
     min-width: 300px;
     max-width: 400px;
+    font-size:17px;
   }
 </style>
 </head>
@@ -259,8 +258,9 @@ background-color: #0f4079;
 
 </div>
 <div class="container">
-<div class="baslik qr-baslik">Skann QR-koden i kassen for kupong!</div>
+<div class="baslik qr-baslik" style="border-radius: 10px 10px 0px 0px;">QR-koden skannes ved kassen!</div>
 <img class="standart" id="QRCODE" onclick="this.classList.toggle('full'); this.classList.toggle('qrback'); document.querySelector('div').scrollTop = document.querySelector('div').scrollHeight;">
+<div class="baslik qr-baslik" style="border-radius: 0px 0px 10px 10px;">Klikk på bildet for å vise QR-koden!</div>
 </div>
 <div class="standart linkBtn"  onclick="popup.hidden = !popup.hidden;">» Vilkår for lojalitetsprogram «</div>
 
@@ -304,8 +304,8 @@ background-color: #0f4079;
     INPUT(mobilnr.value);
         
 	for (let index = 1; index <= 5; index++) {
-    let green = index * 20; 
-    kupon.innerHTML += `<span class="aktiv" style="background-color: rgb(${green}, 120, ${green});">${index}</span>`;
+    let green = index * 33; 
+    kupon.innerHTML += `<span class="aktiv" style="background-color: rgb(${green}, 160, ${green});">${index}</span>`;
 }
 
     function guncelle() {
