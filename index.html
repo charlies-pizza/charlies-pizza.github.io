@@ -365,9 +365,9 @@ function INPUT(inp) {
     const invalidStartDigits = [0, 1, 2, 3, 5, 6, 7, 8];
 
     if (invalidStartDigits.includes(firstDigit)) {
-        register.innerHTML = `❌ Nr må begynne med 4 og 9.`;
+        register.innerHTML = `❎ Nr må begynne med 4 og 9.`;
     } else if (inp.length === 8 && !invalidStartDigits.includes(firstDigit)) {
-        register.innerHTML = `✔️ Nummeret ditt er registrert!`;
+        register.innerHTML = `✅ Nummeret ditt er registrert!`;
     } else {
         register.innerHTML = `Vennligst registrer nummeret ditt her!`;
     }
