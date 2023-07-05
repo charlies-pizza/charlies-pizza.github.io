@@ -102,18 +102,11 @@ body, html {
     box-shadow: 0 0 5px 2px #f00;
     animation: pulse 2s infinite;
 }
-.pulse::after {
-    animation-delay: 1s;
-}
+.pulse::after { animation-delay: 1s; }
+  
 @keyframes pulse {
-  0% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(1.5);
-    opacity: 0;
-  }
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.5); opacity: 0; }
 }
   input::-webkit-outer-spin-button,
   input::-webkit-inner-spin-button {
@@ -229,22 +222,20 @@ background-image: radial-gradient(circle, #1b4f7987, #1261a082, #2196f382);
     height: 60px;
     animation: pulse1 1s infinite;
 }
-
 @keyframes pulse1 {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.02);
-    }
-    100% {
-        transform: scale(1);
-    }
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
 }
-
   #QRCODE{
-    border-radius:10px;
+    border-radius:0px 0px 10px 10px;
 }
+  .qr-baslik {
+    border-radius: 10px 10px 0px 0px;
+    width: 90%;
+    min-width: 300px;
+    max-width: 400px;
+  }
 </style>
 </head>
 
@@ -263,10 +254,12 @@ background-image: radial-gradient(circle, #1b4f7987, #1261a082, #2196f382);
 <div class="standart" id="kupon">
   <!-- Content here -->
 </div>
-  </div>
 
+</div>
+<div class="container">
+<div class="baslik qr-baslik">Skann QR-koden for å registrere bonus</div>
 <img class="standart" id="QRCODE" onclick="this.classList.toggle('full'); this.classList.toggle('qrback'); document.querySelector('div').scrollTop = document.querySelector('div').scrollHeight;">
-  
+</div>
 <div class="standart linkBtn"  onclick="popup.hidden = !popup.hidden;">» Vilkår for lojalitetsprogram «</div>
 
 <div id="popup" class="back" onclick="popup.hidden = !popup.hidden" hidden>
