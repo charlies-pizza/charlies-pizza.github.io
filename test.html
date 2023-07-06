@@ -1,21 +1,38 @@
-<!DOCTYPE html>
 <html>
-<body>
-<p id="demo"></p>
-<button onclick="vibrateButton()">Titret</button>
-
-<script>
-document.getElementById('vibrateButton').addEventListener('click', function() {
-    if (!('vibrate' in navigator)) {
-        alert('Maalesef, tarayıcınız titreşim özelliğini desteklemiyor.');
-        return;
+<head>
+  <style>
+    html, body {
+      height: 200%;
+      margin: 0;
     }
 
-    var pattern = [1000, 500, 1500];  // Titreşim desenini belirle (1s titreşim, 0.5s dur, 1.5s titreşim)
-    navigator.vibrate(pattern);
-});
+    body {
+      background-image: url(https://wallpapershome.com/images/wallpapers/macos-big-sur-1280x720-dark-wwdc-2020-22655.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      overflow: hidden;
+      animation: slideBackground 40s infinite linear;
+    }
 
-</script>
-
+    @keyframes slideBackground {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    .app {
+    background-color: rgba(16 18 27 / 40%);
+    min-width:300px;
+	  max-width:90%;
+    width:500px;
+    height: 100%;
+    margin:auto;
+    overflow: hidden;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  </style>
+</head>
+<body>
+ <div class="app">test</div>
 </body>
 </html>
