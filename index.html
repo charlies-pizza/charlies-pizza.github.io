@@ -1,3 +1,4 @@
+
 <html lang="nb">
 <head>
 <meta charset="UTF-8">
@@ -339,13 +340,7 @@ document.querySelector("#QRCODE").src = "https://bestill.online/img/stemp.jpg";
 </script>
 
 <script>
-       const input = document.getElementById("mobilnr");
-        const placeholderText = "+47 40000000";
-        let index = 0;
-
-    setInterval(() => {
-      input.placeholder = placeholderText.slice(0, index++ % (placeholderText.length + 1));}, 300);
-  
+ 
 	let canClick = false;
 	setTimeout(() => { canClick = true; }, 5 * 60 * 1000); // 6 min delay
 
