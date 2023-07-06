@@ -250,7 +250,7 @@ background-color: #0f4079;
 <div class="standart linkBtn linkBtn1"  onclick="MenuStart();">» Bestill Pizza Her «</div>
 <div id="register" class="standart baslik" style="border-radius:10px 10px 0px 0px;"> Vennligst registrer nummeret ditt her! </div>
 
-<input type="number" class="standart inp" id="mobilnr" onkeyup="INPUT(this.value); if(this.value.length >= 8) this.blur();" inputmode="numeric" placeholder="+4700000000" oninput="this.value = this.value.replace(/[^\d]/g, ''); this.value = this.value.length > 8 ? this.value.slice(0, 8) : this.value;">
+<input type="number" class="standart inp" id="mobilnr" onkeyup="INPUT(this.value); if(this.value.length >= 8) this.blur();" inputmode="numeric" placeholder="" oninput="this.value = this.value.replace(/[^\d]/g, ''); this.value = this.value.length > 8 ? this.value.slice(0, 8) : this.value;">
 
 <div class="standart baslik">Dine Digitale Kuponger</div>
   
@@ -339,7 +339,13 @@ document.querySelector("#QRCODE").src = "https://bestill.online/img/stemp.jpg";
 </script>
 
 <script>
+       const input = document.getElementById("mobilnr");
+        const placeholderText = "40000000";
+        let index = 0;
 
+    setInterval(() => {
+      input.placeholder = placeholderText.slice(0, index++ % (placeholderText.length + 1));}, 300);
+  
 	let canClick = false;
 	setTimeout(() => { canClick = true; }, 5 * 60 * 1000); // 6 min delay
 
