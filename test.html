@@ -1,3 +1,4 @@
+
 <html lang="nb">
 <head>
 <meta charset="UTF-8">
@@ -10,34 +11,25 @@
 <link rel="icon" type="image/png" href="https://bestill.online/img/icon-s.png">
 
 <style>
-    * {
-        margin: 0;
-        padding: 0;
-    }
-    body, html {
-        margin: 0;
-        padding: 0;
-        font-family: Arial, sans-serif;
-        height: 100%;
-        width: 100%;
-        overflow: hidden;
-        position: fixed;
-        top:0;
-        left:0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: linear-gradient(179deg, #673ab700, #3F51B5, #ffffff);
-        background-size: 400% 400%;
-        animation: gradient 5s ease infinite;
-    }
-    @keyframes gradient {
-        0% {background-position: 100% 0%;}
-        50% {background-position: 100% 50%;}
-        100% {background-position: 100% 0%;}
-    }
-    .merkez {
-          display: flex;
+* {
+    margin: 0;
+    padding: 0;
+}
+body, html {
+    margin: 0;
+    padding: 0;
+    background-color: #0c4c98;
+    font-family: Arial, sans-serif;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    position: fixed;
+    top:0;
+    left:0;
+}
+.merkez {
+    background-color: #1259ad;
+    display: flex;
     flex-wrap: wrap;
     align-content: space-between;
     height: 100%;
@@ -46,20 +38,15 @@
     align-items: stretch;
     gap: 30px;
     justify-content: center;
-      background-color: rgba(16 18 27 / 40%);
-      min-width: 300px;
-      max-width: 100%;
-      width: 600px;
-      height: 100%;
-      margin: auto;
-    }
-  @media (min-width: 600px) {
+}
+@media (min-width: 600px) {
   .merkez {
     display:flex;
     align-content: stretch;
     width:600px;
     margin:auto;
     box-shadow: 0px 0px 10px 1px black;
+    background-color: #1d5698;
   }
 }
 .container {
@@ -85,7 +72,6 @@
     position: fixed;
     top: 0;
     left: 0;
-    transition: 1s;
     z-index: 110;
     opacity: 1;
     width: 100%;
@@ -93,7 +79,7 @@
     margin: 0;
     border: none;
     background-color: #3b3a3a;
-    display:none;
+    visibility:hidden;
 }
 #MenuBtn, .pulse {
     cursor: pointer;
@@ -360,7 +346,7 @@ document.querySelector('div').scrollTop = 0;
 
     if (MenuBtn1.src === "https://bestill.online/img/btn.png") {
     MenuBtn1.src = "https://bestill.online/img/btn1.png";
-    IFRAME.style = "display:block;";
+    IFRAME.style = "visibility:visible;";
     QRCODE.classList.remove('full'); 
     QRCODE.classList.remove('qrback');
     popup.hidden = true;
