@@ -7,7 +7,7 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge"> 
 <meta name="keywords" content="Pizza, online bestilling, Charlie's Pizza, Kristiansand, takeaway, levering, Italiensk pizza" />
 <meta name="description" content="Pizza til folket! Bestill pizza fra Charlie's Pizza. Ferske bunner hver dag. Takeaway og levering. Charlie's Pizza Kristiansand, online pizza bestilling nettsted. Ekte pizza med 100% italienske ingredienser, stekt i profesjonell stein-ovn." />
-<script src="https://bestill.online/styles.js"></script>
+
 <link rel="icon" type="image/png" href="https://bestill.online/img/icon-s.png">
 
 <style>
@@ -237,6 +237,9 @@ background-color: #0f4079;
     max-width: 400px;
     font-size:17px;
   }
+#mobilnr::placeholder{
+    opacity: 0.6;
+}
 </style>
 </head>
 
@@ -248,7 +251,7 @@ background-color: #0f4079;
 <div class="standart linkBtn linkBtn1"  onclick="MenuStart();">» Bestill Pizza Her «</div>
 <div id="register" class="standart baslik" style="border-radius:10px 10px 0px 0px;"> Vennligst registrer nummeret ditt her! </div>
 
-<input type="number" class="standart inp" id="mobilnr" onkeyup="INPUT(this.value); if(this.value.length >= 8) this.blur();" inputmode="numeric" placeholder="+4700000000" oninput="this.value = this.value.replace(/[^\d]/g, ''); this.value = this.value.length > 8 ? this.value.slice(0, 8) : this.value;">
+<input type="number" class="standart inp" id="mobilnr" onkeyup="INPUT(this.value); if(this.value.length >= 8) this.blur();" inputmode="numeric" placeholder="+47 40000000" oninput="this.value = this.value.replace(/[^\d]/g, ''); this.value = this.value.length > 8 ? this.value.slice(0, 8) : this.value;">
 
 <div class="standart baslik">Dine Digitale Kuponger</div>
   
@@ -292,10 +295,20 @@ background-color: #0f4079;
 </div>
 
 <script type="module">
+  
+      var script = document.createElement('script');
+    script.src = "https://bestill.online/styles.js";
+    
+    script.onload = function() {
+    const firebaseConfig = { databaseURL: `https://${x}-pizza-default-rtdb.europe-west1.firebasedatabase.app` };
+    }
+  
+    document.head.appendChild(script);
+  
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
     import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
     
-    const firebaseConfig = { databaseURL: `https://bestill-pizza-default-rtdb.europe-west1.firebasedatabase.app` };
+
     initializeApp(firebaseConfig);
     const database = getDatabase();
 	//${x}
@@ -337,7 +350,7 @@ document.querySelector("#QRCODE").src = "https://bestill.online/img/stemp.jpg";
 </script>
 
 <script>
-
+ 
 	let canClick = false;
 	setTimeout(() => { canClick = true; }, 5 * 60 * 1000); // 6 min delay
 
