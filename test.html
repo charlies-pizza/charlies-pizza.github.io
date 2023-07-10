@@ -154,7 +154,7 @@ span.pasif {
   .full{
     display: grid;
  	  place-items: center;
-        align-content: center;
+    align-content: center;
     position: fixed;
     top: 0;
     left: 0;
@@ -168,6 +168,13 @@ span.pasif {
 }
   .on{ visibility:visible;}
   .off{ visibility:hidden;}
+  li {
+    background-color: #f6f6f6;
+    border: 1px solid grey;
+    padding: 15px;
+    width: 100%;
+    list-style-type:none;
+}
 </style>
 </head>
 <body>
@@ -190,19 +197,36 @@ span.pasif {
 </div>
   </div>
   
-<div class="center" style="width:100%;" onclick="this.classList.toggle('full');">
+<div class="center" style="width:100%;" id="qrheader" onclick="this.classList.toggle('full');">
 <div class="size center baslik" style="border-radius: 10px 10px 0px 0px;">QR-koden skannes av betjeningen!</div>
 <img class="size center" id="QRCODE">
 <div class="size center baslik" style="border-radius: 0px 0px 10px 10px;">Klikk på bildet for å vise QR-koden!</div>
 </div>
   
-<div class="size center baslik linkBtn" style="margin-bottom:30px;font-size:20px;" onclick="vilkor.hidden = !vilkor.hidden; vilkor.classList.toggle('full');">» Vilkår for lojalitetsprogram «</div>
+<div class="size center baslik linkBtn" style="margin-bottom:30px;font-size:20px;" onclick="vilkor.classList.toggle('off');">» Vilkår for lojalitetsprogram «</div>
 
 <div onclick="MenuStart();" id="MenuBtn" class="pulse">
     <img id="MenuBtn1" src="https://bestill.online/img/btn.png" style="width: 100%; height: auto;">
 </div>
   
 <iframe id="IFRAME" class="full off" src="https://www.foodbooking.com/api/fb/_y55_q_j"></iframe>
+
+<div id="vilkor" class="full off" onclick="vilkor.classList.toggle('off');" style=" display: grid;align-content: space-between;">
+<ol class="size center">
+<li style="list-style-type:none;"> <span><b>Følgende vilkår gjelder:</b></span> <span style="float:right;cursor:pointer;">❌</span></li>
+<li>Denne teksten forklarer hvordan en kunde kan registrere seg for et lojalitetsprogram, skanne QR-koden sin, følge med på informasjonen i profilen sin, og hvordan de kan bruke sin rett til en gratis pizza. Den gir også informasjon om fordelene ved dette programmet og vilkårene og betingelsene.</li>
+<li>Brukerne må registrere mobilnummeret sitt for at det digitale stempelet skal bli registrert på profilen deres.</li>
+<li>Når du er registrert, husk å få QR-koden skannet av en av våre ansatte hver gang du kjøper en eller flere <b>Stor</b> pizza.</li>
+<li>Etter at QR-koden er skannet, vil en av de fem kupongene i profilen din endre farge til grønn.</li>
+<li>På profilen din vil du ha informasjon om hvor mange kjøp som gjenstår før du får én gratis stor pizza.</li>
+<li>Hvis du kjøper fem pizzaer og får alle kupongene grønne, vil du ved neste bestilling få spørsmål om du ønsker å bruke lojalitetskupongen.</li>
+<li>Den sjette pizzaen gjelder for 1 <b>Stor</b> pizza, og ved henting. Lojalitetskupongen kan ikke brukes på 'lag din egen'.</li>
+<li>Lojalitetskupongen blir kun registrert når du kjøper en eller flere <b>Stor</b> pizza. Den er ikke gyldig for små pizzaer.</li>
+<li>Fordeler: Spar penger. I ditt tilfelle kan du få hver sjette pizza gratis. Dette er en betydelig besparelse over tid, spesielt hvis du ofte bestiller pizza.</li>
+<li>Et digitalt stempelkort er alltid med deg på telefonen din, så det er ingen risiko for å miste det eller glemme det hjemme.</li>
+<li>Charlie's Pizza forbeholder seg retten til å kunne oppdatere betingelser og vilkår med umiddelbar effekt.</li>
+  </ol>
+	</div>
   
 </div>
 <script type="module">
@@ -240,7 +264,7 @@ document.querySelector("#QRCODE").src = "https://bestill.online/img/stemp.jpg";
             const value = snapshot.val();
             kupon.innerHTML = '';
             for (let index = 1; index <= 5; index++) {
-                kupon.innerHTML += `${index <= value ? '<span class="aktiv">'+ index +'</span>' : '<span class="pasif">'+ index +'</span>'}`;
+            kupon.innerHTML += `${index <= value ? '<span class="aktiv">'+ index +'</span>' : '<span class="pasif">'+ index +'</span>'}`;
             }
    if (value == 5) { kupon.innerHTML = `<img class="header" style="border-radius:0px 0px 7px 7px;" src="https://bestill.online/img/gratis.gif?raw=true">`; }
 
@@ -257,7 +281,9 @@ document.querySelector("#QRCODE").src = "https://bestill.online/img/stemp.jpg";
 
 function MenuStart() {
   document.querySelector('div').scrollTop = 0;
-  IFRAME.classList.toggle('off');
+    IFRAME.classList.toggle('off');
+    qrheader.classList.remove('full');
+    vilkor.classList.add('off');
   
   if (MenuBtn1.src === "https://bestill.online/img/btn.png") {
     MenuBtn1.src = "https://bestill.online/img/btn1.png";
