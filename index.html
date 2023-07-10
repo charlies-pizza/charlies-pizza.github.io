@@ -261,7 +261,7 @@ background-color: #0f4079;
 
 </div>
   
-<div class="container" onclick="this.classList.toggle('full'); this.classList.toggle('qrback'); document.querySelector('div').scrollTop = document.querySelector('div').scrollHeight;">
+<div class="container" id="QRCODE0" onclick="this.classList.toggle('full'); this.classList.toggle('qrback'); document.querySelector('div').scrollTop = document.querySelector('div').scrollHeight;">
 <div class="baslik qr-baslik" style="border-radius: 10px 10px 0px 0px;">QR-koden skannes av betjeningen!</div>
 <img class="standart" id="QRCODE">
 <div class="baslik qr-baslik" style="border-top: none;border-radius: 0px 0px 10px 10px;">Klikk på bildet for å vise QR-koden!</div>
@@ -352,8 +352,8 @@ document.querySelector('div').scrollTop = 0;
     if (MenuBtn1.src === "https://bestill.online/img/btn.png") {
     MenuBtn1.src = "https://bestill.online/img/btn1.png";
     IFRAME.style = "visibility:visible;";
-    QRCODE.classList.remove('full'); 
-    QRCODE.classList.remove('qrback');
+    QRCODE0.classList.remove('full'); 
+    QRCODE0.classList.remove('qrback');
     popup.hidden = true;
     } else {
     if (canClick) { location.reload(); }
