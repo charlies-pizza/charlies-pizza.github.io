@@ -152,19 +152,20 @@ span.pasif {
     height: 50px;
   }
   .full{
+    display: grid;
+ 	  place-items: center;
+        align-content: center;
     position: fixed;
     top: 0;
     left: 0;
     border:none;
     background-color:#000000ad;
     -webkit-backdrop-filter: blur(5px);
-    backdrop-filter: blur(10px);
-    overflow: auto;
-	text-align:center;
-    height: 100%;
-    width: 100%;
+    backdrop-filter: blur(5px);
+    width:100%;
+    height:100%;
+    overflow-y: auto;
 }
-
   .on{ visibility:visible;}
   .off{ visibility:hidden;}
 </style>
@@ -189,7 +190,7 @@ span.pasif {
 </div>
   </div>
   
-<div class="center" style="width:100%;">
+<div class="center" style="width:100%;" onclick="this.classList.toggle('full');">
 <div class="size center baslik" style="border-radius: 10px 10px 0px 0px;">QR-koden skannes av betjeningen!</div>
 <img class="size center" id="QRCODE">
 <div class="size center baslik" style="border-radius: 0px 0px 10px 10px;">Klikk på bildet for å vise QR-koden!</div>
