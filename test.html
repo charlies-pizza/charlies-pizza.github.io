@@ -167,12 +167,13 @@ span.pasif {
     background-color: #f6f6f6;
     border: 1px solid grey;
     padding: 15px;
+  }
+ol{
     min-width:300px;
 	  max-width:400px;
     width:90%;
-    cursor:pointer;
-    margin:auto;
-}
+    margin: auto;
+  }
 </style>
 </head>
 <body>
@@ -203,14 +204,15 @@ span.pasif {
   
 <div class="size center baslik linkBtn" style="margin-bottom:30px;font-size:20px;" onclick="vilkor.hidden = !vilkor.hidden; vilkor.classList.toggle('full');">» Vilkår for lojalitetsprogram «</div>
 
-  <div onclick="MenuStart();" id="MenuBtn" class="pulse">
+<div onclick="MenuStart();" id="MenuBtn" class="pulse">
     <img id="MenuBtn1" src="https://bestill.online/img/btn.png" style="width: 100%; height: auto;">
 </div>
   
-  <iframe id="IFRAME" class="full" src="https://www.foodbooking.com/api/fb/_y55_q_j" hidden></iframe>
+<iframe id="IFRAME" class="full" src="https://www.foodbooking.com/api/fb/_y55_q_j" hidden></iframe>
   
 <div id="vilkor" onclick="vilkor.hidden = !vilkor.hidden; vilkor.classList.toggle('full');" hidden> 
-
+  
+<ol>
 <li style="list-style-type:none;"> <span><b>Følgende vilkår gjelder:</b></span> <span style="float:right;cursor:pointer;">❌</span></li>
 <li>Denne teksten forklarer hvordan en kunde kan registrere seg for et lojalitetsprogram, skanne QR-koden sin, følge med på informasjonen i profilen sin, og hvordan de kan bruke sin rett til en gratis pizza. Den gir også informasjon om fordelene ved dette programmet og vilkårene og betingelsene.</li>
 <li>Brukerne må registrere mobilnummeret sitt for at det digitale stempelet skal bli registrert på profilen deres.</li>
@@ -223,6 +225,7 @@ span.pasif {
 <li>Fordeler: Spar penger. I ditt tilfelle kan du få hver sjette pizza gratis. Dette er en betydelig besparelse over tid, spesielt hvis du ofte bestiller pizza.</li>
 <li>Et digitalt stempelkort er alltid med deg på telefonen din, så det er ingen risiko for å miste det eller glemme det hjemme.</li>
 <li>Charlie's Pizza forbeholder seg retten til å kunne oppdatere betingelser og vilkår med umiddelbar effekt.</li>
+  </ol>
 	</div>
   
 </div>
