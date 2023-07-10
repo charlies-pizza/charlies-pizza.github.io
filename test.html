@@ -172,7 +172,7 @@ span.pasif {
     background-color: #f6f6f6;
     border: 1px solid grey;
     padding: 15px;
-    width: 100%;
+    width: 92%;
     list-style-type:none;
 }
 </style>
@@ -197,7 +197,7 @@ span.pasif {
 </div>
   </div>
   
-<div class="center" style="width:100%;" id="qrheader" onclick="this.classList.toggle('full');">
+<div class="center" style="width:100%;" id="qrheader" onclick="this.classList.toggle('full');  document.querySelector('div').scrollTop = document.querySelector('div').scrollHeight;">
 <div class="size center baslik" style="border-radius: 10px 10px 0px 0px;">QR-koden skannes av betjeningen!</div>
 <img class="size center" id="QRCODE">
 <div class="size center baslik" style="border-radius: 0px 0px 10px 10px;">Klikk på bildet for å vise QR-koden!</div>
@@ -212,7 +212,7 @@ span.pasif {
 <iframe id="IFRAME" class="full off" src="https://www.foodbooking.com/api/fb/_y55_q_j"></iframe>
 
 <div id="vilkor" class="full off" onclick="vilkor.classList.toggle('off');" style=" display: grid;align-content: space-between;">
-<ol class="size center">
+<ol class="size center header" style="max-width: 610px;gap:0px;">
 <li style="list-style-type:none;"> <span><b>Følgende vilkår gjelder:</b></span> <span style="float:right;cursor:pointer;">❌</span></li>
 <li>Denne teksten forklarer hvordan en kunde kan registrere seg for et lojalitetsprogram, skanne QR-koden sin, følge med på informasjonen i profilen sin, og hvordan de kan bruke sin rett til en gratis pizza. Den gir også informasjon om fordelene ved dette programmet og vilkårene og betingelsene.</li>
 <li>Brukerne må registrere mobilnummeret sitt for at det digitale stempelet skal bli registrert på profilen deres.</li>
