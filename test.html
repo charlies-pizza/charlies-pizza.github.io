@@ -159,21 +159,14 @@ span.pasif {
     background-color:#000000ad;
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(10px);
-    overflow-y: auto;
+    overflow: auto;
+	text-align:center;
     height: 100%;
     width: 100%;
 }
-  li {
-    background-color: #f6f6f6;
-    border: 1px solid grey;
-    padding: 15px;
-  }
-ol{
-    min-width:300px;
-	  max-width:400px;
-    width:90%;
-    margin: auto;
-  }
+
+  .on{ visibility:visible;}
+  .off{ visibility:hidden;}
 </style>
 </head>
 <body>
@@ -196,7 +189,7 @@ ol{
 </div>
   </div>
   
-<div class="center" style="width:100%; display:flex; flex-direction: column;justify-content: center;" id="QRheader" onclick="this.classList.toggle('full');">
+<div class="center" style="width:100%;">
 <div class="size center baslik" style="border-radius: 10px 10px 0px 0px;">QR-koden skannes av betjeningen!</div>
 <img class="size center" id="QRCODE">
 <div class="size center baslik" style="border-radius: 0px 0px 10px 10px;">Klikk på bildet for å vise QR-koden!</div>
@@ -208,25 +201,7 @@ ol{
     <img id="MenuBtn1" src="https://bestill.online/img/btn.png" style="width: 100%; height: auto;">
 </div>
   
-<iframe id="IFRAME" class="full" src="https://www.foodbooking.com/api/fb/_y55_q_j" hidden></iframe>
-  
-<div id="vilkor" onclick="vilkor.hidden = !vilkor.hidden; vilkor.classList.toggle('full');" hidden> 
-  
-<ol>
-<li style="list-style-type:none;"> <span><b>Følgende vilkår gjelder:</b></span> <span style="float:right;cursor:pointer;">❌</span></li>
-<li>Denne teksten forklarer hvordan en kunde kan registrere seg for et lojalitetsprogram, skanne QR-koden sin, følge med på informasjonen i profilen sin, og hvordan de kan bruke sin rett til en gratis pizza. Den gir også informasjon om fordelene ved dette programmet og vilkårene og betingelsene.</li>
-<li>Brukerne må registrere mobilnummeret sitt for at det digitale stempelet skal bli registrert på profilen deres.</li>
-<li>Når du er registrert, husk å få QR-koden skannet av en av våre ansatte hver gang du kjøper en eller flere <b>Stor</b> pizza.</li>
-<li>Etter at QR-koden er skannet, vil en av de fem kupongene i profilen din endre farge til grønn.</li>
-<li>På profilen din vil du ha informasjon om hvor mange kjøp som gjenstår før du får én gratis stor pizza.</li>
-<li>Hvis du kjøper fem pizzaer og får alle kupongene grønne, vil du ved neste bestilling få spørsmål om du ønsker å bruke lojalitetskupongen.</li>
-<li>Den sjette pizzaen gjelder for 1 <b>Stor</b> pizza, og ved henting. Lojalitetskupongen kan ikke brukes på 'lag din egen'.</li>
-<li>Lojalitetskupongen blir kun registrert når du kjøper en eller flere <b>Stor</b> pizza. Den er ikke gyldig for små pizzaer.</li>
-<li>Fordeler: Spar penger. I ditt tilfelle kan du få hver sjette pizza gratis. Dette er en betydelig besparelse over tid, spesielt hvis du ofte bestiller pizza.</li>
-<li>Et digitalt stempelkort er alltid med deg på telefonen din, så det er ingen risiko for å miste det eller glemme det hjemme.</li>
-<li>Charlie's Pizza forbeholder seg retten til å kunne oppdatere betingelser og vilkår med umiddelbar effekt.</li>
-  </ol>
-	</div>
+<iframe id="IFRAME" class="full off" src="https://www.foodbooking.com/api/fb/_y55_q_j"></iframe>
   
 </div>
 <script type="module">
@@ -281,10 +256,7 @@ document.querySelector("#QRCODE").src = "https://bestill.online/img/stemp.jpg";
 
 function MenuStart() {
   document.querySelector('div').scrollTop = 0;
-  IFRAME.hidden = !IFRAME.hidden;
-  QRheader.classList.remove('full');
-  vilkor.hidden = true;
-  vilkor.classList.remove('full');  
+  IFRAME.classList.toggle('off');
   
   if (MenuBtn1.src === "https://bestill.online/img/btn.png") {
     MenuBtn1.src = "https://bestill.online/img/btn1.png";
