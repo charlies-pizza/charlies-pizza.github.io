@@ -15,8 +15,6 @@
     padding: 0;
 }
 body, html {
-    margin: 0;
-    padding: 0;
     background-color: #0c4c98;
     font-family: Arial, sans-serif;
     height: 100%;
@@ -26,20 +24,16 @@ body, html {
     top:0;
     left:0;
 }
-.merkez {
+  .header{
+    overflow: auto;
     background-color: #1259ad;
-    display: flex;
-    flex-wrap: wrap;
-    align-content: space-between;
     height: 100%;
     width: 100%;
-    overflow: auto;
-    align-items: stretch;
     gap: 30px;
-    justify-content: center;
-}
-@media (min-width: 600px) {
-  .merkez {
+  }
+  
+  @media (min-width: 600px) {
+  .header {
     display:flex;
     align-content: stretch;
     width:600px;
@@ -48,39 +42,85 @@ body, html {
     background-color: #1d5698;
   }
 }
-.container {
+  .center{
+  display: grid;
+  place-items: center;
+  }
+  .size{
+    min-width:300px;
+	  max-width:400px;
+    width:90%;
+    cursor:pointer;
+}
+  .baslik{
+    background-color: #0f4079;
+    border: 1px solid black;
+    color: white;
+    height: 50px;
+    font-size: 18px;
+  }
+  .linkBtn {
+    height: 60px;
+    border-radius: 10px;
+    box-shadow: 0px 7px 20px 3px rgb(0 0 0 / 66%);
+    background-image: radial-gradient(circle, #219dffcc, #219dffbd, #3e51c057);
+    font-weight: bold;
+    font-size: 25px;
+    color: white;
+}
+@keyframes pulse1 {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+#mobilnr {
+    height: 50px;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 7px;
+    border: none;
+    background-color: white;
+    color:black;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+ #mobilnr:focus {
+    outline: 1px solid red;
+}
+  #mobilnr::placeholder{
+    opacity: 0.6;
+}
+  #kupon{
+    min-height: 90px;
+    height:auto;
+    font-size: 25px;
+    background-color: white;
+    display: flex;
+    gap: 1%;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius:0px 0px 10px 10px;
+}
+span.aktiv, span.pasif {
+    width: 1em;
+    height: 1em;
+    padding: 4%;
+    border-radius: 50%;
+    color: #ffffff;
+    background-color: #1c9f21;
     display: flex;
     align-items: center;
-    flex-direction: column;
-    width: 100%;
-}
-.standart{
-    min-width:300px;
-	  max-width:90%;
-    width:400px;
-}
-.header {
-    display: flex;
-	  align-items: center;
     justify-content: center;
-    width: 100%;
-    height: 50px;
-    margin: 0;
+    border: 1.3px dashed #555;
 }
-#IFRAME {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 110;
-    opacity: 1;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    border: none;
-    background-color: #3b3a3a;
-    visibility:hidden;
+span.pasif { 
+    background-color: #9e9e9e82;
+    color: #223255;
 }
-#MenuBtn, .pulse {
+  #MenuBtn, .pulse {
     cursor: pointer;
     position: fixed;
     right: 10px;
@@ -107,172 +147,72 @@ body, html {
   0% { transform: scale(1); opacity: 1; }
   100% { transform: scale(1.5); opacity: 0; }
 }
-  input::-webkit-outer-spin-button,
-  input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-#kupon{
-    min-height: 90px;
-    max-height: auto;
-    font-size: 25px;
-    background-color: white;
-    display: flex;
-    gap: 1%;
-    align-items: center;
-    justify-content: space-evenly;
-    border-radius:0px 0px 10px 10px;
-}
-  #kupon img{
+ .saat{
     width: 100%;
-    border-radius:0px 0px 10px 10px;
+    height: 50px;
   }
-span.aktiv, span.pasif {
-    width: 1em;
-    height: 1em;
-    padding: 4%;
-    border-radius: 50%;
-    color: #ffffff;
-    background-color: #1c9f21;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1.3px dashed #555;
-}
-span.pasif { 
-    background-color: #9e9e9e82;
-    color: #223255;
-}
-.full{
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    z-index: 99;
-    min-width: 300px;
-    max-width: 90%;
-    width: 600px;
-    height: 90%;
-    overflow-y: auto;
-    border-radius:10px;
-}
-.back{
+  .full{
+    display: grid;
+ 	  place-items: center;
+    align-content: center;
     position: fixed;
     top: 0;
     left: 0;
-    background-color: black;
-    padding:100vh;
+    border:none;
+    background-color:#000000ad;
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    width:100%;
+    height:100%;
+    overflow-y: auto;
 }
-li {
+  .on{ visibility:visible;}
+  .off{ visibility:hidden;}
+  li {
     background-color: #f6f6f6;
     border: 1px solid grey;
     padding: 15px;
-}
-.qrback {
-    width:400px;
-    height:auto;
-    background-color: #000000de;
-	  padding:100%;
-    height: auto;
-    top: 45%;
-}
-  .baslik {
-background-color: #0f4079;
-    border: 1px solid black;
-    color: white;
-    height: 50px;
-    font-size: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-  input:focus {
-    outline: 1px solid red;
-}
-  #mobilnr {
-    height: 50px;
-    font-size: 20px;
-    text-align: center;
-    letter-spacing: 7px;
-    border: none;
-    background-color: white;
-    width: 400px;
-    border-radius: 0px;
-    color:black;
-}
-  .linkBtn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 50px;
-    font-size: 20px;
-    background-image: radial-gradient(circle, #219dffcc, #219dffbd, #3e51c057);
-    box-shadow: 0px 7px 20px 3px rgb(0 0 0 / 66%);
-    margin-bottom: 40px;
-    border-radius:10px;
-    cursor: pointer;
-    border: none;
-    color: white;
-}
-.linkBtn1 {
-    font-weight: bold;
-    font-size: 25px;
-    height: 60px;
-    animation: pulse1 1s infinite;
-}
-@keyframes pulse1 {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.02); }
-    100% { transform: scale(1); }
-}
-  #QRCODE{
-    border: 1px solid black;
-    border-top: none;
-}
-  .qr-baslik {
-    width: 90%;
-    min-width: 300px;
-    max-width: 400px;
-    font-size:17px;
-  }
-#mobilnr::placeholder{
-    opacity: 0.6;
+    width: 100%;
+    list-style-type:none;
 }
 </style>
 </head>
-
 <body>
-<div class="merkez">
-<div class="header" id="saat"> <span id="hours"> *** </span> </div>
-
-<div class="container">
-<div class="standart linkBtn linkBtn1"  onclick="MenuStart();">» Bestill Pizza Her «</div>
-<div id="register" class="standart baslik" style="border-radius:10px 10px 0px 0px;"> Vennligst registrer nummeret ditt her! </div>
-	
-<input type="number" class="standart inp" id="mobilnr" placeholder="+47 40000000" onkeyup="INPUT(this.value);" oninput="this.value = this.value.replace(/[^\d]/g, '').slice(0, 8); if (this.value.length >= 8) this.blur();">
-
-
-<div class="standart baslik">Dine Digitale Kuponger</div>
   
-<div class="standart" id="kupon">
+<div class="header center">
+<div class="saat center" id="saat"> <span id="hours"> *** </span> </div>
+
+<div class="size center baslik linkBtn" style="animation: pulse1 1s infinite;" onclick="MenuStart();"
+>» Bestill Pizza Her «</div>
+  
+  <div class="center" style="width:100%;">
+<div id="register" class="size center baslik" style="border-radius:10px 10px 0px 0px;"> Vennligst registrer nummeret ditt her! </div>
+	
+<input type="number" class="size center baslik" id="mobilnr" placeholder="+47 40000000" oninput="INPUT(this.value); this.value = this.value.replace(/[^\d]/g, '').slice(0, 8); if (this.value.length >= 8) this.blur();">
+  
+<div class="size center baslik">Dine Digitale Kuponger</div>
+  
+<div class="size baslik" style="border-radius:0px 0px 10px 10px;" id="kupon">
   <!-- Content here -->
 </div>
-
+  </div>
+  
+<div class="center" style="width:100%;" id="qrheader" onclick="this.classList.toggle('full');  document.querySelector('div').scrollTop = document.querySelector('div').scrollHeight;">
+<div class="size center baslik" style="border-radius: 10px 10px 0px 0px;">QR-koden skannes av betjeningen!</div>
+<img class="size center" id="QRCODE">
+<div class="size center baslik" style="border-radius: 0px 0px 10px 10px;">Klikk på bildet for å vise QR-koden!</div>
 </div>
   
-<div class="container" id="QRCODE0" onclick="this.classList.toggle('full'); this.classList.toggle('qrback'); document.querySelector('div').scrollTop = document.querySelector('div').scrollHeight;">
-<div class="baslik qr-baslik" style="border-radius: 10px 10px 0px 0px;">QR-koden skannes av betjeningen!</div>
-<img class="standart" id="QRCODE">
-<div class="baslik qr-baslik" style="border-top: none;border-radius: 0px 0px 10px 10px;">Klikk på bildet for å vise QR-koden!</div>
+<div class="size center baslik linkBtn" style="margin-bottom:30px;font-size:20px;" onclick="vilkor.classList.toggle('off');">» Vilkår for lojalitetsprogram «</div>
+
+<div onclick="MenuStart();" id="MenuBtn" class="pulse">
+    <img id="MenuBtn1" src="https://bestill.online/img/btn.png" style="width: 100%; height: auto;">
 </div>
   
-<div class="standart linkBtn"  onclick="popup.hidden = !popup.hidden;">» Vilkår for lojalitetsprogram «</div>
+<iframe id="IFRAME" class="full off" src="https://www.foodbooking.com/api/fb/_y55_q_j"></iframe>
 
-<div id="popup" class="back" onclick="popup.hidden = !popup.hidden" hidden>
-
-<div class="full">
-
+<div id="vilkor" class="full off" onclick="vilkor.classList.toggle('off');" style=" display: grid;align-content: space-between;">
+<ol class="size center">
 <li style="list-style-type:none;"> <span><b>Følgende vilkår gjelder:</b></span> <span style="float:right;cursor:pointer;">❌</span></li>
 <li>Denne teksten forklarer hvordan en kunde kan registrere seg for et lojalitetsprogram, skanne QR-koden sin, følge med på informasjonen i profilen sin, og hvordan de kan bruke sin rett til en gratis pizza. Den gir også informasjon om fordelene ved dette programmet og vilkårene og betingelsene.</li>
 <li>Brukerne må registrere mobilnummeret sitt for at det digitale stempelet skal bli registrert på profilen deres.</li>
@@ -285,17 +225,10 @@ background-color: #0f4079;
 <li>Fordeler: Spar penger. I ditt tilfelle kan du få hver sjette pizza gratis. Dette er en betydelig besparelse over tid, spesielt hvis du ofte bestiller pizza.</li>
 <li>Et digitalt stempelkort er alltid med deg på telefonen din, så det er ingen risiko for å miste det eller glemme det hjemme.</li>
 <li>Charlie's Pizza forbeholder seg retten til å kunne oppdatere betingelser og vilkår med umiddelbar effekt.</li>
+  </ol>
 	</div>
+  
 </div>
-
-<div onclick="MenuStart();" id="MenuBtn" class="pulse">
-    <img id="MenuBtn1" src="https://bestill.online/img/btn.png" style="width: 100%; height: auto;">
-</div>
-
-<iframe id="IFRAME" title="Charlie's Pizza Online Bestilling" src="https://www.foodbooking.com/api/fb/_y55_q_j"></iframe>
-
-</div>
-
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
     import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
@@ -331,9 +264,9 @@ document.querySelector("#QRCODE").src = "https://bestill.online/img/stemp.jpg";
             const value = snapshot.val();
             kupon.innerHTML = '';
             for (let index = 1; index <= 5; index++) {
-                kupon.innerHTML += `${index <= value ? '<span class="aktiv">'+ index +'</span>' : '<span class="pasif">'+ index +'</span>'}`;
+            kupon.innerHTML += `${index <= value ? '<span class="aktiv">'+ index +'</span>' : '<span class="pasif">'+ index +'</span>'}`;
             }
-   if (value == 5) { kupon.innerHTML = `<img class="kupon-img" src="https://bestill.online/img/gratis.gif?raw=true">`; }
+   if (value == 5) { kupon.innerHTML = `<img class="header" style="border-radius:0px 0px 7px 7px;" src="https://bestill.online/img/gratis.gif?raw=true">`; }
 
         });
     }
@@ -347,19 +280,17 @@ document.querySelector("#QRCODE").src = "https://bestill.online/img/stemp.jpg";
 	setTimeout(() => { canClick = true; }, 5 * 60 * 1000); // 6 min delay
 
 function MenuStart() {
-document.querySelector('div').scrollTop = 0;
-
-    if (MenuBtn1.src === "https://bestill.online/img/btn.png") {
+  document.querySelector('div').scrollTop = 0;
+    IFRAME.classList.toggle('off');
+    qrheader.classList.remove('full');
+    vilkor.classList.add('off');
+  
+  if (MenuBtn1.src === "https://bestill.online/img/btn.png") {
     MenuBtn1.src = "https://bestill.online/img/btn1.png";
-    IFRAME.style = "visibility:visible;";
-    QRCODE0.classList.remove('full'); 
-    QRCODE0.classList.remove('qrback');
-    popup.hidden = true;
     } else {
     if (canClick) { location.reload(); }
-		IFRAME.style = "visibility:hidden;";
     MenuBtn1.src = "https://bestill.online/img/btn.png";
-    }
+    } 
 }
 
 function INPUT(inp) { 
