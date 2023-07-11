@@ -211,8 +211,8 @@ span.pasif {
   
 <iframe id="IFRAME" class="full off" src="https://www.foodbooking.com/api/fb/_y55_q_j"></iframe>
 
-<div id="vilkor" class="full off" onclick="vilkor.classList.toggle('off');" style=" display: grid;align-content: space-between;">
-<ol class="size center header" style="max-width: 610px;gap:0px;height: 90%;border-radius: 10px; background-color: #f6f6f6;">
+<div id="vilkor" class="full off" onclick="vilkor.classList.toggle('off');" style="display: grid; align-content: center;">
+<ol class="size center header" style="max-width: 600px;gap: 2px;height: 90%;background-color: #f6f6f600;">
 <li style="list-style-type:none;"> <span><b>Følgende vilkår gjelder:</b></span> <span style="float:right;cursor:pointer;">❌</span></li>
 <li>Denne teksten forklarer hvordan en kunde kan registrere seg for et lojalitetsprogram, skanne QR-koden sin, følge med på informasjonen i profilen sin, og hvordan de kan bruke sin rett til en gratis pizza. Den gir også informasjon om fordelene ved dette programmet og vilkårene og betingelsene.</li>
 <li>Brukerne må registrere mobilnummeret sitt for at det digitale stempelet skal bli registrert på profilen deres.</li>
@@ -281,6 +281,7 @@ document.querySelector("#QRCODE").src = "https://bestill.online/img/stemp.jpg";
 
 function MenuStart() {
   document.querySelector('div').scrollTop = 0;
+  
     IFRAME.classList.toggle('off');
     qrheader.classList.remove('full');
     vilkor.classList.add('off');
