@@ -13,7 +13,7 @@
 * {
     margin: 0;
     padding: 0;
-}
+  }
 body, html {
     background-color: #0c4c98;
     font-family: Arial, sans-serif;
@@ -23,36 +23,27 @@ body, html {
     position: fixed;
     top:0;
     left:0;
-}
-  .header{
+  }
+  .header {
     overflow: auto;
-    background-color: #1259ad;
+    box-shadow: 0px 0px 10px 1px black;
+    background-color: #1259aa;
     height: 100%;
-    width: 100%;
+    max-width:600px;
+    margin:auto;
     gap: 30px;
   }
-  
-  @media (min-width: 600px) {
-  .header {
-    display:flex;
-    align-content: stretch;
-    width:600px;
-    margin:auto;
-    box-shadow: 0px 0px 10px 1px black;
-    background-color: #1d5698;
-  }
-}
-  .center{
+  .center {
   display: grid;
   place-items: center;
   }
-  .size{
+  .size {
     min-width:300px;
 	  max-width:400px;
     width:90%;
     cursor:pointer;
-}
-  .baslik{
+  }
+  .baslik {
     background-color: #0f4079;
     border: 1px solid black;
     color: white;
@@ -93,7 +84,7 @@ input::-webkit-inner-spin-button {
   #mobilnr::placeholder{
     opacity: 0.6;
 }
-  #kupon{
+  #kupon {
     min-height: 90px;
     height:auto;
     font-size: 25px;
@@ -147,11 +138,11 @@ span.pasif {
   0% { transform: scale(1); opacity: 1; }
   100% { transform: scale(1.5); opacity: 0; }
 }
- .saat{
+ .saat {
     width: 100%;
     height: 50px;
   }
-  .full{
+  .full {
     display: grid;
  	  place-items: center;
     align-content: center;
@@ -166,8 +157,8 @@ span.pasif {
     height:100%;
     overflow-y: auto;
 }
-  .on{ visibility:visible;}
-  .off{ visibility:hidden;}
+  .on { visibility:visible;}
+  .off { visibility:hidden;}
   li {
     background-color: #f6f6f6;
     border: 1px solid grey;
