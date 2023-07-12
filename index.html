@@ -156,16 +156,18 @@ span.pasif {
     width:100%;
     height:100%;
     overflow-y: auto;
-}
-  .on { visibility:visible;}
-  .off { visibility:hidden;}
+  }
+  .on { visibility: visible; }
+  .off { visibility: hidden; }
+  .ust-radius { border-radius:10px 10px 0px 0px; }
+   .alt-radius { border-radius:0px 0px 10px 10px; }
   li {
     background-color: #f6f6f6;
     border: 1px solid grey;
     padding: 15px;
     width: 90%;
     list-style-type:none;
-}
+  }
 </style>
 </head>
 <body>
@@ -177,21 +179,21 @@ span.pasif {
 >» Bestill Pizza Her «</div>
   
   <div class="center" style="width:100%;">
-<div id="register" class="size center baslik" style="border-radius:10px 10px 0px 0px;"> Vennligst registrer nummeret ditt her! </div>
+<div id="register" class="size center baslik ust-radius"> Vennligst registrer nummeret ditt her! </div>
 	
 <input type="number" class="size center baslik" id="mobilnr" placeholder="+47 40000000" oninput="INPUT(this.value); this.value = this.value.replace(/[^\d]/g, '').slice(0, 8); if (this.value.length >= 8) this.blur();">
   
 <div class="size center baslik">Dine Digitale Kuponger</div>
   
-<div class="size baslik" style="border-radius:0px 0px 10px 10px;" id="kupon">
+<div class="size baslik alt-radius" id="kupon">
   <!-- Content here -->
 </div>
   </div>
   
 <div class="center" style="width:100%;" id="qrheader" onclick="this.classList.toggle('full');  document.querySelector('div').scrollTop = document.querySelector('div').scrollHeight;">
-<div class="size center baslik" style="border-radius: 10px 10px 0px 0px;" onclick="event.stopPropagation();">QR-koden skannes av betjeningen!</div>
+<div class="size center baslik ust-radius" onclick="event.stopPropagation();">QR-koden skannes av betjeningen!</div>
 <img class="size center" id="QRCODE">
-<div class="size center baslik" style="border-radius: 0px 0px 10px 10px;">Klikk på bildet for å vise QR-koden!</div>
+<div class="size center baslik alt-radius">Klikk på bildet for å vise QR-koden!</div>
 </div>
   
 <div class="size center baslik linkBtn" style="margin-bottom:30px;font-size:20px;" onclick="vilkor.classList.toggle('off');">» Vilkår for lojalitetsprogram «</div>
