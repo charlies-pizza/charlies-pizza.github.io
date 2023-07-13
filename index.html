@@ -39,7 +39,7 @@ body, html {
   }
   .size {
     min-width:300px;
-	  max-width:400px;
+	  max-width:450px;
     width:90%;
     cursor:pointer;
   }
@@ -188,7 +188,7 @@ span.pasif {
 <div class="center" style="width:100%;" id="qrheader" onclick="this.classList.toggle('full'); document.querySelector('div').scrollTop = 0;">
 <div class="size center baslik ust-radius" onclick="event.stopPropagation();">QR-koden skannes av betjeningen!</div>
 <img class="size center" id="QRCODE">
-<div class="size center baslik alt-radius">Klikk på bildet for å vise QR-koden!</div>
+<div class="size center baslik alt-radius">Klikk på QR-koden for å fremvise!</div>
 </div>
   
 <div class="size center baslik linkBtn" style="margin-bottom:30px;font-size:20px;" onclick="vilkor.classList.toggle('off');">» Vilkår for lojalitetsprogram «</div>
@@ -203,16 +203,17 @@ span.pasif {
 <ol class="size center header" id="Mydiv" style="max-width: 600px;gap: 2px;height: 90%;background-color: #f6f6f600;">
 <li style="list-style-type:none;"> <span><b>Følgende vilkår gjelder:</b></span> <span style="float:right;cursor:pointer;">❌</span></li>
 <li>Denne teksten forklarer hvordan en kunde kan registrere seg for et lojalitetsprogram, skanne QR-koden sin, følge med på informasjonen i profilen sin, og hvordan de kan bruke sin rett til en gratis pizza. Den gir også informasjon om fordelene ved dette programmet og vilkårene og betingelsene.</li>
-<li>Brukerne må registrere mobilnummeret sitt for at det digitale stempelet skal bli registrert på profilen deres.</li>
-<li>Når du er registrert, husk å få QR-koden skannet av en av våre ansatte hver gang du kjøper en eller flere <b>Stor</b> pizza.</li>
-<li>Etter at QR-koden er skannet, vil en av de fem kupongene i profilen din endre farge til grønn.</li>
-<li>På profilen din vil du ha informasjon om hvor mange kjøp som gjenstår før du får én gratis stor pizza.</li>
-<li>Hvis du kjøper fem pizzaer og får alle kupongene grønne, vil du ved neste bestilling få spørsmål om du ønsker å bruke lojalitetskupongen.</li>
-<li>Den sjette pizzaen gjelder for 1 <b>Stor</b> pizza, og ved henting. Lojalitetskupongen kan ikke brukes på 'lag din egen'.</li>
-<li>Lojalitetskupongen blir kun registrert når du kjøper en eller flere <b>Stor</b> pizza. Den er ikke gyldig for små pizzaer.</li>
-<li>Fordeler: Spar penger. I ditt tilfelle kan du få hver sjette pizza gratis. Dette er en betydelig besparelse over tid, spesielt hvis du ofte bestiller pizza.</li>
-<li>Et digitalt stempelkort er alltid med deg på telefonen din, så det er ingen risiko for å miste det eller glemme det hjemme.</li>
-<li>Charlie's Pizza forbeholder seg retten til å kunne oppdatere betingelser og vilkår med umiddelbar effekt.</li>
+<li>Brukere må registrere mobilnummeret sitt for å kunne få digitale stempler på profilen sin.</li>
+<li>Etter registrering må brukere få QR-koden skannet av betjeningen ved kjøp av en eller flere Stor pizza. Men den gjelder ikke for små pizzaer.</li>
+<li>Etter at QR-koden er skannet, vil en av de fem kupongene i profilen skifte til grønn farge.</li>
+<li>Profilen vil vise informasjon om antall kjøp som gjenstår før man får en gratis stor pizza.</li>
+<li>Når brukeren kjøper fem Stor pizzaer, vil de motta en melding og kupongen i profilen deres vil bli gjort klar til bruk som "Gratis Stor Pizza".</li>
+<li>For å få den gratis store pizzaen må de enten bestille via telefon. Hvis det ikke er mulig, kan de bestille fra "Bestill.online"-siden, men de må ikke velge "online betaling" og må legge til notatet "6. pizza gratis".</li>
+  <li>Den sjette pizzaen gjelder for 1 <b>Stor</b> pizza, og ved henting. Lojalitetskupongen kan ikke brukes på 'lag din egen'.</li>
+
+<li>Fordelen med programmet er at man kan spare penger ved å få hver sjette pizza gratis, noe som gir betydelige besparelser over tid, spesielt for hyppige pizza-bestillere.</li>
+<li>Det digitale stempelkortet er alltid tilgjengelig på telefonen, slik at man ikke risikerer å miste eller glemme det.</li>
+<li>Charlie's Pizza har rett til å oppdatere betingelser og vilkår med umiddelbar effekt.</li>
 <li> <span class="center baslik" style="width: 40%;float: left;cursor: pointer;">❌ Lukk</span> <div class="center baslik" onclick="event.stopPropagation(); Mydiv.scrollTop = 0;">⤴️ Gå Opp ⤴</div> </li>
   </ol>
 	</div>
