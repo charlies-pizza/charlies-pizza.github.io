@@ -208,9 +208,8 @@ span.pasif {
 <li>Etter at QR-koden er skannet, vil en av de fem kupongene i profilen skifte til grønn farge.</li>
 <li>Profilen vil vise informasjon om antall kjøp som gjenstår før man får en gratis stor pizza.</li>
 <li>Når brukeren kjøper fem Stor pizzaer, vil de motta en melding og kupongen i profilen deres vil bli gjort klar til bruk som "Gratis Stor Pizza".</li>
-<li>For å få den gratis store pizzaen må de enten bestille via telefon. Hvis det ikke er mulig, kan de bestille fra "Bestill.online"-siden, men de må ikke velge "online betaling" og må legge til notatet "6. pizza gratis".</li>
-  <li>Den sjette pizzaen gjelder for 1 <b>Stor</b> pizza, og ved henting. Lojalitetskupongen kan ikke brukes på 'lag din egen'.</li>
-
+<li>For å få den gratis store pizzaen må de enten bestille via telefon. Hvis det ikke er mulig, kan de bestille fra "Bestill.online"-siden, men de må ikke velge "online betaling" og kan legge til notatet "6. pizza gratis".</li>
+  <li>Den sjette pizzaen gjelder for 1 <b>Stor</b> pizza, og ved henting. Lojalitetsgaven kan ikke brukes på 'lag din egen'.</li>
 <li>Fordelen med programmet er at man kan spare penger ved å få hver sjette pizza gratis, noe som gir betydelige besparelser over tid, spesielt for hyppige pizza-bestillere.</li>
 <li>Det digitale stempelkortet er alltid tilgjengelig på telefonen, slik at man ikke risikerer å miste eller glemme det.</li>
 <li>Charlie's Pizza har rett til å oppdatere betingelser og vilkår med umiddelbar effekt.</li>
@@ -326,8 +325,10 @@ function updateStatus() {
     saat.style ="background-color: #ef4e4b;font-size: 17px;color:white;"
     themeColor.content = "#ef4e4b";
   }
+
 }
 updateStatus();
+setInterval(updateStatus, 1000 * 30); //30 saniye de acilis saatini guncelle.
 </script>
 
 </body>
