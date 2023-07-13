@@ -170,29 +170,26 @@ span.pasif {
 <div class="header center">
 <div class="saat center" id="saat"> <span id="hours"> *** </span> </div>
 
-<div class="size center baslik linkBtn" style="animation: pulse1 1s infinite;" onclick="MenuStart();"
->» Bestill Pizza Her «</div>
+<div class="size center baslik linkBtn" style="animation: pulse1 1s infinite;" onclick="MenuStart();">» Bestill Pizza Her «</div>
   
-  <div class="center" style="width:100%;">
-<div id="register" class="size center baslik ust-radius"> Vennligst registrer nummeret ditt her! </div>
+<div class="center" style="width:100%;">
+	<div id="register" class="size center baslik ust-radius"> Vennligst registrer nummeret ditt her! </div>
 	
-<input type="tel" class="size center baslik" id="mobilnr" placeholder="+47 40000000" oninput="INPUT(this.value); this.value = this.value.replace(/[^\d]/g, '').slice(0, 8); if (this.value.length >= 8) this.blur();">
+	<input type="tel" class="size center baslik" id="mobilnr" placeholder="+47 40000000" oninput="INPUT(this.value); this.value = this.value.replace(/[^\d]/g, '').slice(0, 8); if (this.value.length >= 8) this.blur();">
   
-<div class="size center baslik">Dine Digitale Kuponger</div>
+	<div class="size center baslik">Dine Digitale Kuponger</div>
   
-<div class="size baslik alt-radius" id="kupon">
-  <!-- Content here -->
+	<div class="size baslik alt-radius" id="kupon"> <!-- Content here --> </div>
 </div>
-  </div>
   
 <div class="center" style="width:100%;" id="qrheader" onclick="this.classList.toggle('full'); document.querySelector('div').scrollTop = 0;">
-<div class="size center baslik ust-radius" onclick="event.stopPropagation();">QR-koden skannes av betjeningen!</div>
-<img class="size center" id="QRCODE">
-<div class="size center baslik alt-radius">Klikk på QR-koden for å fremvise!</div>
+	<div class="size center baslik ust-radius" onclick="event.stopPropagation();">QR-koden skannes av betjeningen!</div>
+	<img class="size center" id="QRCODE">
+	<div class="size center baslik alt-radius">Klikk på QR-koden for å fremvise!</div>
 </div>
   
 <div class="size center baslik linkBtn" style="margin-bottom:30px;font-size:20px;" onclick="vilkor.classList.toggle('off');">» Vilkår for lojalitetsprogram «</div>
-
+	
 <div onclick="MenuStart();" id="MenuBtn" class="pulse">
     <img id="MenuBtn1" src="https://bestill.online/img/btn.png" style="width: 100%; height: auto;">
 </div>
@@ -209,7 +206,7 @@ span.pasif {
 <li>Profilen vil vise informasjon om antall kjøp som gjenstår før man får en gratis stor pizza.</li>
 <li>Når brukeren kjøper fem Stor pizzaer, vil de motta en melding og kupongen i profilen deres vil bli gjort klar til bruk som "Gratis Stor Pizza".</li>
 <li>For å få den gratis store pizzaen må de enten bestille via telefon. Hvis det ikke er mulig, kan de bestille fra "Bestill.online"-siden, men de må ikke velge "online betaling" og kan legge til notatet "6. pizza gratis".</li>
-  <li>Den sjette pizzaen gjelder for 1 <b>Stor</b> pizza, og ved henting. Lojalitetsgaven kan ikke brukes på 'lag din egen'.</li>
+<li>Den sjette pizzaen gjelder for 1 <b>Stor</b> pizza, og ved henting. Lojalitetsgaven kan ikke brukes på 'lag din egen'.</li>
 <li>Fordelen med programmet er at man kan spare penger ved å få hver sjette pizza gratis, noe som gir betydelige besparelser over tid, spesielt for hyppige pizza-bestillere.</li>
 <li>Det digitale stempelkortet er alltid tilgjengelig på telefonen, slik at man ikke risikerer å miste eller glemme det.</li>
 <li>Charlie's Pizza har rett til å oppdatere betingelser og vilkår med umiddelbar effekt.</li>
