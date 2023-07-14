@@ -200,9 +200,9 @@ span.pasif {
 <iframe id="IFRAME" class="full off" src="https://www.foodbooking.com/api/fb/_y55_q_j"></iframe>
 
 <div id="vilkor" class="full off" onclick="vilkor.classList.toggle('off');" style="display: grid; align-content: center;">
-  
-<ol class="header size" id="Mydiv" style="max-width: 600px;gap: 2px;height: 90%;background-color: #f6f6f600; box-shadow: 0px 0px 0px 0px black;">
-<li class="baslik center ust-radius" style="display: flex; justify-content: space-between;"> <span><b>Følgende vilkår gjelder:</b></span>   <div id="progress" style=""> </div> <span style="float:left;cursor:pointer;">❌</span></li>
+  <div id="progress" class="center"> </div>
+<ol class="header size" id="Mydiv" style="max-width: 600px;gap: 2px;height:95%;background-color: #f6f6f600; box-shadow: 0px 0px 0px 0px black;">
+<li class="baslik center ust-radius" style="display: flex; justify-content: space-between;"> <span><b>Følgende vilkår gjelder:</b></span>    <span style="float:left;cursor:pointer;">❌</span></li>
 <li>Denne teksten forklarer hvordan en kunde kan registrere seg for et lojalitetsprogram, skanne QR-koden sin, følge med på informasjonen i profilen sin, og hvordan de kan bruke sin rett til en gratis pizza. Den gir også informasjon om fordelene ved dette programmet og vilkårene og betingelsene.</li>
 <li>Brukere må registrere mobilnummeret sitt for å kunne få digitale stempler på profilen sin.</li>
 <li>Etter registrering må brukere få QR-koden skannet av betjeningen ved kjøp av en eller flere Stor pizza. Men den gjelder ikke for små pizzaer.</li>
@@ -270,7 +270,7 @@ Mydiv.onscroll = function() {
   var scrollPosition = Mydiv.scrollTop;
   var divHeight = Mydiv.scrollHeight - Mydiv.clientHeight;
   var progres = (scrollPosition / divHeight) * 100;
-  progress.style.cssText = `position: fixed;top:5px;left:0%;height: 20px; width: ${progres.toFixed(0)}%; background-color: #21b027;text-align:center;`;
+  progress.style.cssText = `height: 20px; width:600px; max-width: ${progres.toFixed(0)}%; background-color: #21b027;text-align:center;`;
   progress.innerHTML = `${progres.toFixed(0)}%`;
 };
   
