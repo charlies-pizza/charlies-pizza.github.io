@@ -2,7 +2,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Charlie's Pizza Kristiansand - Online Pizza Bestilling</title>
-<meta name="google-site-verification" content="zUnGHzSbXZdSBJuW_s6F_mcjbBoKFcc4-Kdo1z6maLw" />
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover">
 <meta http-equiv="X-UA-Compatible" content="ie=edge"> 
 <meta name="keywords" content="Pizza, online bestilling, Charlie's Pizza, Kristiansand, takeaway, levering, Italiensk pizza" />
@@ -35,7 +34,6 @@ body, html {
     max-width:600px;
     margin:auto;
     gap: 30px;
-    position:relative;
   }
   .center {
   display: grid;
@@ -167,26 +165,10 @@ span.pasif {
     width: 90%;
     list-style-type:none;
   }
-
- @media (min-width: 800px) {
-  .px900 {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 650px;
-}
-#MenuBtn { 
-position: fixed;
-top: 50%;
-left: 50%;
-transform: translate(666%, -550%);
-  z-index:9999;
-   }
- }
 </style>
 </head>
 <body>
+  
 <div class="header center">
 <div class="saat center" id="saat"> <span id="hours"> *** </span> </div>
 
@@ -214,7 +196,7 @@ transform: translate(666%, -550%);
     <img id="MenuBtn1" src="https://bestill.online/img/btn.png" style="width: 100%; height: auto;">
 </div>
   
-<iframe id="IFRAME" class="full off px900" src="https://www.foodbooking.com/api/fb/_y55_q_j"></iframe>
+<iframe id="IFRAME" class="full off" src="https://www.foodbooking.com/api/fb/_y55_q_j"></iframe>
 
 <div id="vilkor" class="full off" onclick="vilkor.classList.toggle('off');" style="display: grid; align-content: center;">
   
