@@ -68,12 +68,13 @@ body, html {
 }
 #mobilnr {
     height: 50px;
-    font-size: 20px;
+    font-size: 22px;
     text-align: center;
-    letter-spacing: 7px;
+    letter-spacing: 8px;
     border: none;
     background-color: white;
     color:black;
+    font-weight: bold;
 }
  #mobilnr:focus {
     outline: 1px solid red;
@@ -289,7 +290,7 @@ function INPUT(inp) {
     const invalidStartDigits = [0, 1, 2, 3, 5, 6, 7, 8];
 
     if (invalidStartDigits.includes(firstDigit)) {
-        register.innerHTML = `❎ Nr må begynne med 4 og 9.`;
+        register.innerHTML = `❌ Nr må begynne med 4 og 9.`;
     } else if (inp.length === 8 && !invalidStartDigits.includes(firstDigit)) {
         register.innerHTML = `✅ Nummeret ditt er registrert!`;
     } else {
