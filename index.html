@@ -167,8 +167,8 @@ span.pasif {
     width: 90%;
     list-style-type:none;
   }
-  .Lukk { display:none; }
- @media (min-width: 650px) {
+
+ @media (min-width: 800px) {
   .px900 {
     position: fixed;
     top: 50%;
@@ -176,17 +176,17 @@ span.pasif {
     transform: translate(-50%, -50%);
     width: 650px;
 }
-.Lukk { 
-    display:block; 
-    position: fixed;
-    right: calc(50% - 800px);
-    top: calc(25% - 150px);
+#MenuBtn { 
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(666%, -550%);
+  z-index:9999;
    }
  }
 </style>
 </head>
 <body>
- <div id="lukk" class="Lukk size">LUKK</div>
 <div class="header center">
 <div class="saat center" id="saat"> <span id="hours"> *** </span> </div>
 
