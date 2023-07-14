@@ -271,7 +271,7 @@ Mydiv.onscroll = function() {
   var divHeight = Mydiv.scrollHeight - Mydiv.clientHeight;
   var progres = (scrollPosition / divHeight) * 100;
   progress.style.cssText = `position: fixed;top:5px;left:0%;height: 20px; width: ${progres.toFixed(0)}%; background-color: #21b027;text-align:center;`;
-  progress.innerHTML = `${progres.toFixed(0)}%;`;
+  progress.innerHTML = `${progres.toFixed(0)}%`;
 };
   
 	let canClick = false;
