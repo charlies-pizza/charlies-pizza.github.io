@@ -270,7 +270,7 @@ Mydiv.onscroll = function() {
   var scrollPosition = Mydiv.scrollTop;
   var divHeight = Mydiv.scrollHeight - Mydiv.clientHeight;
   var progres = (scrollPosition / divHeight) * 90;
-  progress.style.cssText = `height: 20px; max-width:600px; width: ${progres.toFixed(0)}%; background-color: #21b027;margin-bottom: -10px;;`;
+  progress.style.cssText = `border-radius:5px;height: 20px; max-width:600px; width: ${progres.toFixed(0)}%; background-color: #21b027;margin-bottom: -10px;;`;
   progress.innerHTML = `${Math.ceil(progres*1.1)}%`;
 };
  
