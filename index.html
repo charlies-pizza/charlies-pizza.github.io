@@ -200,7 +200,7 @@ span.pasif {
 <iframe id="IFRAME" class="full off" src="https://www.foodbooking.com/api/fb/_y55_q_j"></iframe>
 
 <div id="vilkor" class="full off" onclick="vilkor.classList.toggle('off');" style="display: grid; align-content: center;">
-  <div id="progress" class="center"> </div>
+  <div id="progress" class="center"> 0% </div>
 <ol class="header size" id="Mydiv" style="max-width: 600px;gap: 2px;height:95%;background-color: #f6f6f600; box-shadow: 0px 0px 0px 0px black;">
 <li class="baslik center ust-radius" style="display: flex; justify-content: space-between;"> <span><b>Følgende vilkår gjelder:</b></span>    <span style="float:left;cursor:pointer;">❌</span></li>
 <li>Denne teksten forklarer hvordan en kunde kan registrere seg for et lojalitetsprogram, skanne QR-koden sin, følge med på informasjonen i profilen sin, og hvordan de kan bruke sin rett til en gratis pizza. Den gir også informasjon om fordelene ved dette programmet og vilkårene og betingelsene.</li>
@@ -270,7 +270,7 @@ Mydiv.onscroll = function() {
   var scrollPosition = Mydiv.scrollTop;
   var divHeight = Mydiv.scrollHeight - Mydiv.clientHeight;
   var progres = (scrollPosition / divHeight) * 90;
-  progress.style.cssText = `border-radius:5px;height: 20px; max-width:600px; width: ${progres.toFixed(0)}%; background-color: #21b027;margin-bottom: -10px;;`;
+  progress.style.cssText = `border-radius:5px;height: 15px; max-width:600px; width: ${progres.toFixed(0)}%; background-color: #21b027;margin-bottom:-8px;margin-top:5px;`;
   progress.innerHTML = `${Math.ceil(progres*1.1)}%`;
 };
  
