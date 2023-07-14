@@ -269,11 +269,11 @@ document.querySelector("#QRCODE").src = "https://bestill.online/img/stemp.jpg";
 Mydiv.onscroll = function() {
   var scrollPosition = Mydiv.scrollTop;
   var divHeight = Mydiv.scrollHeight - Mydiv.clientHeight;
-  var progres = (scrollPosition / divHeight) * 100;
+  var progres = (scrollPosition / divHeight) * 90;
   progress.style.cssText = `height: 20px; max-width:600px; width: ${progres.toFixed(0)}%; background-color: #21b027;margin-bottom: -10px;;`;
-  progress.innerHTML = `${progres.toFixed(0)}%`;
+  progress.innerHTML = `${Math.ceil(progres*1.1)}%`;
 };
-  
+ 
 	let canClick = false;
 	setTimeout(() => { canClick = true; }, 5 * 60 * 1000); // 6 min delay
 
