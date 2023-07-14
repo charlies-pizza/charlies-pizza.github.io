@@ -165,6 +165,15 @@ span.pasif {
     width: 90%;
     list-style-type:none;
   }
+   @media (min-width: 600px) {
+  .px900 {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+}
+  }
 </style>
 </head>
 <body>
@@ -196,7 +205,7 @@ span.pasif {
     <img id="MenuBtn1" src="https://bestill.online/img/btn.png" style="width: 100%; height: auto;">
 </div>
   
-<iframe id="IFRAME" class="full off" src="https://www.foodbooking.com/api/fb/_y55_q_j"></iframe>
+<iframe id="IFRAME" class="full off px900" src="https://www.foodbooking.com/api/fb/_y55_q_j"></iframe>
 
 <div id="vilkor" class="full off" onclick="vilkor.classList.toggle('off');" style="display: grid; align-content: center;">
   
