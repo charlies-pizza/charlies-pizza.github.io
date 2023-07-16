@@ -2,7 +2,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Charlie's Pizza Kristiansand - Online Pizza Bestilling</title>
-<meta name="google-site-verification" content="zUnGHzSbXZdSBJuW_s6F_mcjbBoKFcc4-Kdo1z6maLw" />
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover">
 <meta http-equiv="X-UA-Compatible" content="ie=edge"> 
 <meta name="keywords" content="Pizza, online bestilling, Charlie's Pizza, Kristiansand, takeaway, levering, Italiensk pizza" />
@@ -27,6 +26,11 @@ body, html {
     top:0;
     left:0;
   }
+    @media screen and (min-width: 500px) {
+      body, html {
+      zoom: 85%;
+  }
+  }
   .header {
     overflow: auto;
     box-shadow: 0px 0px 10px 1px black;
@@ -35,7 +39,6 @@ body, html {
     max-width:600px;
     margin:auto;
     gap: 30px;
-    position:relative;
   }
   .center {
   display: grid;
@@ -70,12 +73,13 @@ body, html {
 }
 #mobilnr {
     height: 50px;
-    font-size: 20px;
+    font-size: 22px;
     text-align: center;
-    letter-spacing: 7px;
+    letter-spacing: 8px;
     border: none;
     background-color: white;
     color:black;
+    font-weight: bold;
 }
  #mobilnr:focus {
     outline: 1px solid red;
@@ -167,31 +171,10 @@ span.pasif {
     width: 90%;
     list-style-type:none;
   }
-  .Lukk { display:none; }
- @media (min-width: 650px) {
-  .px900 {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 650px;
-}
-.Lukk { 
-    display:block; 
-position: fixed;
-top: 50%;
-left: 50%;
-transform: translate(666%, -550%);
-  z-index:9999;
-   }
- }
 </style>
 </head>
 <body>
-  <div onclick="MenuStart();" class="Lukk">
-    <img src="https://bestill.online/img/btn.png" style="width: 50px; height: auto;">
-</div>
-
+  
 <div class="header center">
 <div class="saat center" id="saat"> <span id="hours"> *** </span> </div>
 
@@ -200,7 +183,7 @@ transform: translate(666%, -550%);
 <div class="center" style="width:100%;">
 	<div id="register" class="size center baslik ust-radius"> Vennligst registrer nummeret ditt her! </div>
 	
-	<input type="tel" class="size center baslik" id="mobilnr" placeholder="+47 40000000" oninput="INPUT(this.value); this.value = this.value.replace(/[^\d]/g, '').slice(0, 8); if (this.value.length >= 8) this.blur();">
+	<input type="tel" class="size center baslik" id="mobilnr" placeholder="+47 40000000" oninput="INPUT(this.value); this.value = this.value.replace(/[^\d]/g, '').slice(0, 8); if (this.value.length >= 8) this.blur();" autocomplete="off">
   
 	<div class="size center baslik">Dine Digitale Kuponger</div>
   
@@ -214,13 +197,17 @@ transform: translate(666%, -550%);
 </div>
   
 <div class="size center baslik linkBtn" style="margin-bottom:30px;font-size:20px;" onclick="vilkor.classList.toggle('off');">» Vilkår for lojalitetsprogram «</div>
+	
+<div onclick="MenuStart();" id="MenuBtn" class="pulse">
+    <img id="MenuBtn1" src="https://bestill.online/img/btn.png" style="width: 100%; height: auto;">
+</div>
   
-<iframe id="IFRAME" class="full off px900" src="https://www.foodbooking.com/api/fb/_y55_q_j"></iframe>
+<iframe id="IFRAME" class="full off" src="https://www.foodbooking.com/api/fb/_y55_q_j"></iframe>
 
 <div id="vilkor" class="full off" onclick="vilkor.classList.toggle('off');" style="display: grid; align-content: center;">
-  
-<ol class="header size" id="Mydiv" style="max-width: 600px;gap: 2px;height: 90%;background-color: #f6f6f600; box-shadow: 0px 0px 0px 0px black;">
-<li class="baslik center ust-radius" style="display: flex; justify-content: space-between;"> <span><b>Følgende vilkår gjelder:</b></span> <span style="float:left;cursor:pointer;">❌</span></li>
+  <div id="progress" class="center"> 0% </div>
+<ol class="header size" id="Mydiv" style="max-width: 600px;gap: 2px;height:95%;background-color: #f6f6f600; box-shadow: 0px 0px 0px 0px black;">
+<li class="baslik center ust-radius" style="height:20px;display: flex; justify-content: space-between;"> <span><b>Følgende vilkår gjelder:</b></span>    <span style="float:left;cursor:pointer;">❌</span></li>
 <li>Denne teksten forklarer hvordan en kunde kan registrere seg for et lojalitetsprogram, skanne QR-koden sin, følge med på informasjonen i profilen sin, og hvordan de kan bruke sin rett til en gratis pizza. Den gir også informasjon om fordelene ved dette programmet og vilkårene og betingelsene.</li>
 <li>Brukere må registrere mobilnummeret sitt for å kunne få digitale stempler på profilen sin.</li>
 <li>Etter registrering må brukere få QR-koden skannet av betjeningen ved kjøp av en eller flere Stor pizza. Men den gjelder ikke for små pizzaer.</li>
@@ -232,7 +219,7 @@ transform: translate(666%, -550%);
 <li>Fordelen med programmet er at man kan spare penger ved å få hver sjette pizza gratis, noe som gir betydelige besparelser over tid, spesielt for hyppige pizza-bestillere.</li>
 <li>Det digitale stempelkortet er alltid tilgjengelig på telefonen, slik at man ikke risikerer å miste eller glemme det.</li>
 <li>Charlie's Pizza har rett til å oppdatere betingelser og vilkår med umiddelbar effekt.</li>
-<li class="baslik center alt-radius" style="display: flex;justify-content: space-evenly;"> <div onclick="event.stopPropagation(); Mydiv.scrollTop = 0;">⤴️ Gå Opp ⤴</div> <div>❌ Lukk </div> </li>
+<li class="baslik center alt-radius" style="height:20px;display: flex;justify-content: space-evenly;"> <div onclick="event.stopPropagation(); Mydiv.scrollTop = 0;">⤴️ Gå Opp ⤴</div> <div>❌ Lukk </div> </li>
   </ol>
 	</div>
   
@@ -284,6 +271,14 @@ document.querySelector("#QRCODE").src = "https://bestill.online/img/stemp.jpg";
 
 <script>
  
+Mydiv.onscroll = function() {
+  var scrollPosition = Mydiv.scrollTop;
+  var divHeight = Mydiv.scrollHeight - Mydiv.clientHeight;
+  var progres = (scrollPosition / divHeight) * 90;
+  progress.style.cssText = `border-radius:5px;height: 15px; max-width:600px; width: ${progres.toFixed(0)}%; background-color: #21b027;margin-bottom:-8px;margin-top:5px;`;
+  progress.innerHTML = `${Math.ceil(progres*1.1)}%`;
+};
+ 
 	let canClick = false;
 	setTimeout(() => { canClick = true; }, 5 * 60 * 1000); // 6 min delay
 
@@ -308,7 +303,7 @@ function INPUT(inp) {
     const invalidStartDigits = [0, 1, 2, 3, 5, 6, 7, 8];
 
     if (invalidStartDigits.includes(firstDigit)) {
-        register.innerHTML = `❎ Nr må begynne med 4 og 9.`;
+        register.innerHTML = `❌ Nr må begynne med 4 og 9.`;
     } else if (inp.length === 8 && !invalidStartDigits.includes(firstDigit)) {
         register.innerHTML = `✅ Nummeret ditt er registrert!`;
     } else {
