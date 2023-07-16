@@ -166,32 +166,34 @@ span.pasif {
     width: 90%;
     list-style-type:none;
   }
+   @media screen and (max-width: 900px) {
+ .close{
+   display:none;
+}
+     
+  }
   @media screen and (min-width: 900px) {
     .app {
     max-width: 900px;
-      display:flex;
-      min-height:400px
+    display:flex;
+    min-height:400px
     }
 #saat {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
+    max-width: 900px;
     margin: auto;
 }
- .overbtn{
-    position: absolute;
-    top: 15%;
-    max-width: 350px;
-    margin: auto;
-   margin-left:40px;
-}
-  .overbtn1{
-    position: absolute;
-    bottom: 15%;
-    max-width: 350px;
-    margin: auto;
-   margin-left:45px;
+  .linkBtn{
+      display:none;
+  }
+    .overbtn{
+   max-width: 350px;
+   margin:40px;
+  display: grid;
+  place-items: center;
 }
 }
 </style>
@@ -202,9 +204,12 @@ span.pasif {
 
 <div class="saat center" id="saat"> <span id="hours"> *** </span> </div>
   
-<div class="size center baslik linkBtn overbtn" style="animation: pulse1 1s infinite;" onclick="MenuStart();">» Bestill Pizza Her «</div>
+<div class="size center baslik linkBtn" style="animation: pulse1 1s infinite;" onclick="MenuStart();">» Bestill Pizza Her «</div>
 
 <div class="center" style="width:100%;">
+  
+  <div class="size center baslik linkBtn overbtn close" style="animation: pulse1 1s infinite;" onclick="MenuStart();">» Bestill Pizza Her «</div>
+  
 	<div id="register" class="size center baslik ust-radius"> Vennligst registrer nummeret ditt her! </div>
 	
 <input type="tel" class="size center baslik" id="mobilnr" placeholder="+47 40000000" oninput="INPUT(this.value); this.value = this.value.replace(/[^\d]/g, '').slice(0, 8); if (this.value.length >= 8) this.blur();" autocomplete="off">
@@ -213,15 +218,19 @@ span.pasif {
 	<div class="size center baslik">Dine Digitale Kuponger</div>
   
 	<div class="size baslik alt-radius" id="kupon"> <!-- Content here --> </div>
+      <div class="size center baslik linkBtn overbtn close" style="margin-bottom:30px;font-size:20px;" onclick="vilkor.classList.toggle('off');">» Vilkår for lojalitetsprogram «</div>
 </div>
   
 <div class="center" style="width:100%;" id="qrheader" onclick="this.classList.toggle('full'); document.querySelector('div').scrollTop = 0;">
 	<div class="size center baslik ust-radius" onclick="event.stopPropagation();">QR-koden skannes av betjeningen!</div>
 	<img class="size center" id="QRCODE">
 	<div class="size center baslik alt-radius">Klikk på QR-koden for å fremvise!</div>
-</div>
   
-<div class="size center baslik linkBtn overbtn1" style="margin-bottom:30px;font-size:20px;" onclick="vilkor.classList.toggle('off');">» Vilkår for lojalitetsprogram «</div>
+  
+</div>
+ 
+  
+<div class="size center baslik linkBtn" style="margin-bottom:30px;font-size:20px;" onclick="vilkor.classList.toggle('off');">» Vilkår for lojalitetsprogram «</div>
 	
 <div onclick="MenuStart();" id="MenuBtn" class="pulse">
     <img id="MenuBtn1" src="https://bestill.online/img/btn.png" style="width: 100%; height: auto;">
