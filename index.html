@@ -242,6 +242,8 @@ span.pasif {
     kupon.innerHTML += `<span class="aktiv" style="background-color: rgb(${green}, 160, ${green});"> <img src="https://bestill.online/img/load.gif"></span>`;
 }
 
+        QRCODE.src = `https://bestill.online/img/stemp.jpg`;
+        
     function guncelle() {
 
         localStorage.setItem('MOBIL', mobilnr.value);
@@ -267,7 +269,7 @@ document.querySelector("#QRCODE").src = "https://bestill.online/img/stemp.jpg";
         });
     }
 	mobilnr.addEventListener("input", guncelle);
-	setTimeout(() => {  guncelle(); }, 1 * 500); // 2 saniye
+	setTimeout(() => {  guncelle(); }, 1 * 1000); // 2 saniye
 </script>
 
 <script>
