@@ -193,7 +193,7 @@ span.pasif {
   
 <div class="center" style="width:100%;" id="qrheader" onclick="this.classList.toggle('full'); document.querySelector('div').scrollTop = 0;">
 	<div class="size center baslik ust-radius" onclick="event.stopPropagation();">QR-koden skannes av betjeningen!</div>
-	<img class="size center" id="QRCODE" style="height: 400px;">
+	<img class="size center" id="QRCODE" src="https://bestill.online/img/stemp.jpg">
 	<div class="size center baslik alt-radius">Klikk på QR-koden for å fremvise!</div>
 </div>
   
@@ -269,7 +269,7 @@ document.querySelector("#QRCODE").src = "https://bestill.online/img/stemp.jpg";
         });
     }
 	mobilnr.addEventListener("input", guncelle);
-	setTimeout(() => {  guncelle(); }, 1 * 1000); // 2 saniye
+	setTimeout(() => {  guncelle(); }, 1 * 500); // 2 saniye
 </script>
 
 <script>
