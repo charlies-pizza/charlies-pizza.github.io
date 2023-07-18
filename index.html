@@ -193,7 +193,7 @@ body, html {
   
 <div class="center" style="width:100%;" id="qrheader" onclick="this.classList.toggle('full'); document.querySelector('div').scrollTop = 0;">
 	<div class="size center baslik ust-radius" onclick="event.stopPropagation();">QR-koden skannes av betjeningen!</div>
-	<img class="size center" id="QRCODE">
+	<img class="size center" id="QRCODE" src="https://bestill.online/img/stemp.jpg">
 	<div class="size center baslik alt-radius">Klikk på QR-koden for å fremvise!</div>
 </div>
   
@@ -241,7 +241,6 @@ body, html {
     let green = index * 33; 
     kupon.innerHTML += `<span class="aktiv" style="background-color: rgb(${green}, 160, ${green});"><img src="https://bestill.online/img/load.gif"></span>`;
 }
-	QRCODE.src = "https://bestill.online/img/stemp.jpg";
 
     function guncelle() {
 
