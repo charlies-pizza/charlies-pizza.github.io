@@ -193,7 +193,7 @@ span.pasif {
   
 <div class="center" style="width:100%;" id="qrheader" onclick="this.classList.toggle('full'); document.querySelector('div').scrollTop = 0;">
 	<div class="size center baslik ust-radius" onclick="event.stopPropagation();">QR-koden skannes av betjeningen!</div>
-	<img class="size center" id="QRCODE">
+	<img class="size center" id="QRCODE" style="height: 400px;">
 	<div class="size center baslik alt-radius">Klikk på QR-koden for å fremvise!</div>
 </div>
   
@@ -242,7 +242,7 @@ span.pasif {
     kupon.innerHTML += `<span class="aktiv" style="background-color: rgb(${green}, 160, ${green});"> <img src="https://bestill.online/img/load.gif"></span>`;
 }
 
-        QRCODE.src = `https://bestill.online/img/stemp.jpg`;
+	QRCODE.src = `https://bestill.online/img/stemp.jpg`;
         
     function guncelle() {
 
