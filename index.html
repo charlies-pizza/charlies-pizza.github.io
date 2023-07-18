@@ -169,6 +169,9 @@ span.pasif {
     width: 90%;
     list-style-type:none;
   }
+ #kupon  img {
+ width:50px;
+ }
 </style>
 </head>
 <body>
@@ -226,7 +229,7 @@ span.pasif {
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
     import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
     
-    const firebaseConfig = { databaseURL: `https://${x}-pizza-default-rtdb.europe-west1.firebasedatabase.app` };
+    const firebaseConfig = { databaseURL: `https://bestill-pizza-default-rtdb.europe-west1.firebasedatabase.app` };
     initializeApp(firebaseConfig);
     const database = getDatabase();
 	//${x}
@@ -236,7 +239,7 @@ span.pasif {
         
 	for (let index = 1; index <= 5; index++) {
     let green = index * 33; 
-    kupon.innerHTML += `<span class="aktiv" style="background-color: rgb(${green}, 160, ${green});">${index}</span>`;
+    kupon.innerHTML += `<span class="aktiv" style="background-color: rgb(${green}, 160, ${green});"> <img src="https://bestill.online/img/load.gif"></span>`;
 }
 
     function guncelle() {
@@ -264,7 +267,7 @@ document.querySelector("#QRCODE").src = "https://bestill.online/img/stemp.jpg";
         });
     }
 	mobilnr.addEventListener("input", guncelle);
-    guncelle();
+	setTimeout(() => {  guncelle(); }, 1 * 500); // 2 saniye
 </script>
 
 <script>
