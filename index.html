@@ -64,12 +64,12 @@ body, html {
     font-size: 25px;
     color: white;
 }
-@keyframes pulse1 {
+	@keyframes pulse1 {
     0% { transform: scale(1); }
     50% { transform: scale(1.02); }
     100% { transform: scale(1); }
 }
-#mobilnr {
+	#mobilnr {
     height: 50px;
     font-size: 22px;
     text-align: center;
@@ -79,13 +79,13 @@ body, html {
     color:black;
     font-weight: bold;
 }
- #mobilnr:focus {
+ 	#mobilnr:focus {
     outline: 1px solid red;
 }
-  #mobilnr::placeholder{
+	#mobilnr::placeholder{
     opacity: 0.6;
 }
-  #kupon {
+	#kupon {
     min-height: 90px;
     height:auto;
     font-size: 25px;
@@ -96,7 +96,7 @@ body, html {
     justify-content: space-evenly;
     border-radius:0px 0px 10px 10px;
 }
-span.aktiv, span.pasif {
+	span.aktiv, span.pasif {
     width: 1em;
     height: 1em;
     padding: 4%;
@@ -108,11 +108,11 @@ span.aktiv, span.pasif {
     justify-content: center;
     border: 1.3px dashed #555;
 }
-span.pasif { 
+	span.pasif { 
     background-color: #9e9e9e82;
     color: #223255;
 }
-  #MenuBtn, .pulse {
+	#MenuBtn, .pulse {
     cursor: pointer;
     position: fixed;
     right: 10px;
@@ -124,7 +124,7 @@ span.pasif {
     justify-content: center;
     z-index: 999;
 }
-.pulse::before, .pulse::after {
+	.pulse::before, .pulse::after {
     content: '';
     position: absolute;
     height: 100%;
@@ -133,19 +133,19 @@ span.pasif {
     box-shadow: 0 0 5px 2px #f00;
     animation: pulse 2s infinite;
 }
-.pulse::after { animation-delay: 1s; }
+	.pulse::after { animation-delay: 1s; }
   
-@keyframes pulse {
-  0% { transform: scale(1); opacity: 1; }
-  100% { transform: scale(1.5); opacity: 0; }
+	@keyframes pulse {
+	0% { transform: scale(1); opacity: 1; }
+	100% { transform: scale(1.5); opacity: 0; }
 }
- .saat {
+	.saat {
     width: 100%;
     height: 50px;
-  }
-  .full {
+}
+	.full {
     display: grid;
- 	  place-items: center;
+	place-items: center;
     align-content: center;
     position: fixed;
     top: 0;
@@ -157,21 +157,21 @@ span.pasif {
     width:100%;
     height:100%;
     overflow-y: auto;
-  }
-  .on { visibility: visible; }
-  .off { visibility: hidden; }
-  .ust-radius { border-radius:10px 10px 0px 0px; }
-   .alt-radius { border-radius:0px 0px 10px 10px; }
-  li {
+}
+	.on { visibility: visible; }
+	.off { visibility: hidden; }
+	.ust-radius { border-radius:10px 10px 0px 0px; }
+	.alt-radius { border-radius:0px 0px 10px 10px; }
+	li {
     background-color: #f6f6f6;
     border: 1px solid grey;
     padding: 15px;
     width: 90%;
     list-style-type:none;
-  }
- #kupon  img {
- width:50px;
- }
+}
+	#kupon  img {
+	width:50px;
+}
 </style>
 </head>
 <body>
