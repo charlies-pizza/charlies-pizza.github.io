@@ -197,7 +197,7 @@ body, html {
 	<div class="size center baslik alt-radius">Klikk på QR-koden for å fremvise!</div>
 </div>
   
-<div class="size center baslik linkBtn" style="margin-bottom:30px;font-size:20px;" onclick="vilkor.classList.toggle('off');">» Vilkår for lojalitetsprogram «</div>
+<div id="test" class="size center baslik linkBtn" style="margin-bottom:30px;font-size:20px;" onclick="vilkor.classList.toggle('off');">» Vilkår for lojalitetsprogram «</div>
 	
 <div onclick="MenuStart();" id="MenuBtn" class="pulse">
     <img id="MenuBtn1" src="https://bestill.online/img/btn.png" style="width: 100%; height: auto;">
@@ -286,7 +286,7 @@ Mydiv.onscroll = function() {
 	setTimeout(() => { canClick = true; }, 5 * 60 * 1000); // 6 min delay
 
 function MenuStart() {
-	document.body.scrollIntoView({ behavior: "smooth", block: "start"});
+	saat.scrollIntoView({ behavior: "smooth", block: "start"});
 
     IFRAME.classList.toggle('off');
     qrheader.classList.remove('full');
