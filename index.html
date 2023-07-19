@@ -286,7 +286,7 @@ Mydiv.onscroll = function() {
 	setTimeout(() => { canClick = true; }, 5 * 60 * 1000); // 6 min delay
 
 function MenuStart() {
-  document.querySelector('div').scrollTop = 0;
+	document.body.scrollIntoView({ behavior: "smooth", block: "start"});
 
     IFRAME.classList.toggle('off');
     qrheader.classList.remove('full');
