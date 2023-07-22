@@ -11,9 +11,7 @@
   <script>
     // Kullanıcıdan izin alarak sayfa yüklendiğinde bir kez titreşim yapar
     function requestVibrationPermission() {
-      if ("vibrate" in navigator) {
         navigator.vibrate(200);
-      }
     }
 
     // Kullanıcı düğmeye tıkladığında titreşimi tekrar etmek için bu fonksiyonu çağırabilir
