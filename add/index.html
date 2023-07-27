@@ -1,52 +1,33 @@
-<html lang="en">
+<html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover">
-<meta http-equiv="X-UA-Compatible" content="ie=edge"> 
   <style>
-    body {
-    margin: 0;
-    padding: 0;
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
     flex-direction: column;
-    }
+    align-items: center;
+    height: 90vh;
+    justify-content: space-evenly;
+}
 
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-around;
-      height: 90%;
-      gap:20px;
-    }
+#card img{
+  width: 90vw;
+  max-width:450px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  margin:auto;
+}
 
-    #card {
-      text-align: center;
-    }
+#control img {
+  width: 50px;
+}
 
-    #card img {
-      box-shadow: 1px 1px 12px 3px #060606bd;
-      border-radius: 5px;
-      width: 90%;
-      max-width: 450px;
-    }
-
-    #control {
-      display: flex;
-      align-items: center;
-      overflow-y: hidden;
-      overflow-x: auto;
-      max-width: 70%;
-      margin: auto;
-    }
-
-    #control img {
-      width: 100px;
-      height: 100px;
-      margin: 5px;
-    }
   </style>
 </head>
 <body>
@@ -54,7 +35,6 @@
     <div id="card">
       <img src="https://bestill.online/add/g.png" />
     </div>
-  </div>
 
   <div id="control">
     <img src="https://bestill.online/add/g.png" />
@@ -64,5 +44,6 @@
     <img src="https://bestill.online/add/t.png" />
     <img src="https://bestill.online/add/y.png" />
   </div>
+</div>
 </body>
 </html>
