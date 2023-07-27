@@ -1,50 +1,58 @@
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover">
 <meta http-equiv="X-UA-Compatible" content="ie=edge"> 
   <title>Image Carousel</title>
   <style>
     body {
-      margin: 0;
-      padding: 0;
-      height: 100vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
-      gap: 10px;
-      max-width:500px;
-      margin:auto;
+    margin: auto;
+    padding: 0;
+    max-width: 500px;
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     }
-
     #carousel {
     display: flex;
-    overflow: hidden;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    justify-content: center;
     align-items: center;
+    height: 100vh;
     }
-
     #carousel img {
-     border-radius: 5px;
-      width: 90%;
-      height: auto;
-      margin:auto;
+    box-shadow: 1px 1px 12px 3px #060606bd;
+    border-radius: 5px;
+    min-width:200px;
+    width: 90%;
+    height: auto;
+    margin: auto;
+    }
+    #controls img {
+      width:20%;
+    }
+    #controls {
+    display: flex;
+    overflow: auto;
+    width: 87%;
+    margin: auto;
+    gap: 10px;
+    padding: 6px;
     }
   </style>
 </head>
 <body>
   <div id="carousel">
-    <img src="https://bestill.online/add/g.png" alt="Google 1" />
+    <img src="https://bestill.online/add/g.png"/>
   </div>
-  <div id="carousel">
-    <img src="https://bestill.online/add/i.png" alt="instegram 1" />
-  </div>
-  <div id="carousel">
-    <img src="https://bestill.online/add/w.png" alt="Wathshap 1" />
-  </div>
-  <div id="carousel">
-    <img src="https://bestill.online/add/f.png" alt="Yelp 1" />
-  </div>
+  
+  <div id="controls">
+    <img src="https://bestill.online/add/g.png" />
+    <img src="https://bestill.online/add/f.png" />
+    <img src="https://bestill.online/add/i.png" />
+    <img src="https://bestill.online/add/w.png" />
+    <img src="https://bestill.online/add/t.png" />
+    <img src="https://bestill.online/add/y.png" />
+</div>
 </body>
 </html>
