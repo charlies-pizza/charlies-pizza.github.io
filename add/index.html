@@ -1,412 +1,50 @@
-<html lang="nb">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Charlie's Pizza Kristiansand - Online Pizza Bestilling</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover">
 <meta http-equiv="X-UA-Compatible" content="ie=edge"> 
-<meta name="keywords" content="Pizza, online bestilling, Charlie's Pizza, Kristiansand, takeaway, levering, Italiensk pizza" />
-<meta name="description" content="Pizza til folket! Bestill pizza fra Charlie's Pizza. Ferske bunner hver dag. Takeaway og levering. Charlie's Pizza Kristiansand, online pizza bestilling nettsted. Ekte pizza med 100% italienske ingredienser, stekt i profesjonell stein-ovn." />
-<script src="https://bestill.online/styles.js"></script>
-<link rel="icon" type="image/png" href="https://bestill.online/img/icon-s.png">
+  <title>Image Carousel</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 10px;
+      max-width:500px;
+      margin:auto;
+    }
 
-<style>
-* {
-    margin: 0;
-    padding: 0;
-}
-body, html {
-    margin: 0;
-    padding: 0;
-    background-color: #11366e;
-    font-family: Arial, sans-serif;
-    height: 100%;
-    width: 100%;
+    #carousel {
+    display: flex;
     overflow: hidden;
-    position: fixed;
-    top:0;
-    left:0;
-}
-.merkez {
-    background-color: #0d6efd66;
-    display: flex;
-    flex-wrap: wrap;
-    align-content: space-between;
-    height: 100%;
-    width: 100%;
-    overflow: auto;
-    align-items: stretch;
-    gap: 30px;
-    justify-content: center;
-}
-@media (min-width: 600px) {
-  .merkez {
-    display:flex;
-    align-content: stretch;
-    width:600px;
-    margin:auto;
-    box-shadow: 0px 0px 10px 1px #2196F3;
-    background-color: #0d6efd44;
-  }
-}
-.container {
-    display: flex;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     align-items: center;
-    flex-direction: column;
-    width: 100%;
-}
-.standart{
-    min-width:300px;
-	  max-width:90%;
-    width:400px;
-}
-.header {
-    display: flex;
-	  align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 50px;
-    margin: 0;
-}
-#IFRAME {
-    position: fixed;
-    top: 0;
-    left: 0;
-    transition: 1s;
-    z-index: 110;
-    opacity: 1;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    border: none;
-    background-color: #3b3a3a;
-    display:none;
-}
-#MenuBtn, .pulse {
-    cursor: pointer;
-    position: fixed;
-    right: 10px;
-    bottom: 40px;
-    height: 50px;
-    width: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 999;
-}
-.pulse::before, .pulse::after {
-    content: '';
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    border-radius: 50%;
-    box-shadow: 0 0 5px 2px #f00;
-    animation: pulse 2s infinite;
-}
-.pulse::after {
-    animation-delay: 1s;
-}
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(1.5);
-    opacity: 0;
-  }
-}
-  input::-webkit-outer-spin-button,
-  input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-#kupon{
-    min-height: 90px;
-    max-height: auto;
-    font-size: 25px;
-    background-color: #d8f3ff;
-    display: flex;
-    gap: 1%;
-    align-items: center;
-    justify-content: space-evenly;
-    border-radius:0px 0px 10px 10px;
-}
-  #kupon img{
-    width: 100%;
-    border-radius:0px 0px 10px 10px;
-  }
-span.aktiv, span.pasif {
-    width: 1em;
-    height: 1em;
-    padding: 4%;
-    border-radius: 50%;
-    color: #ffffff;
-    background-color: #1c9f21;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1.3px dashed #555;
-}
-span.pasif { 
-    background-color: #9e9e9e82;
-    color: #223255;
-}
-.full{
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    z-index: 99;
-    min-width: 300px;
-    max-width: 90%;
-    width: 600px;
-    height: 90%;
-    overflow-y: auto;
-    border-radius:10px;
-}
-.back{
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: black;
-    padding:100vh;
-}
-li {
-    background-color: #f6f6f6;
-    border: 1px solid grey;
-    padding: 15px;
-}
-.qrback {
-    width:400px;
-    height:auto;
-    background-color: black;
-	  padding:100%;
-    height: auto;
-    top: 40%;
-}
-  .baslik {
-    background-image: radial-gradient(circle, #3F51B5, #3F51B5, #042c4c);
-    color: white;
-    height: 50px;
-    font-size: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-  input:focus {
-    outline: 1px solid red;
-}
-  #mobilnr {
-    height: 50px;
-    font-size: 20px;
-    text-align: center;
-    letter-spacing: 7px;
-    border: none;
-    background-color: #d8f3ff;
-    width: 400px;
-    border-radius: 0px;
-    color:black;
-}
-  .linkBtn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 50px;
-    font-size: 20px;
-    background-image: radial-gradient(circle, #219dff, #219dff, #0f208412);
-    box-shadow: 1px 11px 20px 3px rgb(0 0 0 / 66%);
-    margin-bottom: 40px;
-    border-radius:10px;
-    cursor: pointer;
-    border: none;
-    color: white;
-}
-.linkBtn1 {
-    font-size: 25px;
-    height: 60px;
-    animation: pulse1 1s infinite;
-}
+    }
 
-@keyframes pulse1 {
-    0% {
-        transform: scale(1);
+    #carousel img {
+     border-radius: 5px;
+      width: 90%;
+      height: auto;
+      margin:auto;
     }
-    50% {
-        transform: scale(1.02);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
-
-  #QRCODE{
-    border-radius:10px;
-}
-</style>
+  </style>
 </head>
-
 <body>
-<div class="merkez">
-<div class="header" id="saat"> <span id="hours"> *** </span> </div>
-
-<div class="container">
-<div class="standart linkBtn linkBtn1"  onclick="MenuStart();">» Bestill Pizza her «</div>
-<div id="register" class="standart baslik" style="border-radius:10px 10px 0px 0px;"> Vennligst registrer nummeret ditt her!1 </div>
-
-<input type="number" class="standart inp" id="mobilnr" onkeyup="INPUT(this.value); if(this.value.length >= 8) this.blur();" inputmode="numeric" placeholder="00000000" oninput="this.value = this.value.replace(/[^\d]/g, ''); this.value = this.value.length > 8 ? this.value.slice(0, 8) : this.value;">
-
-<div class="standart baslik">Dine Digitale Kuponger</div>
-  
-<div class="standart" id="kupon">
-  <!-- Content here -->
-</div>
+  <div id="carousel">
+    <img src="https://bestill.online/add/g.png" alt="Google 1" />
   </div>
-
-<img class="standart" id="QRCODE" onclick="this.classList.toggle('full'); this.classList.toggle('qrback'); document.querySelector('div').scrollTop = document.querySelector('div').scrollHeight;">
-  
-<div class="standart linkBtn"  onclick="popup.hidden = !popup.hidden;">» Vilkår for lojalitetsprogram «</div>
-
-<div id="popup" class="back" onclick="popup.hidden = !popup.hidden" hidden>
-
-<div class="full">
-
-<li style="list-style-type:none;"> <span><b>Følgende vilkår gjelder:</b></span> <span style="float:right;cursor:pointer;">❌</span></li>
-<li>Denne teksten forklarer hvordan en kunde kan registrere seg for et lojalitetsprogram, skanne QR-koden sin, følge med på informasjonen i profilen sin, og hvordan de kan bruke sin rett til en gratis pizza. Den gir også informasjon om fordelene ved dette programmet og vilkårene og betingelsene.</li>
-<li>Brukerne må registrere mobilnummeret sitt for at det digitale stempelet skal bli registrert på profilen deres.</li>
-<li>Når du er registrert, husk å få QR-koden skannet av en av våre ansatte hver gang du kjøper en eller flere <b>Stor</b> pizza.</li>
-<li>Etter at QR-koden er skannet, vil en av de fem kupongene i profilen din endre farge til grønn.</li>
-<li>På profilen din vil du ha informasjon om hvor mange kjøp som gjenstår før du får én gratis stor pizza.</li>
-<li>Hvis du kjøper fem pizzaer og får alle kupongene grønne, vil du ved neste bestilling få spørsmål om du ønsker å bruke lojalitetskupongen.</li>
-<li>Den sjette pizzaen gjelder for 1 <b>Stor</b> pizza, og ved henting. Lojalitetskupongen kan ikke brukes på 'lag din egen'.</li>
-<li>Lojalitetskupongen blir kun registrert når du kjøper en eller flere <b>Stor</b> pizza. Den er ikke gyldig for små pizzaer.</li>
-<li>Fordeler: Spar penger. I ditt tilfelle kan du få hver sjette pizza gratis. Dette er en betydelig besparelse over tid, spesielt hvis du ofte bestiller pizza.</li>
-<li>Et digitalt stempelkort er alltid med deg på telefonen din, så det er ingen risiko for å miste det eller glemme det hjemme.</li>
-<li>Charlie's Pizza forbeholder seg retten til å kunne oppdatere betingelser og vilkår med umiddelbar effekt.</li>
-	</div>
-</div>
-
-<div onclick="MenuStart();" id="MenuBtn" class="pulse">
-    <img id="MenuBtn1" src="https://bestill.online/img/btn.png" style="width: 100%; height: auto;">
-</div>
-
-<iframe id="IFRAME" title="Charlie's Pizza Online Bestilling" src="https://www.foodbooking.com/api/fb/_y55_q_j"></iframe>
-
-</div>
-
-<script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
-    import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
-    
-    const firebaseConfig = { databaseURL: `https://bestill-pizza-default-rtdb.europe-west1.firebasedatabase.app` };
-    initializeApp(firebaseConfig);
-    const database = getDatabase();
-	//${x}
-	
-    mobilnr.value = localStorage.getItem('MOBIL');
-    INPUT(mobilnr.value);
-        
-	for (let index = 1; index <= 5; index++) {
-    let green = index * 20; 
-    kupon.innerHTML += `<span class="aktiv" style="background-color: rgb(${green}, 120, ${green});">${index}</span>`;
-}
-
-    function guncelle() {
-
-        localStorage.setItem('MOBIL', mobilnr.value);
-        
-        let specificKey = localStorage.getItem('MOBIL');
-        if (!specificKey) { specificKey = '0'; }
-        
-        QRCODE.src = `https://chart.googleapis.com/chart?cht=qr&chl=bestill.online/kayit.html?n=${encodeURIComponent(specificKey)}&chs=400x400&chld=L|0`;
-
-	if (!mobilnr.value) {
-document.querySelector("#QRCODE").src = "https://bestill.online/img/stemp.jpg";
-    }
-        const specificKeyReference = ref(database, specificKey);
-
-        onValue(specificKeyReference, (snapshot) => {
-            const value = snapshot.val();
-            kupon.innerHTML = '';
-            for (let index = 1; index <= 5; index++) {
-                kupon.innerHTML += `${index <= value ? '<span class="aktiv">'+ index +'</span>' : '<span class="pasif">'+ index +'</span>'}`;
-            }
-   if (value == 5) { kupon.innerHTML = `<img class="kupon-img" src="https://bestill.online/img/gratis.gif?raw=true">`; }
-
-        });
-    }
-	mobilnr.addEventListener("input", guncelle);
-    guncelle();
-</script>
-
-<script>
-
-	let canClick = false;
-	setTimeout(() => { canClick = true; }, 5 * 60 * 1000); // 6 min delay
-
-function MenuStart() {
-document.querySelector('div').scrollTop = 0;
-
-    if (MenuBtn1.src === "https://bestill.online/img/btn.png") {
-        MenuBtn1.src = "https://bestill.online/img/btn1.png";
-        IFRAME.style = "display:block;";
-        QRCODE.classList.remove('full'); 
-        QRCODE.classList.remove('qrback'); 
-        popup.hidden = true;
-		if (canClick) {
-		location.reload();
-		}
-    } else {
-		IFRAME.style = "display:none;";
-        MenuBtn1.src = "https://bestill.online/img/btn.png";
-    }
-}
-
-function INPUT(inp) { 
-    
-    const firstDigit = parseInt(inp[0]);
-    const invalidStartDigits = [0, 1, 2, 3, 5, 6, 7, 8];
-
-    if (invalidStartDigits.includes(firstDigit)) {
-        register.innerHTML = `❌ Nr må begynne med 4 og 9.`;
-    } else if (inp.length === 8 && !invalidStartDigits.includes(firstDigit)) {
-        register.innerHTML = `✔️ Nummeret ditt er registrert!`;
-    } else {
-        register.innerHTML = `Vennligst registrer nummeret ditt her!`;
-    }
-}
-  
-function updateStatus() {
-  const currentDate = new Date();
-  const dayOfWeek = currentDate.getDay();
-  const currentHour = currentDate.getHours();
-
-  let themeColor = document.querySelector('meta[name="theme-color"]');
-
-  if (!themeColor) {
-    themeColor = document.createElement("meta");
-    themeColor.name = "theme-color";
-    document.head.appendChild(themeColor);
-  }
-
-  if (dayOfWeek === 1) { // Mandag
-    hours.textContent = `🚫 Charlie's Pizza er stengt på mandager.`;
-    saat.style ="background-color: #ef4e4b;font-size: 17px;color:white;"
-    themeColor.content = "#ef4e4b";
-    
-  } else if (currentHour >= 14 && currentHour < 22) {
-    hours.innerText  = `🟢 Åpent i dag fra kl. 14:00 til 22:00`;
-    saat.style ="background-color: #5ac15e;font-size: 17px;color:white;"
-    themeColor.content = "#5ac15e";
-
-  } else {
-    hours.innerText  = `🔴 Charlie's Pizza er stengt nå.`;
-    saat.style ="background-color: #ef4e4b;font-size: 17px;color:white;"
-    themeColor.content = "#ef4e4b";
-  }
-}
-updateStatus();
-</script>
-
+  <div id="carousel">
+    <img src="https://bestill.online/add/i.png" alt="instegram 1" />
+  </div>
+  <div id="carousel">
+    <img src="https://bestill.online/add/w.png" alt="Wathshap 1" />
+  </div>
+  <div id="carousel">
+    <img src="https://bestill.online/add/f.png" alt="Yelp 1" />
+  </div>
 </body>
 </html>
