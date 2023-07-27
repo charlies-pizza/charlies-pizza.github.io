@@ -11,8 +11,8 @@ body {
 }
 
 .w {
-width: 90vw;
-height: 100vh;
+  width:80vmin;
+  height:100vmin;
 }
 
 .ts {
@@ -98,7 +98,11 @@ transitions
 .t:hover, :checked + .t {
   transition:transform 0.5s, bottom 0.6s, left 0.6s, width 0.3s, box-shadow 0s;
 }
+   label {
+  background:red;
+     width:140%;
 
+    }
   </style>
 </head>
 <body>
@@ -115,7 +119,6 @@ transitions
     <label class="t" for="c4"><img src="https://bestill.online/add/i.png"/></label>
     <input type="radio" id="c5" name="ts"/>
     <label class="t" for="c5"><img src="https://bestill.online/add/y.png"/></label>
-  </div>
 </div>
  <script>
    const els = document.querySelectorAll("[type='radio']");
