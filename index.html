@@ -1,3 +1,4 @@
+
 <html lang="nb">
 <head>
 <meta charset="UTF-8">
@@ -278,12 +279,19 @@ body, html {
         
 	let specificKey = localStorage.getItem('MOBIL');
 	if (!specificKey) { specificKey = '0'; }
-        
-	if (mobilnr.value) {
-		QRCODE.src = `https://chart.googleapis.com/chart?cht=qr&chl=bestill.online/kayit.html?n=${encodeURIComponent(specificKey)}&chs=400x400&chld=L|0`;
-		}else{
-		QRCODE.src = "https://bestill.online/img/stemp.jpg";
-        }
+                    
+	const firstDigit = parseInt(specificKey[0]);
+    const invalidStartDigits = [0, 1, 2, 3, 5, 6, 7, 8];
+    
+if (mobilnr.value.length < 8 || invalidStartDigits.includes(firstDigit)) {
+    QRCODE.src = "https://bestill.online/img/stemp.jpg";
+} else if (mobilnr.value) {
+    QRCODE.src = `https://chart.googleapis.com/chart?cht=qr&chl=bestill.online/kayit.html?n=${encodeURIComponent(specificKey)}&chs=400x400&chld=L|0`;
+} else {
+    QRCODE.src = "https://bestill.online/img/stemp.jpg";
+}
+
+      
         
 	const specificKeyReference = ref(database, specificKey);
 
@@ -337,6 +345,7 @@ function INPUT(inp) {
 
     if (invalidStartDigits.includes(firstDigit)) {
         register.innerHTML = `❌ Nr må begynne med 4 og 9.`;
+        QRCODE.src = "https://bestill.online/img/stemp.jpg";
     } else if (inp.length === 8 && !invalidStartDigits.includes(firstDigit)) {
         register.innerHTML = `✅ Nummeret ditt er registrert!`;
     } else {
