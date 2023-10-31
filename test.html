@@ -100,10 +100,9 @@ body, html {
 }
 	span.aktiv, span.pasif {
     width: 2.5em;
-    max-width: 2.5em;
     height: 2.5em;
-    padding: 3%;
-    margin: 3%;
+    padding: 1.5%;
+    margin: 1.5%;
     border-radius: 50%;
     color: #ffffff;
     background-color: #1c9f21;
@@ -271,7 +270,7 @@ body, html {
     mobilnr.value = localStorage.getItem('MOBIL');
     INPUT(mobilnr.value);
         
-	for (let index = 1; index <= 9; index++) {
+	for (let index = 1; index <= 8; index++) {
     let green = index * 10; 
     kupon.innerHTML += `<span class="aktiv" style="background-color: rgb(${green}, 160, ${green});"><img src="https://bestill.online/img/load.gif"></span>`;
 }
@@ -299,10 +298,10 @@ if (mobilnr.value.length < 8 || invalidStartDigits.includes(firstDigit)) {
 	onValue(specificKeyReference, (snapshot) => {
 		const value = snapshot.val();
 		kupon.innerHTML = '';
-		for (let index = 1; index <= 9; index++) {
+		for (let index = 1; index <= 8; index++) {
 		kupon.innerHTML += `${index <= value ? '<span class="aktiv">'+ index +'</span>' : '<span class="pasif">'+ index +'</span>'}`;
             }
-	if (value == 9) { kupon.innerHTML = `<img style="width:100%;background-color: black;" src="https://bestill.online/img/gratis.gif?raw=true" class="alt-radius">`; }
+	if (value == 8) { kupon.innerHTML = `<img style="width:100%;background-color: black;" src="https://bestill.online/img/gratis.gif?raw=true" class="alt-radius">`; }
 
 	});
     }
