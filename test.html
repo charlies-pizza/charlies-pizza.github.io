@@ -175,6 +175,100 @@ body, html {
 	#kupon  img {
 	width:50px;
 }
+  /* Details ve summary elemanlarının stilini ayarla */
+  details {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  summary {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    cursor: pointer;
+  }
+
+  /* Liste öğelerinin stilini ayarla */
+  details ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  details li {
+    display: flex;
+    list-style-type: none;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f6f6f6;
+    border: 1px solid grey;
+    padding: 15px;
+    width: 90%;
+  }
+
+  /* İlerleme çubuğunun stilini ayarla */
+  .progress-container {
+    width: 100%;
+    background-color: #e0e0e0;
+    border-radius: 8px;
+  }
+
+  .progress-bar {
+    width: 93%; /* Oranı belirlemek için bu değeri değiştir */
+    background-color: #4caf50;
+    padding: 5px;
+    color: #fff;
+    border-radius: 8px;
+    text-align: right;
+  }
+
+  /* Giriş kutusu ve butonların stilini ayarla */
+  input[type="text"] {
+    width: 70%;
+    padding: 8px;
+    margin: 8px 0;
+    border: 1px solid #ddd;
+    font-size:20px;
+    border-radius: 4px;
+  }
+
+  .send-sms {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+
+  .send-sms:hover {
+    background-color: #45a049;
+  }
+
+  .remove-invite {
+    background-color: #f44336;
+    border: none;
+    color: white;
+    padding: 5px 7px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 50%;
+  }
+
+  .remove-invite:hover {
+    background-color: #d73833;
+  }
 </style>
 </head>
 <body>
@@ -193,6 +287,30 @@ body, html {
   
 	<div class="size baslik alt-radius" id="kupon"> <!-- Content here --> </div>
 </div>
+<div class="size center verv" id="">
+  <details class="size">
+    <summary>Verv en venn og få STOR PIZZA!</summary>
+    <p style="font-size:18px">Inviter vennene dine til å prøve Charlies og få rabatter til både deg selv og vennene dine! I tillegg vil du tjene gratis pizza etter hvert som de handler.</p><br>
+    <ul>
+      <li>
+        <input type="text" placeholder="Legg til mobilnr og inviter">
+        <button class="send-sms">Legg til</button>
+      </li>
+      <li>
+        <div class="progress-container">
+          <div class="progress-bar">28 / 30 - 2 pizza igjen</div>
+        </div>
+      </li>
+      <li>Min vert : 40 00 00 00</li>
+      <li><span>invitert : 44 44 44 41</span>  <button class="send-sms">SEND SMS</button> <button class="remove-invite">X</button></li>
+      <li><span>invitert : 44 44 44 42</span>  <button class="send-sms">SEND SMS</button> <button class="remove-invite">X</button></li>
+      <li><span>invitert : 44 44 44 43</span>  <button class="send-sms">SEND SMS</button> <button class="remove-invite">X</button></li>
+      <li><span>invitert : 44 44 44 45</span>  <button class="send-sms">SEND SMS</button> <button class="remove-invite">X</button></li>
+      <li><span>invitert : 44 44 44 46</span>  <button class="send-sms">SEND SMS</button> <button class="remove-invite">X</button></li>
+    </ul>
+  </details>
+</div>
+
   
 <div class="center" style="width:100%;" id="qrheader" onclick="this.classList.toggle('full'); document.querySelector('div').scrollTop = 0;">
 	<div class="size center baslik ust-radius" onclick="event.stopPropagation();">QR-koden skannes av betjeningen!</div>
