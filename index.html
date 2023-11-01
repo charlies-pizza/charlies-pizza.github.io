@@ -196,28 +196,30 @@ body, html {
     color: #000;
     }
     .container input, .container select{
-    text-align: center;
-    width: 100%;
-      padding: 10px;
-      margin-bottom: 15px;
-      box-sizing: border-box;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 16px;
+    display: flex;
+    margin: auto;
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
     }
     .container button {
-      width: 100%;
-      padding: 12px;
-      background-color: #5cb85c;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 18px;
+    display: flex;
+    margin: auto;
+    width: 90%;
+    padding: 10px;
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    justify-content: center;
+    align-items: center;
     }
-  label{
-      padding: 10px;
-  }
 </style>
 </head>
 <body>
@@ -241,10 +243,9 @@ body, html {
   <details>
     <summary>Inviter en venn med SMS</summary>
     <br>
-    <label for="mobil">Mobil:</label>
+
     <input type="tel" id="mobil" placeholder="Skriv inn mobilnummer">
     
-    <label for="message">Melding:</label>
     <select id="message">
       <option value="Hei! Du må prøve de deilige pizzaene fra Charlie's Pizza på Hellemyrbakken 1. Kjøp 8 store pizzaer, og få den 9. gratis!">Hei! Du må prøve de deilige pizzaene fra Charlie's Pizza på Hellemyrbakken 1. Kjøp 8 store pizzaer, og få den 9. gratis!</option>
       <option value="Charlie's Pizza på Hellemyrbakken 1 har virkelig fantastiske pizzaer! Husk, hvis du kjøper 8 pizzaer, får du den 9. gratis.">Charlie's Pizza på Hellemyrbakken 1, har virkelig fantastiske pizzaer! Husk, hvis du kjøper 8 pizzaer, får du den 9. gratis.</option>
@@ -252,6 +253,7 @@ body, html {
     </select>
 
     <button onclick="sendSMS()">Send SMS</button>
+    <br>
   </details>
 </div>
   
