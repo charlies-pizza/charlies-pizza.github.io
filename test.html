@@ -1,5 +1,3 @@
-
-
 <html lang="nb">
 <head>
 <meta charset="UTF-8">
@@ -88,20 +86,24 @@ body, html {
     opacity: 0.6;
 }
 	#kupon {
-    min-height: 90px;
-    height:auto;
+    min-height: 170px;
+    height: auto;
     font-size: 25px;
     background-color: white;
     display: flex;
-    gap: 1%;
+    gap: 6%;
     align-items: center;
-    justify-content: space-evenly;
-    border-radius:0px 0px 10px 10px;
+    justify-content: center;
+    border-radius: 0px 0px 10px 10px;
+    flex-wrap: wrap;
+    align-content: stretch;
 }
 	span.aktiv, span.pasif {
-    width: 1em;
-    height: 1em;
+    width: 1.4em;
+    height: 1.4em;
     padding: 4%;
+    margin-top: 10px;
+    margin-bottom: 10px;
     border-radius: 50%;
     color: #ffffff;
     background-color: #1c9f21;
@@ -175,7 +177,6 @@ body, html {
 	width:50px;
 }
       .container {
-      padding: 5px;
       background-color: #fff;
       border: 1px solid #e8e8e8;
       border-radius: 8px;
@@ -195,8 +196,8 @@ body, html {
       color: #000;
     }
     .container input, .container select{
-      text-align:center;
-      width: 100%;
+    text-align: center;
+    width: 100%;
       padding: 10px;
       margin-bottom: 15px;
       box-sizing: border-box;
@@ -214,6 +215,9 @@ body, html {
       cursor: pointer;
       font-size: 18px;
     }
+  label{
+      padding: 10px;
+  }
 </style>
 </head>
 <body>
@@ -293,7 +297,7 @@ body, html {
 <li><h3>Trinn 4: Hvordan Bruke Din Gratis Pizza</h3></li>
 <ol>
     <li>For å få den gratis Stor pizzaen, kan du enten bestille via telefon.</li>
-    <li>Hvis det ikke er mulig, kan du bestille fra "Bestill.online"-siden. Husk å velge "Kontant betaling" og legg til notatet "6. pizza gratis".</li>
+    <li>Hvis det ikke er mulig, kan du bestille fra "Bestill.online"-siden. Husk å velge "Kontant betaling" og legg til notatet "9. pizza gratis".</li>
 </ol>
 
 <li><h3>Betingelser</h3></li>
@@ -327,8 +331,8 @@ body, html {
     mobilnr.value = localStorage.getItem('MOBIL');
     INPUT(mobilnr.value);
         
-	for (let index = 1; index <= 5; index++) {
-    let green = index * 33; 
+	for (let index = 1; index <= 8; index++) {
+    let green = index * 10; 
     kupon.innerHTML += `<span class="aktiv" style="background-color: rgb(${green}, 160, ${green});"><img src="https://bestill.online/img/load.gif"></span>`;
 }
 
@@ -357,10 +361,10 @@ if (mobilnr.value.length < 8 || invalidStartDigits.includes(firstDigit)) {
 	onValue(specificKeyReference, (snapshot) => {
 		const value = snapshot.val();
 		kupon.innerHTML = '';
-		for (let index = 1; index <= 5; index++) {
+		for (let index = 1; index <= 8; index++) {
 		kupon.innerHTML += `${index <= value ? '<span class="aktiv">'+ index +'</span>' : '<span class="pasif">'+ index +'</span>'}`;
             }
-	if (value == 5) { kupon.innerHTML = `<img style="width:100%;background-color: black;" src="https://bestill.online/img/gratis.gif?raw=true" class="alt-radius">`; }
+	if (value == 8) { kupon.innerHTML = `<img style="width:100%;background-color: black;" src="https://bestill.online/img/gratis.gif?raw=true" class="alt-radius">`; }
 
 	});
     }
