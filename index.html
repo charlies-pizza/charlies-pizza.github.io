@@ -385,7 +385,7 @@ if (mobilnr.value.length < 8 || invalidStartDigits.includes(firstDigit)) {
       return;
     }
 
-    if (mobil.length < 8) {
+    if (mobil.length < 8 || mobil.length > 8) {
       alert('Mobilnummeret må være minst 8 siffer.');
       return;
     }
