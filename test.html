@@ -1,3 +1,5 @@
+
+
 <html lang="nb">
 <head>
 <meta charset="UTF-8">
@@ -86,30 +88,27 @@ body, html {
     opacity: 0.6;
 }
 	#kupon {
-	min-height: 171px;
-    height: auto;
+    min-height: 90px;
+    height:auto;
     font-size: 25px;
     background-color: white;
     display: flex;
+    gap: 1%;
     align-items: center;
     justify-content: space-evenly;
-    border-radius: 0px 0px 10px 10px;
-    align-content: center;
-    flex-direction: row;
-    flex-wrap: wrap;
+    border-radius:0px 0px 10px 10px;
 }
 	span.aktiv, span.pasif {
-    width: 2.5em;
-    height: 2.5em;
-    padding: 1.5%;
-    margin: 1.5%;
+    width: 1em;
+    height: 1em;
+    padding: 4%;
     border-radius: 50%;
     color: #ffffff;
     background-color: #1c9f21;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px dashed #555;
+    border: 1.3px dashed #555;
 }
 	span.pasif { 
     background-color: #9e9e9e82;
@@ -175,101 +174,46 @@ body, html {
 	#kupon  img {
 	width:50px;
 }
-  /* Details ve summary elemanlarının stilini ayarla */
-  details {
-    text-align: center;
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-
-  summary {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 15px;
-    cursor: pointer;
-  }
-
-  /* Liste öğelerinin stilini ayarla */
-  details ul {
-    list-style-type: none;
-    padding: 0;
-  }
-
-  details li {
-    display: flex;
-    list-style-type: none;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #f6f6f6;
-    border: 1px solid grey;
-    padding: 15px;
-    width: auto;
-  }
-
-  /* İlerleme çubuğunun stilini ayarla */
-  .progress-container {
-    width: 100%;
-    background-color: #e0e0e0;
-    border-radius: 8px;
-  }
-
-  .progress-bar {
-    width: 93%; /* Oranı belirlemek için bu değeri değiştir */
-    background-color: #4caf50;
-    padding: 5px;
-    color: #fff;
-    border-radius: 8px;
-    text-align: right;
-  }
-
-  /* Giriş kutusu ve butonların stilini ayarla */
-  input[type="text"] {
-    width: 70%;
-    padding: 8px;
-    margin: 8px 0;
-    border: 1px solid #ddd;
-    font-size:20px;
-    border-radius: 4px;
-  }
-
-  .send-sms {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 5px 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 18px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 4px;
-  }
-
-  .send-sms:hover {
-    background-color: #45a049;
-  }
-
-  .remove-invite {
-    background-color: #f44336;
-    border: none;
-    color: white;
-    padding: 5px 7px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 18px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 50%;
-  }
-
-  .remove-invite:hover {
-    background-color: #d73833;
-  }
+      .container {
+      padding: 5px;
+      background-color: #fff;
+      border: 1px solid #e8e8e8;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      font-family: 'Roboto', sans-serif;
+      background-color: #f4f7f6;
+    }
+    summary {
+      font-size: 18px;
+      font-weight: 500;
+      cursor: pointer;
+      padding: 10px;
+      border-radius: 5px;
+      outline: none;
+  background-image: radial-gradient(circle, #219dffcc, #219dffbd, #3e51c057);
+    text-align:center;
+      color: #000;
+    }
+    .container input, .container select{
+      text-align:center;
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    .container button {
+      width: 100%;
+      padding: 12px;
+      background-color: #5cb85c;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 18px;
+    }
 </style>
 </head>
 <body>
@@ -288,30 +232,24 @@ body, html {
   
 	<div class="size baslik alt-radius" id="kupon"> <!-- Content here --> </div>
 </div>
-<div class="size center verv" id="">
-  <details class="size center">
-    <summary>Verv en venn og få STOR PIZZA!</summary>
-    <p style="font-size:18px">Inviter vennene dine til å prøve Charlies og få rabatter til både deg selv og vennene dine! I tillegg vil du tjene gratis pizza etter hvert som de handler.</p><br>
-    <ul>
-      <li>
-        <input type="text" placeholder="Legg til mobilnr og inviter">
-        <button class="send-sms">Legg til</button>
-      </li>
-      <li>
-        <div class="progress-container">
-          <div class="progress-bar">28 / 30 - 2 pizza igjen</div>
-        </div>
-      </li>
-      <li>Min vert : 40 00 00 00</li>
-      <li><span>invitert : 44 44 44 41</span>  <button class="send-sms">SEND SMS</button> <button class="remove-invite">X</button></li>
-      <li><span>invitert : 44 44 44 42</span>  <button class="send-sms">SEND SMS</button> <button class="remove-invite">X</button></li>
-      <li><span>invitert : 44 44 44 43</span>  <button class="send-sms">SEND SMS</button> <button class="remove-invite">X</button></li>
-      <li><span>invitert : 44 44 44 45</span>  <button class="send-sms">SEND SMS</button> <button class="remove-invite">X</button></li>
-      <li><span>invitert : 44 44 44 46</span>  <button class="send-sms">SEND SMS</button> <button class="remove-invite">X</button></li>
-    </ul>
+  
+<div class="container size">
+  <details>
+    <summary>Inviter en venn med SMS</summary>
+    <br>
+    <label for="mobil">Mobil:</label>
+    <input type="tel" id="mobil" placeholder="Skriv inn mobilnummer">
+    
+    <label for="message">Melding:</label>
+    <select id="message">
+      <option value="Hei! Du må prøve de deilige pizzaene fra Charlie's Pizza på Hellemyrbakken 1. Kjøp 8 store pizzaer, og få den 9. gratis!">Hei! Du må prøve de deilige pizzaene fra Charlie's Pizza på Hellemyrbakken 1. Kjøp 8 store pizzaer, og få den 9. gratis!</option>
+      <option value="Charlie's Pizza på Hellemyrbakken 1 har virkelig fantastiske pizzaer! Husk, hvis du kjøper 8 pizzaer, får du den 9. gratis.">Charlie's Pizza på Hellemyrbakken 1, har virkelig fantastiske pizzaer! Husk, hvis du kjøper 8 pizzaer, får du den 9. gratis.</option>
+      <option value="Ikke gå glipp av tilbudet fra Charlie's Pizza! De har lekre pizzaer på Hellemyrbakken 1, og ved kjøp av 8 store pizzaer får du den 9. gratis.">Ikke gå glipp av tilbudet fra Charlie's Pizza! De har lekre pizzaer på Hellemyrbakken 1, og ved kjøp av 8 store pizzaer får du den 9. gratis.</option>
+    </select>
+
+    <button onclick="sendSMS()">Send SMS</button>
   </details>
 </div>
-
   
 <div class="center" style="width:100%;" id="qrheader" onclick="this.classList.toggle('full'); document.querySelector('div').scrollTop = 0;">
 	<div class="size center baslik ust-radius" onclick="event.stopPropagation();">QR-koden skannes av betjeningen!</div>
@@ -389,8 +327,8 @@ body, html {
     mobilnr.value = localStorage.getItem('MOBIL');
     INPUT(mobilnr.value);
         
-	for (let index = 1; index <= 8; index++) {
-    let green = index * 10; 
+	for (let index = 1; index <= 5; index++) {
+    let green = index * 33; 
     kupon.innerHTML += `<span class="aktiv" style="background-color: rgb(${green}, 160, ${green});"><img src="https://bestill.online/img/load.gif"></span>`;
 }
 
@@ -412,15 +350,17 @@ if (mobilnr.value.length < 8 || invalidStartDigits.includes(firstDigit)) {
     QRCODE.src = "https://bestill.online/img/stemp.jpg";
 }
 
+      
+        
 	const specificKeyReference = ref(database, specificKey);
 
 	onValue(specificKeyReference, (snapshot) => {
 		const value = snapshot.val();
 		kupon.innerHTML = '';
-		for (let index = 1; index <= 8; index++) {
+		for (let index = 1; index <= 5; index++) {
 		kupon.innerHTML += `${index <= value ? '<span class="aktiv">'+ index +'</span>' : '<span class="pasif">'+ index +'</span>'}`;
             }
-	if (value == 8) { kupon.innerHTML = `<img style="width:100%;background-color: black;" src="https://bestill.online/img/gratis.gif?raw=true" class="alt-radius">`; }
+	if (value == 5) { kupon.innerHTML = `<img style="width:100%;background-color: black;" src="https://bestill.online/img/gratis.gif?raw=true" class="alt-radius">`; }
 
 	});
     }
@@ -430,6 +370,22 @@ if (mobilnr.value.length < 8 || invalidStartDigits.includes(firstDigit)) {
 </script>
 
 <script>
+    function sendSMS() {
+    var mobil = document.getElementById('mobil').value;
+    var message = document.getElementById('message').value;
+
+    if (!mobil) {
+      alert('Vennligst skriv inn et mobilnummer.');
+      return;
+    }
+
+    if (mobil.length < 8) {
+      alert('Mobilnummeret må være minst 8 siffer.');
+      return;
+    }
+
+    window.location.href = `sms:${mobil}?body=${encodeURIComponent(message)}`;
+  }
  
 Mydiv.onscroll = function() {
 	var scrollPosition = Mydiv.scrollTop;
