@@ -1,10 +1,10 @@
 <button id="BTN1" onclick="PIZZAEKLE(-1);">➖</button>
 <button id="BTN2" onclick="PIZZAEKLE(1);">➕</button>
 <br><br>
-<input type="tel" id="benimNo" placeholder="Kendi Numaran" autocomplete="off">
+<input type="tel" id="benimNo" placeholder="Kendi Numaran" oninput="this.value = this.value.replace(/[^\d]/g, '').slice(0, 8); if (this.value.length >= 8) this.blur(); if (this.value.length >= 8) MOBILKAYIT();"  autocomplete="off">
 <button onclick="MOBILKAYIT();">GIR</button>
 <br><br>
-<input type="tel" id="davetliNo" placeholder="Davet et" autocomplete="off"> 
+<input type="tel" id="davetliNo" placeholder="Davet et" oninput="this.value = this.value.replace(/[^\d]/g, '').slice(0, 8); if (this.value.length >= 8) this.blur();" autocomplete="off"> 
 <button onclick="DAVETLIEKLE(davetliNo.value);">GIR</button><br>
 <br><br>
 Pizzalarim; <span id="pizzalarim"></span><br><br>
@@ -32,8 +32,8 @@ Davetliler; <span id="davetliler"></span>
   onValue(ref(database, benimNo.value), (snapshot) => {
     davetliler.innerHTML = null;
     davetci.innerHTML = null;
-    pizzalarim.innerHTML = null;
-    puanlarim.innerHTML = null;
+    pizzalarim.innerHTML = "0";
+    puanlarim.innerHTML = "0";
     
     snapshot.forEach((childSnapshot) => {
         const childKey = childSnapshot.key;
@@ -58,23 +58,66 @@ Davetliler; <span id="davetliler"></span>
     RESULT();
   };
 
-  window.PIZZAEKLE = function(increment) {
-   set(ref(database, `${benimNo.value}/PIZZA`), Number(pizzalarim.innerText) + increment); 
-  }
+window.PIZZAEKLE = (function() {
+  let lastClickTime = 0;
+  const DEBOUNCE_TIME = 200; // 200 ms
+  
+  return async function(increment) {
+    const currentTime = new Date().getTime();
+    if (currentTime - lastClickTime < DEBOUNCE_TIME) return;
+    lastClickTime = currentTime;
+    
+    // Fonksiyonun geri kalan kısmı
+    let davetciPuan = (await get(ref(database, `${davetci.innerText}/PUAN`))).val();
+    if (davetci.innerText){
+      set(ref(database, `${davetci.innerHTML}/PUAN`), davetciPuan + increment); 
+    }
+    
+    let value = Number(pizzalarim.innerText);
+    if (value >= 0 && value <= 7) {
+      set(ref(database, `${benimNo.value}/PIZZA`), Number(value) + increment); 
+    } else {
+      set(ref(database, `${benimNo.value}/PIZZA`), 0); 
+    }
+    // eksiye dusurmemek icin davetcinin puanini, 0dan BTN1 disabled
+    const button = document.getElementById('BTN1');
+    const number = +pizzalarim.innerText;
+    button.disabled = number + increment < 0;
+  };
+})();
 
-  window.DAVETLIEKLE = function(davetli) {
+
+
+  window.DAVETLIEKLE = async function(davetli) {
   if (!davetliler.innerHTML) { set(ref(database, `${benimNo.value}/PUAN`), 0); } 
     
-  if (davetliler.innerText.includes(davetli) || !davetliNo.value.trim() || davetliNo.value === benimNo.value){
-  alert(`Bu numara: ${davetliNo.value} zaten eklenmiş veya geçersiz.`);
+    const snapshot = await get(ref(database));
+    const DATA = JSON.stringify(snapshot.val());
+  
+  if (DATA.includes(davetli) || !davetliNo.value.trim()) {
+   alert(`Bu numara: ${davetliNo.value} zaten eklenmiş veya geçersiz.`);
     
   }else{
-      
-  set(ref(database, `${benimNo.value}/DAVETLILER`), `${davetliler.innerHTML}, ${davetli}`);
-  set(ref(database, `${davetliNo.value}/DAVETCI`), Number(benimNo.value));
-  set(ref(database, `${davetli}/PIZZA`), 0);
-  set(ref(database, `${davetli}/PUAN`), 0);
-  davetliNo.value = null;
-  }
+    let repl = ` <button onclick="SIL(${davetli})">${davetli}</button> `;
+    set(ref(database, `${benimNo.value}/DAVETLILER`), `${davetliler.innerHTML} ${repl}`);
+    set(ref(database, `${davetliNo.value}/DAVETCI`), Number(benimNo.value));
+    set(ref(database, `${davetli}/PIZZA`), 0);
+    set(ref(database, `${davetli}/PUAN`), 0);
+    davetliNo.value = null;
     }
+  }
+  
+window.SIL = async function(veri) {
+  const onay = confirm(`${veri} numaralı kişiyi silmek istediğinizden emin misiniz?`);
+  if (onay) {
+    let sildir = ` <button onclick="SIL(${veri})">${veri}</button> `;
+    let rep = davetliler.innerHTML.replace(sildir, '');
+    await set(ref(database, `${benimNo.value}/DAVETLILER`), `${rep}`);
+    await set(ref(database, `${veri}/DAVETCI`), `INGEN`);
+    alert(`${veri} numaralı kişi silindi.`);
+  } else {
+    alert('İşlem iptal edildi.');
+  }
+}
+  
 </script>
