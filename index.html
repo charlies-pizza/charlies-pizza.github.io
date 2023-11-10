@@ -94,7 +94,6 @@ body, html {
     gap: 6%;
     align-items: center;
     justify-content: center;
-    border-radius: 0px 0px 10px 10px;
     flex-wrap: wrap;
     align-content: stretch;
 }
@@ -176,51 +175,6 @@ body, html {
 	#kupon  img {
 	width:50px;
 }
-      .container {
-      background-color: #fff;
-      border: 1px solid #e8e8e8;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      font-family: 'Roboto', sans-serif;
-      background-color: #f4f7f6;
-    }
-    summary {
-    font-size: 18px;
-    font-weight: 500;
-    cursor: pointer;
-    padding: 10px;
-    border-radius: 5px;
-    outline: none;
-    background-image: radial-gradient(circle, #2196f3e3, #2196F3, #03a9f42b);
-    text-align: center;
-    color: #000;
-      box-shadow: 0px 0px 5px 2px #3F51B5;
-    }
-   .container input, .container select{
-    display: flex;
-    margin: auto;
-    width: 90%;
-    padding: 10px;
-    margin-bottom: 15px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-    }
-    .container button {
-    display: flex;
-    margin: auto;
-    width: 90%;
-    padding: 10px;
-    background-color: #5cb85c;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 20px;
-    justify-content: center;
-    align-items: center;
-    }
 </style>
 </head>
 <body>
@@ -237,25 +191,8 @@ body, html {
   
 	<div class="size center baslik">Dine Digitale Kuponger</div>
   
-	<div class="size baslik alt-radius" id="kupon"> <!-- Content here --> </div>
-</div>
-  
-<div class="container size">
-  <details>
-    <summary>Inviter en venn med SMS</summary>
-    <br>
-
-    <input type="tel" id="mobil" placeholder="Skriv inn mobilnummer">
-    
-    <select id="message">
-      <option value="Hei! Du må prøve de deilige pizzaene fra Charlie's Pizza på Hellemyrbakken 1. Kjøp 8 store pizzaer, og få den 9. gratis!">Hei! Du må prøve de deilige pizzaene fra Charlie's Pizza på Hellemyrbakken 1. Kjøp 8 store pizzaer, og få den 9. gratis!</option>
-      <option value="Charlie's Pizza på Hellemyrbakken 1 har virkelig fantastiske pizzaer! Husk, hvis du kjøper 8 pizzaer, får du den 9. gratis.">Charlie's Pizza på Hellemyrbakken 1, har virkelig fantastiske pizzaer! Husk, hvis du kjøper 8 pizzaer, får du den 9. gratis.</option>
-      <option value="Ikke gå glipp av tilbudet fra Charlie's Pizza! De har lekre pizzaer på Hellemyrbakken 1, og ved kjøp av 8 store pizzaer får du den 9. gratis.">Ikke gå glipp av tilbudet fra Charlie's Pizza! De har lekre pizzaer på Hellemyrbakken 1, og ved kjøp av 8 store pizzaer får du den 9. gratis.</option>
-    </select>
-
-    <button onclick="sendSMS()">Send SMS</button>
-    <br>
-  </details>
+	<div class="size baslik" id="kupon"> <!-- Content here --> </div>
+  	<div class="size center baslik alt-radius">Vi spanderer hver 9. store pizza</div>
 </div>
   
 <div class="center" style="width:100%;" id="qrheader" onclick="this.classList.toggle('full'); document.querySelector('div').scrollTop = 0;">
