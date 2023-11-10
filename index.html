@@ -175,6 +175,10 @@ body, html {
 	#kupon  img {
 	width:50px;
 }
+  @keyframes yarimSonme {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
 </style>
 </head>
 <body>
@@ -192,7 +196,13 @@ body, html {
 	<div class="size center baslik">Dine Digitale Kuponger</div>
   
 	<div class="size baslik" id="kupon"> <!-- Content here --> </div>
-  	<div class="size center baslik alt-radius">Vi spanderer hver 9. store pizza</div>
+  
+<div class="size center baslik alt-radius">
+<span>Vi spanderer hver 9. store pizza. 
+<span class="linkBtn" style="background-image: radial-gradient(circle, #219dff00, #db313100, #3e51c057);font-size:25px;color:#FFEB3B;animation: yarimSonme 2s infinite ease-in-out;
+" onclick="vilkor.classList.toggle('off');">ⓘ</span>
+</span></div>
+
 </div>
   
 <div class="center" style="width:100%;" id="qrheader" onclick="this.classList.toggle('full'); document.querySelector('div').scrollTop = 0;">
