@@ -214,7 +214,6 @@
       background-color: #f6f6f6;
       border: 1px solid grey;
       padding: 15px;
-      width: 90%;
       list-style-type: none;
     }
     
@@ -223,6 +222,16 @@
     @keyframes yarimSonme {
     0%, 100% { opacity: 1; }
     60% { opacity: 0.7; }
+    }
+    .trinn{
+      background-image: radial-gradient(circle, #219dff00, #db313100, #3e51c000);
+      box-shadow: 0px 0px 0px 0px rgb(0 0 0 / 66%);
+      font-size:20px;color:#FFEB3B;
+      animation: yarimSonme 2s infinite ease-in-out;
+      margin-left: 10px;
+    }
+    #vilkor strong{
+      color:#FF5722;
     }
   </style>
 </head>
@@ -235,30 +244,29 @@
     <div class="size center baslik linkBtn" style="animation: pulse1 1s infinite;" onclick="MenuStart();">» Bestill Pizza Her «</div>
 
     <div class="center" style="width:100%;">
-      <div id="register" class="size center baslik ust-radius"> Vennligst registrer nummeret ditt her! </div>
+      <div id="register" class="size center baslik ust-radius"><span>Registrer ditt nummer nedenfor <span onclick="scrollToFordeler(1);" class="linkBtn trinn">ⓘ</span> </span></div>
 
-      <input type="tel" class="size center baslik" id="mobilnr" placeholder="+47 40000000" oninput="INPUT(this.value); this.value = this.value.replace(/[^\d]/g, '').slice(0, 8); if (this.value.length >= 8) this.blur();" autocomplete="off">
+      <input type="tel" class="size center baslik" id="mobilnr" placeholder="40000000" oninput="INPUT(this.value); this.value = this.value.replace(/[^\d]/g, '').slice(0, 8); if (this.value.length >= 8) this.blur();" autocomplete="off">
 
-      <div class="size center baslik">Dine Digitale Kuponger</div>
+      <div class="size center baslik"><span>Dine digitale kuponger <span onclick="scrollToFordeler(2);" class="linkBtn trinn">ⓘ</span> </span></div>
 
       <div class="size baslik" id="kupon"> <!-- Content here --></div>
 
       <div class="size center baslik alt-radius">
         <span>Vi spanderer hver 9. store pizza.
-          <span class="linkBtn" style="background-image: radial-gradient(circle, #219dff00, #db313100, #3e51c000);box-shadow: 0px 0px 0px 0px rgb(0 0 0 / 66%);font-size:20px;color:#FFEB3B;animation: yarimSonme 2s infinite ease-in-out;
-" onclick="vilkor.classList.toggle('off');">ⓘ</span>
+          <span onclick="scrollToFordeler(3);" class="linkBtn trinn">ⓘ</span>
         </span>
       </div>
 
     </div>
 
     <div class="center" style="width:100%;" id="qrheader" onclick="this.classList.toggle('full'); document.querySelector('div').scrollTop = 0;">
-      <div class="size center baslik ust-radius" onclick="event.stopPropagation();">QR-koden skannes av betjeningen!</div>
+      <div class="size center baslik ust-radius" onclick="event.stopPropagation();"> QR-koden skannes av betjeningen!</div>
       <img class="size center" id="QRCODE" style="height:450px;border:1px solid black">
-      <div class="size center baslik alt-radius">Klikk på QR-koden for å fremvise!</div>
+      <div class="size center baslik alt-radius"> Klikk på QR-koden for å fremvise!</div>
     </div>
 
-    <div class="size center baslik linkBtn" style="margin-bottom:30px;font-size:20px;" onclick="vilkor.classList.toggle('off');">» Vilkår for lojalitetsprogram «</div>
+    <div class="size center baslik linkBtn" style="margin-bottom:30px;font-size:20px;height:45px;" onclick="vilkor.classList.toggle('off');">» Vilkår for lojalitetsprogram «</div>
 
     <div onclick="MenuStart();" id="MenuBtn" class="pulse">
       <img id="MenuBtn1" src="https://bestill.online/img/btn.png" style="width: 100%; height: auto;">
@@ -271,47 +279,52 @@
       <ol class="header size" id="Mydiv" style="max-width: 600px;gap: 2px;height:95%;background-color: #f6f6f600; box-shadow: 0px 0px 0px 0px black;">
         <li class="baslik center ust-radius" style="height:20px;display: flex; justify-content: space-between;"> <span><b>Charlie's Pizza Lojalitetsprogram:</b></span> <span style="float:left;cursor:pointer;">❌</span></li>
 
-        <li> <h3>Trinn 1: Registrering</h3> </li>
+        
+     <ol id="trinn1">
+    <li><strong>Trinn 1: Registrering</strong>
         <ol>
-          <li>Først må du registrere mobilnummeret ditt for å bli med i lojalitetsprogrammet.</li>
-          <li>Når mobilnummeret er registrert, vil en unik QR-kode bli generert og knyttet til profilen din.</li>
-          <li>Denne QR-koden vil bli brukt for å legge til digitale stempler på profilen din hver gang du kjøper en stor pizza.</li>
-          <li>For å legge til et digitalt stempel på profilen din, må du få QR-koden din skannet av betjeningen hver gang du kjøper en stor pizza.</li>
+            <li>Registrer Mobilnummeret: For å delta i lojalitetsprogrammet, start med å registrere mobilnummeret ditt.</li>
+            <li>Generering av QR-Kode: Etter registrering, blir en unik QR-kode generert og knyttet til din profil.</li>
+            <li id="trinn2">Bruk av QR-Kode: Bruk QR-koden for å legge til digitale stempler i din profil ved hvert kjøp av en stor pizza. QR-koden skannes av betjeningen!</li>
         </ol>
-
-        <li> <h3>Trinn 2: Overvåk Profilen Din</h3> </li>
+    </li>
+    <li><strong>Trinn 2: Overvåk Profilen Din</strong>
         <ol>
-          <li>Vi spanderer hver 9. pizza. Gjelder ved bestilling av stor pizza til fullpris i app eller på nett, og ved henting.</li>
-          <li>Etter at QR-koden er skannet, vil en av de åtte kupongene i profilen din skifte til grønn farge.</li>
-          <li>Profilen din vil også vise informasjon om antall Stor pizzaer du må kjøpe for å få en gratis.</li>
+            <li>Samle Stempler: For hver stor pizza, legges et digitalt stempel til din profil. </li>
+            <li>Kupongenes Framgang: En av kupongene i profilen endrer farge til grønn etter hver skanning, som viser din fremgang.</li>
+            <li id="trinn3">Spor Antall Kjøp: Profilen viser hvor mange store pizzaer du trenger for en gratis pizza.</li>
         </ol>
-
-        <li> <h3>Trinn 3: Motta Gratis Stor Pizza</h3> </li>
+    </li>
+    <li><strong>Trinn 3: Motta Gratis Stor Pizza</strong>
+    <ol>
+        <li>Få Gratis Pizza: Motta en melding om en aktiv "GRATULERER!"-kupong etter åtte kjøpte store pizzaer.</li>
+    </ol>
+</li>
+    <li><strong>Trinn 4: Hvordan Bruke Din Gratis Pizza</strong>
         <ol>
-          <li>Etter å ha kjøpt fem store pizzaer får du en melding i profilen din.</li>
-          <li>Meldingen vil si at en "Gratis Stor Pizza"-kupong er nå aktiv i profilen din.</li>
+            <li>Bestilling via Telefon: Bruk din gratis pizza-kupong ved å bestille via telefon.</li>
+            <li>Bestilling Online: Eller bestill fra "Bestill.online"-siden, velg "Kontant betaling" og noter "9. pizza gratis".</li>
         </ol>
-
-        <li> <h3>Trinn 4: Hvordan Bruke Din Gratis Pizza</h3> </li>
-        <ol>
-          <li>For å få den gratis Stor pizzaen, kan du enten bestille via telefon.</li>
-          <li>Hvis det ikke er mulig, kan du bestille fra "Bestill.online"-siden. Husk å velge "Kontant betaling" og legg til notatet "9. pizza gratis".</li>
-        </ol>
-
-        <li> <h3>Betingelser</h3> </li>
+    </li>
+    <li><strong>Betingelser</strong>
         <ul>
-          <li>Vi spanderer hver 9. pizza. Gjelder ved bestilling av stor pizza til fullpris i app eller på nett, og ved henting.</li>
-          <li>Lojalitetsgaven kan ikke brukes på 'lag din egen' pizza.</li>
+            <li>9. Pizza Gratis: Få hver niende store pizza gratis ved kjøp til full pris i app eller nett, ved henting.</li>
+            <li>Begrensninger: Lojalitetsgaven kan ikke brukes på 'lag din egen' pizza.</li>
         </ul>
-
-        <li> <h3>Fordeler med Programmet</h3> </li>
+    </li>
+    <li><strong>Fordeler med Programmet</strong>
         <ul>
-          <li>Du kan spare penger ved å få hver 9. Stor pizza gratis.</li>
-          <li>Det digitale stempelkortet er alltid tilgjengelig på telefonen din, så du risikerer ikke å miste eller glemme det.</li>
+            <li>Spar Penger: Få hver niende store pizza gratis.</li>
+            <li>Tilgjengelighet: Det digitale stempelkortet er alltid tilgjengelig på telefonen.</li>
         </ul>
+    </li>
+    <li><strong>Vilkår og Betingelser</strong>
+        <ul>
+            <li>Rett til Endringer: Charlie's Pizza kan endre betingelser og vilkår med umiddelbar effekt.</li>
+        </ul>
+    </li>
+</ol>
 
-        <li> <h3>Vilkår og Betingelser</h3> </li>
-        <li>Charlie's Pizza har rett til å oppdatere betingelser og vilkår med umiddelbar effekt.</li>
         <li class="baslik center alt-radius" style="height:20px;display: flex;justify-content: space-evenly;">
           <div onclick="event.stopPropagation(); Mydiv.scrollTop = 0;">⤴️ Gå Opp</div>
           <div>❌ Lukk </div>
@@ -367,6 +380,14 @@
 
   <script>
 
+    function scrollToFordeler(trinn) {
+    var myDiv = document.getElementById('Mydiv');
+    vilkor.classList.toggle('off');
+    trinn == 3 ? myDiv.scrollTop = trinn3.offsetTop : '' ;
+    trinn == 2 ? myDiv.scrollTop = trinn2.offsetTop : '' ;
+    trinn == 1 ? myDiv.scrollTop = vilkor.offsetTop : '' ;
+}
+
     Mydiv.onscroll = function() {
       var scrollPosition = Mydiv.scrollTop;
       var divHeight = Mydiv.scrollHeight - Mydiv.clientHeight;
@@ -400,12 +421,12 @@
       const firstDigit = parseInt(inp[0]);
       const invalidStartDigits = [0, 1, 2, 3, 5, 6, 7, 8];
       if (invalidStartDigits.includes(firstDigit)) {
-        register.innerHTML = `❌ Nr må begynne med 4 og 9.`;
+        register.innerHTML = `❌ Nummer må begynne med 4 og 9.`;
         QRCODE.src = "https://bestill.online/img/stemp.jpg";
       } else if (inp.length === 8 && !invalidStartDigits.includes(firstDigit)) {
         register.innerHTML = `✅ Nummeret ditt er registrert!`;
       } else {
-        register.innerHTML = `Vennligst registrer nummeret ditt her!`;
+        register.innerHTML = `<span>Registrer ditt nummer nedenfor <span onclick="scrollToFordeler(1);" class="linkBtn trinn">ⓘ</span> </span>`;
       }
     }
 
