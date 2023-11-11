@@ -288,28 +288,30 @@
         <ol>
             <li><b>Registrer Mobilnummeret:</b> For å delta i lojalitetsprogrammet, vennligst start med å registrere ditt mobilnummer. Nummeret må starte med 4 eller 9.</li>
             <li><b>Generering av QR-Kode:</b> Etter registrering, blir en unik QR-kode generert og knyttet til din profil.</li>
-            <li id="trinn2"><b>Bruk av QR-Kode:</b> Bruk QR-koden for å legge til digitale stempler i din profil ved hvert kjøp av en stor pizza. QR-koden skannes av betjeningen!</li>
+            <li><b>QR-Kode Bruk:</b> Hver gang du kjøper en stor pizza, blir QR-koden din skannet av personalet for å registrere kjøpet og legge til et digitalt stempel på din profil.</li>
+              <li id="trinn2"><b>Registrering:</b> Ved å registrere deg i lojalitetsprogrammet, oppnår du faktisk en effektiv rabatt på omtrent 15 % på hver av dine pizzaer.</li>
         </ol>
     </li>
     <li>
         <strong>Trinn 2: Overvåk Profilen Din</strong>
         <ol>
-            <li><b>Samle Stempler:</b> For hver stor pizza, legges et digitalt stempel til din profil.</li>
-            <li><b>Kupongenes Framgang:</b> En av kupongene i profilen endrer farge til grønn etter hver skanning, som viser din fremgang.</li>
+            <li><b>Samle Stempler:</b> For hver stor pizza, legges et digitalt stempel til din profil. Dette programmet er kun gyldig for store pizzaer.</li>
+            <li><b>Fremgang med Stempler:</b> Etter hver skanning endrer et stempel i profilen din farge til grønn, noe som viser din fremgang.</li>
             <li><b>Spor Antall Kjøp:</b> Profilen viser hvor mange store pizzaer du trenger for en gratis pizza.</li>
+         <li><b>Ansvar for Bruker:</b> Det er ditt ansvar å sørge for at QR-koden din blir skannet av personalet hver gang du kjøper en stor pizza for å sikre at kjøpet registreres.</li>
         </ol>
     </li>
     <li>
         <strong>Trinn 3: Motta Gratis Stor Pizza</strong>
         <ol>
-            <li><b>Få Gratis Pizza:</b> Motta en melding om en aktiv "GRATULERER!"-kupong etter åtte kjøpte store pizzaer.</li>
+            <li><b>Varsel om Gratis Pizza:</b> Når du har kjøpt åtte store pizzaer, vil du motta en 'GRATULERER!'-melding på profilen din, og da vil din neste pizza være gratis.</li>
         </ol>
     </li>
     <li>
         <strong>Trinn 4: Hvordan Bruke Din Gratis Pizza</strong>
         <ol>
-            <li><b>Bestilling via Telefon:</b> Bruk din gratis pizza-kupong ved å bestille via telefon.</li>
-            <li id="trinn5"><b>Bestilling Online:</b> Eller bestill fra "Bestill.online"-siden, velg "Kontant betaling" og noter "9. pizza gratis".</li>
+            <li><b>Bestill på telefon:</b> Du kan benytte din gratis pizzakupong ved å bestille over telefon eller direkte ved siden av vognen.</li>
+            <li id="trinn5"><b>Online Bestilling:</b> Eller bestill fra "Bestill.online"-siden, velg "Kontantbetaling" og merk "9. pizza gratis".</li>
         </ol>
     </li>
     <li>
@@ -317,9 +319,6 @@
         <ol>
             <li><b>9. Pizza Gratis:</b> Få hver niende store pizza gratis ved kjøp til full pris i app eller nett, ved henting.</li>
             <li><b>Begrensninger:</b> Lojalitetsgaven kan ikke brukes på 'lag din egen' pizza.</li>
-    </li>
-    <li>
-        <b>Bonus ved Innmelding:</b> Når du melder deg inn, mottar du et digitalt stempel som gir deg en rabatt på omtrent 11.11% på din neste pizza.
     </li>
     <li>
         <b>Spar Penger:</b> Få hver niende store pizza gratis.
@@ -396,7 +395,7 @@ function scrollToFordeler(trinn) {
     vilkor.classList.toggle('off');
 
       // Fjern bakgrunnsfarge fra alle relevante elementer først
-    for (let i = 1; i <= 3; i++) {
+    for (let i = 1; i <= 4; i++) {
         var existingElements = document.querySelectorAll(`li:nth-child(${i})`);
         existingElements.forEach(function(element) {
             element.style.backgroundColor = null;
@@ -408,7 +407,7 @@ function scrollToFordeler(trinn) {
     if(trinn == 1) myDiv.scrollTop = vilkor.offsetTop;
 
   if (trinn){
-    for (let i = 1; i <= 3; i++) {
+    for (let i = 1; i <= 4; i++) {
         document.querySelector(`li:nth-child(${trinn}) > ol > li:nth-child(${i})`).style.backgroundColor = '#f443364a';
     }
 }
