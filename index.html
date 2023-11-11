@@ -282,52 +282,60 @@
         <li class="baslik center ust-radius" style="height:20px;display: flex; justify-content: space-between;"> <span><b>Charlie's Pizza Lojalitetsprogram:</b></span> <span style="float:left;cursor:pointer;">❌</span></li>
 
         
-     <ol id="trinn1">
-    <li><strong>Trinn 1: Registrering</strong>
+<ol>
+    <li>
+        <strong>Trinn 1: Registrering</strong>
         <ol>
-            <li><b>Registrer Mobilnummeret:</b> For å delta i lojalitetsprogrammet, vennligst start med å registrere ditt mobilnummer. Nummeret må starte med 4 eller 9..</li>
+            <li><b>Registrer Mobilnummeret:</b> For å delta i lojalitetsprogrammet, vennligst start med å registrere ditt mobilnummer. Nummeret må starte med 4 eller 9.</li>
             <li><b>Generering av QR-Kode:</b> Etter registrering, blir en unik QR-kode generert og knyttet til din profil.</li>
             <li id="trinn2"><b>Bruk av QR-Kode:</b> Bruk QR-koden for å legge til digitale stempler i din profil ved hvert kjøp av en stor pizza. QR-koden skannes av betjeningen!</li>
         </ol>
     </li>
-    <li><strong>Trinn 2: Overvåk Profilen Din</strong>
+    <li>
+        <strong>Trinn 2: Overvåk Profilen Din</strong>
         <ol>
-            <li><b>Samle Stempler:</b> For hver stor pizza, legges et digitalt stempel til din profil. </li>
+            <li><b>Samle Stempler:</b> For hver stor pizza, legges et digitalt stempel til din profil.</li>
             <li><b>Kupongenes Framgang:</b> En av kupongene i profilen endrer farge til grønn etter hver skanning, som viser din fremgang.</li>
             <li><b>Spor Antall Kjøp:</b> Profilen viser hvor mange store pizzaer du trenger for en gratis pizza.</li>
         </ol>
     </li>
-    <li><strong>Trinn 3: Motta Gratis Stor Pizza</strong>
-    <ol>
-        <li><b>Få Gratis Pizza:</b> Motta en melding om en aktiv "GRATULERER!"-kupong etter åtte kjøpte store pizzaer.</li>
-    </ol>
-</li>
-    <li><strong>Trinn 4: Hvordan Bruke Din Gratis Pizza</strong>
+    <li>
+        <strong>Trinn 3: Motta Gratis Stor Pizza</strong>
         <ol>
-            <li><b>Bestilling via Telefon:</b> Bruk din gratis pizza-kupong ved å bestille via telefon.</li>
-            <li><b>Bestilling Online:</b> Eller bestill fra "Bestill.online"-siden, velg "Kontant betaling" og noter "9. pizza gratis".</li>
+            <li><b>Få Gratis Pizza:</b> Motta en melding om en aktiv "GRATULERER!"-kupong etter åtte kjøpte store pizzaer.</li>
         </ol>
     </li>
-    <li id="trinn5"><strong>Betingelser</strong>
-        <ul>
+    <li>
+        <strong>Trinn 4: Hvordan Bruke Din Gratis Pizza</strong>
+        <ol>
+            <li><b>Bestilling via Telefon:</b> Bruk din gratis pizza-kupong ved å bestille via telefon.</li>
+            <li id="trinn5"><b>Bestilling Online:</b> Eller bestill fra "Bestill.online"-siden, velg "Kontant betaling" og noter "9. pizza gratis".</li>
+        </ol>
+    </li>
+    <li>
+        <strong>Betingelser</strong>
+        <ol>
             <li><b>9. Pizza Gratis:</b> Få hver niende store pizza gratis ved kjøp til full pris i app eller nett, ved henting.</li>
             <li><b>Begrensninger:</b> Lojalitetsgaven kan ikke brukes på 'lag din egen' pizza.</li>
- 
     </li>
-   <strong>Fordeler med Lojalitetsprogram:</strong>
-
-<li><b>Bonus ved Innmelding:</b> Når du melder deg inn, mottar du et digitalt stempel som gir deg en rabatt på omtrent 11.11% på din neste pizza.</li>
-
-            <li><b>Spar Penger:</b> Få hver niende store pizza gratis.</li>
-            <li><b>Tilgjengelighet:</b> Det digitale stempelkortet er alltid tilgjengelig på telefonen.</li>
-        </ul>
+    <li>
+        <b>Bonus ved Innmelding:</b> Når du melder deg inn, mottar du et digitalt stempel som gir deg en rabatt på omtrent 11.11% på din neste pizza.
     </li>
-    <li><strong>Vilkår og Betingelser</strong>
+    <li>
+        <b>Spar Penger:</b> Få hver niende store pizza gratis.
+    </li>
+    <li>
+        <b>Tilgjengelighet:</b> Det digitale stempelkortet er alltid tilgjengelig på telefonen.
+    </li>
+         </ol>
+    <li>
+        <strong>Vilkår og Betingelser</strong>
         <ul>
             <li><b>Rett til Endringer:</b> Charlie's Pizza kan endre betingelser og vilkår med umiddelbar effekt.</li>
         </ul>
     </li>
 </ol>
+
 
         <li class="baslik center alt-radius" style="height:20px;display: flex;justify-content: space-evenly;">
           <div onclick="event.stopPropagation(); Mydiv.scrollTop = 0;">⤴️ Gå Opp</div>
@@ -399,10 +407,13 @@ function scrollToFordeler(trinn) {
     if(trinn == 2) myDiv.scrollTop = trinn2.offsetTop;
     if(trinn == 1) myDiv.scrollTop = vilkor.offsetTop;
 
+let elements = document.querySelectorAll(`li:nth-child(4) > ol > li`);
+console.log(elements.length);
+
   if (trinn){
-    // Sett bakgrunnsfarge for det valgte trinnet
-    var selectedElement = document.querySelector(`#trinn1 > li:nth-child(${trinn})`)
-    if(selectedElement) { selectedElement.style.backgroundColor = '#f4433670'; } 
+    for (let i = 1; i <= 3; i++) {
+        document.querySelector(`li:nth-child(${trinn}) > ol > li:nth-child(${i})`).style.backgroundColor = '#f4433670';
+    }
 }
 }
 
