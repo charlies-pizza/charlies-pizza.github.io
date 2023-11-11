@@ -407,12 +407,9 @@ function scrollToFordeler(trinn) {
     if(trinn == 2) myDiv.scrollTop = trinn2.offsetTop;
     if(trinn == 1) myDiv.scrollTop = vilkor.offsetTop;
 
-let elements = document.querySelectorAll(`li:nth-child(4) > ol > li`);
-console.log(elements.length);
-
   if (trinn){
     for (let i = 1; i <= 3; i++) {
-        document.querySelector(`li:nth-child(${trinn}) > ol > li:nth-child(${i})`).style.backgroundColor = '#f4433670';
+        document.querySelector(`li:nth-child(${trinn}) > ol > li:nth-child(${i})`).style.backgroundColor = '#f443364a';
     }
 }
 }
