@@ -9,7 +9,6 @@
   <meta name="description" content="Pizza til folket! Bestill pizza fra Charlie's Pizza. Ferske bunner hver dag. Takeaway og levering. Charlie's Pizza Kristiansand, online pizza bestilling nettsted. Ekte pizza med 100% italienske ingredienser, stekt i profesjonell stein-ovn." />
   <script src="https://bestill.online/styles.js"></script>
   <link rel="icon" type="image/png" href="https://bestill.online/img/icon-s.png">
-
   <style>
     * {
       -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -20,6 +19,7 @@
 
     body,
     html {
+      position:relative;
       background-color: #0c4c98;
       font-family: Arial, sans-serif;
       height: 100%;
@@ -29,7 +29,6 @@
       top: 0;
       left: 0;
     }
-
     @media screen and (min-width: 500px) {}
 
     .header {
@@ -239,19 +238,39 @@
         width: 175px;
         height: 50px;
     }
+#demos {
+ position: absolute;
+    z-index: 1000;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  font-size:5vw;
+  color:red;
+}
+    #demos span {
+  background-color: white;
+  padding:50px;
+  border-radius:10px;
+    }
   </style>
 </head>
 <body>
-
+      <span id="demos"><span>Dette nettstedet er kun en demo!!</span></span>
   <div class="header center">
-    <div class="saat center" id="saat"> <span id="hours"> *** </span> </div>
+<div class="saat center" id="saat"> <span id="hours"> *** </span> </div>
 
     <div class="size center baslik linkBtn" style="animation: pulse1 1s infinite;" onclick="MenuStart();">» Bestill Pizza Her «</div>
 
     <div class="center" style="width:100%;">
       <div id="register" class="size center baslik ust-radius"><span>Registrer ditt nummer nedenfor <span onclick="scrollToFordeler(1);" class="linkBtn trinn">ⓘ</span> </span></div>
 
-      <input type="tel" class="size center baslik" id="mobilnr" placeholder="40000000" oninput="INPUT(this.value); this.value = this.value.replace(/[^\d]/g, '').slice(0, 8); if (this.value.length >= 8) this.blur();" autocomplete="off">
+      <input type="tel" class="size center baslik" id="mobilnr" placeholder="+47 __ __ __ __" autocomplete="off">
 
       <div class="size center baslik"><span>Dine digitale kuponger <span onclick="scrollToFordeler(2);" class="linkBtn trinn">ⓘ</span> </span></div>
 
@@ -310,6 +329,7 @@
         </ol>
     </li>
     <li>
+      
         <strong>Trinn 3: Motta Gratis Stor Pizza</strong>
         <ol>
             <li><b>Varsel om Gratis Pizza:</b> Når du har kjøpt åtte store pizzaer, vil du motta en 'GRATULERER!'-melding på profilen din, og da vil din neste pizza være gratis.</li>
@@ -352,6 +372,42 @@
     </div>
 
   </div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/jquery.inputmask.bundle.min.js"></script>
+
+<script>
+$(document).ready(function(){
+  $('#mobilnr').inputmask("+47 99 99 99 99");
+  
+  $('#mobilnr').on('input', function() {
+
+    var maskedValue = $(this).val();
+    var unmaskedValue = maskedValue.replace('+47 ', '').replace(/\D/g, ''); // '+47 ' kısmını ve sayı olmayan tüm karakterleri sil
+    localStorage.setItem('MOBIL', unmaskedValue);
+    
+    var firstDigit = parseInt(unmaskedValue[0]);
+    var invalidStartDigits = [0, 1, 2, 3, 5, 6, 7, 8];
+    var register = document.getElementById('register');
+    var QRCODE = document.getElementById('QRCODE');
+console.log(unmaskedValue.length);
+    if (unmaskedValue.length > 0 && invalidStartDigits.includes(firstDigit)) {
+      register.innerHTML = `❌ Nummer må begynne med 4 og 9.`;
+      QRCODE.src = "https://bestill.online/img/stemp.jpg";
+    } else if (unmaskedValue.length >= 8 && !invalidStartDigits.includes(firstDigit)) {
+      register.innerHTML = `✅ Nummeret ditt er registrert!`;
+      guncelle();
+      $(this).blur();
+    } else {
+      QRCODE.src = "https://bestill.online/img/stemp.jpg";
+      register.innerHTML = `<span>Registrer ditt nummer nedenfor <span onclick="scrollToFordeler(1);" class="linkBtn trinn">ⓘ</span> </span>`;
+    }
+  });
+  
+});
+
+</script>
+  
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
     import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
@@ -360,14 +416,14 @@
     const database = getDatabase();
     //${x}
     mobilnr.value = localStorage.getItem('MOBIL');
-    INPUT(mobilnr.value);
+
     for (let index = 1; index <= 8; index++) {
       let green = index * 10;
       kupon.innerHTML += `<span class="aktiv" style="background-color: rgb(${green}, 160, ${green});"><img src="https://bestill.online/img/load.gif"></span>`;
     }
 
-    function guncelle() {
-      localStorage.setItem('MOBIL', mobilnr.value);
+window.guncelle = function() {
+
       let specificKey = localStorage.getItem('MOBIL');
       if (!specificKey) {
         specificKey = '0';
@@ -393,7 +449,7 @@
         }
       });
     }
-    mobilnr.addEventListener("input", guncelle);
+
     guncelle();
   </script>
 
@@ -450,19 +506,6 @@ function scrollToFordeler(trinn) {
       }
     }
 
-    function INPUT(inp) {
-      const firstDigit = parseInt(inp[0]);
-      const invalidStartDigits = [0, 1, 2, 3, 5, 6, 7, 8];
-      if (invalidStartDigits.includes(firstDigit)) {
-        register.innerHTML = `❌ Nummer må begynne med 4 og 9.`;
-        QRCODE.src = "https://bestill.online/img/stemp.jpg";
-      } else if (inp.length === 8 && !invalidStartDigits.includes(firstDigit)) {
-        register.innerHTML = `✅ Nummeret ditt er registrert!`;
-      } else {
-        register.innerHTML = `<span>Registrer ditt nummer nedenfor <span onclick="scrollToFordeler(1);" class="linkBtn trinn">ⓘ</span> </span>`;
-      }
-    }
-
     function updateStatus() {
       const currentDate = new Date();
       const dayOfWeek = currentDate.getDay();
@@ -474,7 +517,7 @@ function scrollToFordeler(trinn) {
         document.head.appendChild(themeColor);
       }
       if (dayOfWeek === 1) { // Mandag
-        hours.textContent = `🚫 Charlie's Pizza er stengt på mandager.`;
+        hours.textContent = `🚫 Pizzeria er stengt på mandager.`;
         saat.style = "background-color: #ef4e4b;font-size: 17px;color:white;"
         themeColor.content = "#ef4e4b";
       } else if (currentHour >= 14 && currentHour < 22) {
@@ -482,7 +525,7 @@ function scrollToFordeler(trinn) {
         saat.style = "background-color: #5ac15e;font-size: 17px;color:white;"
         themeColor.content = "#5ac15e";
       } else {
-        hours.innerText = `🔴 Charlie's Pizza er stengt nå.`;
+        hours.innerText = `🔴 Pizzeria er stengt nå.`;
         saat.style = "background-color: #ef4e4b;font-size: 17px;color:white;"
         themeColor.content = "#ef4e4b";
       }
