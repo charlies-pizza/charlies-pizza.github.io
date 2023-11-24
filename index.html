@@ -398,12 +398,12 @@ console.log(unmaskedValue.length);
       QRCODE.src = "https://bestill.online/img/stemp.jpg";
     } else if (unmaskedValue.length >= 8 && !invalidStartDigits.includes(firstDigit)) {
       register.innerHTML = `✅ Nummeret ditt er registrert!`;
-      guncelle();
       $(this).blur();
     } else {
       QRCODE.src = "https://bestill.online/img/stemp.jpg";
       register.innerHTML = `<span>Registrer ditt nummer nedenfor <span onclick="scrollToFordeler(1);" class="linkBtn trinn">ⓘ</span> </span>`;
     }
+      guncelle();
   });
   
 });
