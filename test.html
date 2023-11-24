@@ -250,7 +250,7 @@
     <div class="center" style="width:100%;">
       <div id="register" class="size center baslik ust-radius"><span>Registrer ditt nummer nedenfor <span onclick="scrollToFordeler(1);" class="linkBtn trinn">ⓘ</span> </span></div>
 
-      <input type="tel" class="size center baslik" id="mobilnr" placeholder="+47 __ __ __ __" autocomplete="off">
+      <input type="tel" class="size center baslik" id="mobilnr" oninput="" placeholder="+47 ________" autocomplete="off">
 
       <div class="size center baslik"><span>Dine digitale kuponger <span onclick="scrollToFordeler(2);" class="linkBtn trinn">ⓘ</span> </span></div>
 
@@ -356,85 +356,87 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/jquery.inputmask.bundle.min.js"></script>
 
-<script>
-$(document).ready(function(){
-  $('#mobilnr').inputmask("+47 99 99 99 99");
-  
-  $('#mobilnr').on('input', function() {
+  <script>
 
-    var maskedValue = $(this).val();
-    var unmaskedValue = maskedValue.replace('+47 ', '').replace(/\D/g, ''); // '+47 ' kısmını ve sayı olmayan tüm karakterleri sil
-    localStorage.setItem('MOBIL', unmaskedValue);
-    
-    var firstDigit = parseInt(unmaskedValue[0]);
+  </script>  
+<script type="module">
+  
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+  import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
+
+  // Firebase yapılandırması ve başlatılması
+  const firebaseConfig = { databaseURL: `https://bestill-pizza-default-rtdb.europe-west1.firebasedatabase.app` };
+  initializeApp(firebaseConfig);
+  const database = getDatabase();
+
+    document.addEventListener('DOMContentLoaded', () => {
+    const mobilnr = document.getElementById('mobilnr');
+    const kupon = document.getElementById('kupon');
+
+    // LocalStorage kontrolü ve numara yükleme
+    mobilnr.value = localStorage.getItem('MOBIL') || '';
+    updateUI(mobilnr.value);
+
+      
+    // Numara girişinde güncelleme
+    mobilnr.oninput = () => {
+      if (mobilnr.value.length >= 8) mobilnr.blur();
+      mobilnr.value = mobilnr.value.replace(/[^\d]/g, '').slice(0, 8);
+      localStorage.setItem('MOBIL', mobilnr.value);
+      updateUI(mobilnr.value);
+    };
+  });
+  
+  // UI ve Firebase güncelleme fonksiyonu
+  function updateUI(specificKey) {
+   
+    var firstDigit = parseInt(specificKey[0]);
     var invalidStartDigits = [0, 1, 2, 3, 5, 6, 7, 8];
     var register = document.getElementById('register');
     var QRCODE = document.getElementById('QRCODE');
 
-    if (unmaskedValue.length > 0 && invalidStartDigits.includes(firstDigit)) {
+    if (specificKey.length > 0 && invalidStartDigits.includes(firstDigit)) {
       register.innerHTML = `❌ Nummer må begynne med 4 og 9.`;
       QRCODE.src = "https://bestill.online/img/stemp.jpg";
-    } else if (unmaskedValue.length >= 8 && !invalidStartDigits.includes(firstDigit)) {
+    } else if (specificKey.length >= 8 && !invalidStartDigits.includes(firstDigit)) {
       register.innerHTML = `✅ Nummeret ditt er registrert!`;
-      $(this).blur();
+      QRCODE.src = `https://chart.googleapis.com/chart?cht=qr&chl=bestill.online/kayit.html?n=${encodeURIComponent(specificKey)}&chs=400x400&chld=L|0`;
     } else {
       QRCODE.src = "https://bestill.online/img/stemp.jpg";
       register.innerHTML = `<span>Registrer ditt nummer nedenfor! <span onclick="scrollToFordeler(1);" class="linkBtn trinn">ⓘ</span> </span>`;
-    }    
-    if (unmaskedValue.length >= 7){
-      guncelle();
-      console.log("7 den assagi guncelleme yok :)")
-    }
-  });
-  
-});
-
-</script>
-  
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
-    import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
-    const firebaseConfig = { databaseURL: `https://bestill-pizza-default-rtdb.europe-west1.firebasedatabase.app` };
-    initializeApp(firebaseConfig);
-    const database = getDatabase();
-    //${x}
-    mobilnr.value = localStorage.getItem('MOBIL');
-
+    }   
+        
+    kupon.innerHTML = null;
+    if (specificKey.length >= 8) {
+      
     for (let index = 1; index <= 8; index++) {
-      let green = index * 10;
-      kupon.innerHTML += `<span class="aktiv" style="background-color: rgb(${green}, 160, ${green});"><img src="https://bestill.online/img/load.gif"></span>`;
-    }
-
-window.guncelle = function() {
-
-      let specificKey = localStorage.getItem('MOBIL');
-      if (!specificKey) {
-        specificKey = '0';
+    let green = index * 10; 
+    kupon.innerHTML += `<span class="aktiv" style="background-color: rgb(${green}, 160, ${green});"><img src="https://bestill.online/img/load.gif"></span>`;  }
+      
+    updateFirebase(specificKey);
+    }else{
+    for (let index = 1; index <= 8; index++) {
+    kupon.innerHTML += `<span class="pasif"> ${index} </span>`;
       }
-      const firstDigit = parseInt(specificKey[0]);
-      const invalidStartDigits = [0, 1, 2, 3, 5, 6, 7, 8];
-      if (mobilnr.value.length < 8 || invalidStartDigits.includes(firstDigit)) {
-        QRCODE.src = "https://bestill.online/img/stemp.jpg";
-      } else if (mobilnr.value) {
-        QRCODE.src = `https://chart.googleapis.com/chart?cht=qr&chl=bestill.online/kayit.html?n=${encodeURIComponent(specificKey)}&chs=400x400&chld=L|0`;
-      } else {
-        QRCODE.src = "https://bestill.online/img/stemp.jpg";
-      }
-      const specificKeyReference = ref(database, specificKey);
-      onValue(specificKeyReference, (snapshot) => {
-        const value = snapshot.val();
-        kupon.innerHTML = '';
-        for (let index = 1; index <= 8; index++) {
-          kupon.innerHTML += `${index <= value ? '<span class="aktiv">'+ index +'</span>' : '<span class="pasif">'+ index +'</span>'}`;
-        }
-        if (value == 8) {
-          kupon.innerHTML = `<img style="width:100%;background-color: black;" src="https://bestill.online/img/gratis.gif?raw=true" class="">`;
-        }
-      });
     }
-
-    guncelle();
-  </script>
+  }
+  
+  // Firebase güncelleme fonksiyonu
+  function updateFirebase(specificKey) {
+    const specificKeyReference = ref(database, specificKey);
+    onValue(specificKeyReference, (snapshot) => {
+      const kupon = document.getElementById('kupon');
+      const value = snapshot.val();
+      kupon.innerHTML = '';
+      for (let index = 1; index <= 8; index++) {
+        kupon.innerHTML += `${index <= value ? '<span class="aktiv">'+ index +'</span>' : '<span class="pasif">'+ index +'</span>'}`;
+      }
+      if (value == 8) {
+        kupon.innerHTML = `<img style="width:100%;background-color: black;" src="https://bestill.online/img/gratis.gif?raw=true" class="">`;
+      }
+    });
+  }
+</script>
 
   <script>
 function scrollToFordeler(trinn) {
