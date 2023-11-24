@@ -403,7 +403,10 @@ console.log(unmaskedValue.length);
       QRCODE.src = "https://bestill.online/img/stemp.jpg";
       register.innerHTML = `<span>Registrer ditt nummer nedenfor <span onclick="scrollToFordeler(1);" class="linkBtn trinn">ⓘ</span> </span>`;
     }
+    if (unmaskedValue.length >= 7){
       guncelle();
+      console.log("7 den assagi guncelleme yok :)")
+    }
   });
   
 });
