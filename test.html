@@ -370,17 +370,20 @@ $(document).ready(function(){
     var invalidStartDigits = [0, 1, 2, 3, 5, 6, 7, 8];
     var register = document.getElementById('register');
     var QRCODE = document.getElementById('QRCODE');
-console.log(unmaskedValue.length);
+
     if (unmaskedValue.length > 0 && invalidStartDigits.includes(firstDigit)) {
       register.innerHTML = `❌ Nummer må begynne med 4 og 9.`;
       QRCODE.src = "https://bestill.online/img/stemp.jpg";
     } else if (unmaskedValue.length >= 8 && !invalidStartDigits.includes(firstDigit)) {
       register.innerHTML = `✅ Nummeret ditt er registrert!`;
-      guncelle();
       $(this).blur();
     } else {
       QRCODE.src = "https://bestill.online/img/stemp.jpg";
-      register.innerHTML = `<span>Registrer ditt nummer nedenfor <span onclick="scrollToFordeler(1);" class="linkBtn trinn">ⓘ</span> </span>`;
+      register.innerHTML = `<span>Registrer ditt nummer nedenfor! <span onclick="scrollToFordeler(1);" class="linkBtn trinn">ⓘ</span> </span>`;
+    }    
+    if (unmaskedValue.length >= 7){
+      guncelle();
+      console.log("7 den assagi guncelleme yok :)")
     }
   });
   
@@ -515,5 +518,4 @@ function scrollToFordeler(trinn) {
   </script>
 
 </body>
-
 </html>
