@@ -9,6 +9,10 @@
   <script src="https://bestill.online/styles.js"></script>
   <link rel="icon" type="image/png" href="https://bestill.online/img/icon-s.png">
 <script>
+      document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    }, false);
+  
     document.onkeydown = function(e) {
         e = e || window.event;
         var key = e.keyCode || e.which; 
@@ -26,6 +30,9 @@
 
   <style>
     * {
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Standart Sözdizimi */
       -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
       -webkit-tap-highlight-color: transparent;
       margin: 0;
